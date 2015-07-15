@@ -1,37 +1,37 @@
 # RPI-SHRINK-SSP-FULL
-BareMetal�ŗV��RaspberryPi[�B�l�o�Łv�̊��ɂāASSP�̃V�������N�ł��ڐA�������̂ł��B
+BareMetalで遊ぶRaspberryPi[達人出版」の環境にて、SSPのシュリンク版を移植したものです。
 
-ssp-rpi-20150618-RPI2 �����[�X�m�[�g
+ssp-rpi-20150618-RPI2 リリースノート
 
-raspberry pi2 �^�C�vB�ɑΉ����܂����B
-RPI1�̃^�C�vB�̏ꍇ��make�̃I�v�V�����Ŏw��ł���悤�ɂ��܂����B
+raspberry pi2 タイプBに対応しました。
+RPI1のタイプBの場合もmakeのオプションで指定できるようにしました。
 
 
-�r���h���@�́@make �ŋ@����w�肭������
+ビルド方法は　make で機種を指定ください
 
-RPITYPE=RPI2		//raspberryPi2
-RPITYPE=RPIB-PLUS	//raspberryPi B+
-(���w��)			//raspberryPi B
+RPITYPE=RPI2		//raspberryPi2  
+RPITYPE=RPIB-PLUS	//raspberryPi B+  
+(未指定)			//raspberryPi B  
 
-(��j
+(例）
 $ make RPITYPE=RPI2
 
-�r���h��
-�ȉ�ULR��ubuntu32bit���Ńr���h�\�ł��B
+ビルド環境
+以下ULRのubuntu32bit環境でビルド可能です。
 http://dev.toppers.jp/trac_user/contrib/browser/CROS-TOOL-VMWARE
 
 
 
 
-�ȉ��@�ߋ��̃����[�X�m�[�g------------------------------------
+以下　過去のリリースノート------------------------------------
 
-20150611�Ń����[�X�m�[�g
+20150611版リリースノート
 
-20150602�ł͐����������Ȃ��̂ŁA�폜���܂����B
+20150602版は正しく動かないので、削除しました。
 
-�ȉ�ULR��ubuntu32bit���Ńr���h�\�ł��B
+以下ULRのubuntu32bit環境でビルド可能です。
 http://dev.toppers.jp/trac_user/contrib/browser/CROS-TOOL-VMWARE
 
-Raspberry pi TYPE B+�@�Ή��ɂ��܂����B
+Raspberry pi TYPE B+　対応にしました。
 
-TYPE B�Ŋm�F����ɂ́ALED�̔ԍ���define��ς��Ă��������B�@main.c
+TYPE Bで確認するには、LEDの番号のdefineを変えてください。　main.c
