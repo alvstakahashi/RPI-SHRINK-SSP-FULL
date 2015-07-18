@@ -1,5 +1,11 @@
+#define TOPPERS_MACRO_ONLY
+#define TOPPERS_ASM_MACRO
+#define UINT_C(val)     (val)        /* uint_t型の定数を作るマクロ */
+#define ULONG_C(val)    (val)        /* ulong_t型の定数を作るマクロ */
+
+#include "target_asm.inc"
+
 @ startup
-	.global	__kernel_default_int_handler_entry
 	.global _start
 	.align
 _start:
@@ -15,8 +21,8 @@ _start:
 	msr	cpsr, r0
 	ldr	sp, =0x06400000
 
-	// main呼び出し
-	bl main
+	// setup呼び出し
+	bl setup
 
 	// 終了（無限ループ）
 	b .
@@ -28,40 +34,45 @@ _hangup:
 	msr	cpsr, r0
 	b .
 
-
 _IRQ_iterrupt:
-	// スタックにレジスタの内容を退避させる
-	stmfd	r13!, {r0-r12,lr}
+	/* 
+	 * IRQモードで実行される
+　　　　 * スタックはスーパーバイザーモードにコンテキスト
+	 * を保存
+	 */
+	sub   lr, lr, #4 			/* 戻り先アドレス  */
+	srsdb #CPSR_SVC! 			/*lr(戻り先) spsr(cpsr_svc)を	*/
+						/* スーパーバイザーモードのスタックへ保存	*/
+
+						/*
+						 *  割込み前のモード(スーパーバイザーモード)へ
+						 *  移行し，コンテキストを保存する
+						 */
+	msr   cpsr_cxsf, #(CPSR_SVC AOR CPSR_CPULOCK AOR CPSR_ALWAYS_SET)
+	stmfd sp!, {r0-r12,lr}				/* 全部保存する								*/
+//	;----------------------------------------------------------
+//	;ここまでで、スーパーバイザースタックに以下のように積まれる
+//	;
+//	;           例外フレーム(ARMv6-7)            offset
+//	;      ------------------------------
+//	;     |            R0-R12            |  0　
+//	;      ------------------------------
+//	;     |          LR_svc              |  
+//	;      ------------------------------
+//	;     |     例外前のPC(戻り先)       |  
+//	;      ------------------------------
+//	;     |        例外前のCPSR          |  
+//	;      ------------------------------
+//	;-------------------------------------------------------------
 	// C言語の割り込みハンドラ呼び出し
 	bl	IRQ_handler
-	// スタックからレジスタの内容を復元する。
-	ldmfd	r13!, {r0-r12,lr}
-	// 戻りアドレス修正（IRQはlr-4）して、元の実行番地に復帰
-	subs	pc,lr, #4
-
-
-// IRQ有効化（CPSR設定）
-	.global enable_IRQ
-enable_IRQ:
-	mrs	r0, cpsr
-	bic r0, r0, #0x80
-	msr cpsr_c,r0
-	bx lr
-
-// IRQ無効化（CPSR設定）
-	.global disable_IRQ
-disable_IRQ:
-	mrs	r0, cpsr
-	ldr	r1,	=0x80
-	orr r0, r0, r1
-	msr	cpsr_c, r0
-	bx lr
-
-// CPSRの値を取得して返す（r0は戻り値を入れるレジスタ）
-	.global getmode
-getmode:
-	mrs	r0, cpsr
-	bx lr
+	/*
+	 *  割込み処理からのリターンにより，CPUロック解除状態に移行するよ
+	 *  うにする．ARMはCPSRのIRQビットによってCPUロック状態を表してい
+	 *  るため，そのままリターンすればよい．
+	 */
+	ldmfd sp!, {r0-r12,lr}			//; 全部戻す
+	rfeia sp!
 
 
 // ベクターテーブル設定用
@@ -81,8 +92,8 @@ _vec_SWI:		.word	_hangup
 _vec_PrefAbort:	.word	_hangup
 _vec_DataAbort:	.word	_hangup
 _vec_Reserved:	.word	_hangup
-//_vec_IRQ:		.word	_IRQ_iterrupt
-_vec_IRQ:		.word	__kernel_default_int_handler_entry
+_vec_IRQ:		.word	_IRQ_iterrupt
+//_vec_IRQ:		.word	__kernel_default_int_handler_entry
 _vec_FIQ:		.word	_hangup
 	.global  _initial_vector_end
 _initial_vector_end:

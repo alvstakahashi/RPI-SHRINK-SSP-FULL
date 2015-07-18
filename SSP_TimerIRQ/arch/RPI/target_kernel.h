@@ -42,7 +42,7 @@
  */
 
 /*
- *  カーネルのターゲット依存定義（FRK-RX62N用）
+ *  カーネルのターゲット依存定義（RaspberryPi用）
  */
 
 /*
@@ -60,22 +60,12 @@
 #undef		TOPPERS_RX62N			//RX62N
 #define		TOPPERS_RPI				//Raspberry PI
 
-#ifdef 		TOPPERS_RPI
 #define Inline	static __inline__	/* インライン関数 */
-#endif
 /*
  *  プロセッサで共通な定義
  */
 //#include "rx_rxc/prc_kernel.h"
 
-#ifdef	TOPPERS_RX62N
-/*
- *  Iフラグ, IPLを取得するためのマクロ定義
- */
-#define PSW_I_MASK		( 0x00010000UL )
-#define PSW_IPL_MASK	( 0x07000000UL )
-
-#endif
 /*
  *  サポートする機能の定義
  */
@@ -89,70 +79,46 @@
 #define	TIC_DENO		( 1U )		/* タイムティックの周期の分母 */
 
 
+#define	set_task_stack(x)	__asm__( "mov sp,%[Rs1]"::[Rs1]"r"(x))
 
-#ifdef TOPPERS_RX62N
-/*
- *  NMIを除くすべての割込みの禁止
- */
-#pragma inline_asm	disint
-static void
-disint( void )
+
+
+Inline int getmode(void)
 {
-	clrpsw	i
+	int status;
+	__asm__("mrs	%[Rd], cpsr":[Rd]"=r"(status));
+	return(status);
 }
-#endif
 
-#ifdef TOPPERS_RPI
-extern void enable_IRQ(void);
-extern void disable_IRQ(void);
-extern uint32_t getmode(void);
+Inline void disable_IRQ(void)
+{
+	__asm__(
+			"mrs	r0, cpsr;"
+			"ldr	r1,	=0x80;"
+			"orr r0, r0, r1;"
+			"msr	cpsr_c, r0;"
+			:::"r0","r1"
+			);
+}
+Inline void enable_IRQ(void)
+{
+	__asm__(
+			"mrs	r0, cpsr;"
+			"bic r0, r0, #0x80;"
+			"msr cpsr_c,r0;"
+			:::"r0"
+			);
+}
+
 
 Inline bool_t sence_mode(void)		// 割り込みロック（不可）のとき真
 {
 	return(( bool_t )((getmode() & 0x80) != 0));
 }
-#endif
-
-#ifdef TOPPERS_RX62N
-/*
- *  NMIを除くすべての割込みの許可
- */
-#pragma inline_asm	enaint
-static void
-enaint( void )
-{
-	setpsw	i
-}
-/*
- *  CPUロック状態への移行
- *
- *  IPM（ハードウェアの割込み優先度マスク）を，saved_iipmに保存し，カー
- *  ネル管理外のものを除くすべての割込み要求をマスクする値（TIPM_LOCK）
- *  に設定する．また，lock_flagをTRUEにする．
- *
- *  IPMが，最初からTIPM_LOCKと同じかそれより高い場合には，それを
- *  saved_iipmに保存するのみで，TIPM_LOCKには設定しない．これは，モデル
- *  上の割込み優先度マスクが，TIPM_LOCKと同じかそれより高いレベルに設定
- *  されている状態にあたる．
- *
- *  この関数は，CPUロック状態（lock_flagがTRUEの状態）で呼ばれることは
- *  ないものと想定している．
- */
-#pragma inline  (x_lock_cpu)
-static void x_lock_cpu( void ) 
-{	
-	disint();
-}
 
 
-#define t_lock_cpu()	x_lock_cpu()
-#define i_lock_cpu()	x_lock_cpu()
-#endif
-
-#ifdef TOPPERS_RPI
 #define t_lock_cpu()	disable_IRQ()
 #define i_lock_cpu()	disable_IRQ()
-#endif
 
 /*
  *  CPUロック状態の解除
@@ -163,22 +129,9 @@ static void x_lock_cpu( void )
  *  この関数は，CPUロック状態（lock_flagがtrueの状態）でのみ呼ばれるも
  *  のと想定している．
  */
-#ifdef TOPPERS_RX62N
-#pragma inline (x_unlock_cpu)
-static void
-x_unlock_cpu( void )
-{
-	enaint();
-}
 
-#define t_unlock_cpu()	x_unlock_cpu()
-#define i_unlock_cpu()	x_unlock_cpu()
-#endif
-
-#ifdef TOPPERS_RPI
 #define t_unlock_cpu()	enable_IRQ()
 #define i_unlock_cpu()	enable_IRQ()
-#endif
 
 /*
  *  デフォルトの非タスクコンテキスト用のスタック領域の定義
@@ -192,53 +145,20 @@ extern uint32_t	DEFAULT_ISTACK[];
 #define DEFAULT_ISTK		( (void *)&DEFAULT_ISTACK[0] )
 
 
-#ifdef TOPPERS_RX62N
-#pragma inline (idle_loop)
-static  void
-idle_loop(void)
-{
-	t_unlock_cpu();
-	t_lock_cpu();
-}
-#endif
 
-#ifdef TOPPERS_RPI
 Inline void idle_loop(void)
 {
 	t_unlock_cpu();
 	t_lock_cpu();
 }
-#endif
 
 /*
  *  プロセッサステータスレジスタ(PSW)の現在値の読出し
  */
  
-#ifdef TOPPERS_RX62N
-#pragma inline_asm	current_psw
-static uint32_t
-current_psw( void )
-{
-	mvfc	psw, r1
-}
-/*
- *  CPUロック状態の参照
- */
-#pragma inline (x_sense_lock)
-static  bool_t
-x_sense_lock( void )
-{
-	return (( bool_t )(( current_psw() & PSW_I_MASK) == 0 ));
-}
 
-#define t_sense_lock()	x_sense_lock()
-#define i_sense_lock()	x_sense_lock()
-#endif
-
-#ifdef TOPPERS_RPI
 #define t_sense_lock()	sence_mode()
 #define i_sense_lock()	sence_mode()
-#endif
 
 
 /*
@@ -247,22 +167,13 @@ x_sense_lock( void )
  *  RXでは，割込みの戻り先がタスクかどうかを判断するために intnest
  *  を使用している．これを用いてコンテキストを判断する．
  */
-#ifdef TOPPERS_RX62N
-#pragma inline (sense_context) 
-static bool_t sense_context( void )
-{
-	/*  ネストカウンタ0より大なら非タスクコンテキスト  */
-	return ( intnest > 0U );
-}
-#endif
 
-#ifdef TOPPERS_RPI
 Inline bool_t sense_context( void )
 {
 	/*  ネストカウンタ0より大なら非タスクコンテキスト  */
 	return ( intnest > 0U );
 }
-#endif
+
 
 
 #endif /* TOPPERS_TARGET_KERNEL_H */

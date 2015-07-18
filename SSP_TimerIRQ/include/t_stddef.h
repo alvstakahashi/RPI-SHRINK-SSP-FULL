@@ -7,52 +7,52 @@
  *  Copyright (C) 2004-2009 by Embedded and Real-Time Systems Laboratory
  *              Graduate School of Information Science, Nagoya Univ., JAPAN
  * 
- *  上記著作権者は，以下の(1)～(4)の条件を満たす場合に限り，本ソフトウェ
- *  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
- *  変・再配布（以下，利用と呼ぶ）することを無償で許諾する．
- *  (1) 本ソフトウェアをソースコードの形で利用する場合には，上記の著作
- *      権表示，この利用条件および下記の無保証規定が，そのままの形でソー
- *      スコード中に含まれていること．
- *  (2) 本ソフトウェアを，ライブラリ形式など，他のソフトウェア開発に使
- *      用できる形で再配布する場合には，再配布に伴うドキュメント（利用
- *      者マニュアルなど）に，上記の著作権表示，この利用条件および下記
- *      の無保証規定を掲載すること．
- *  (3) 本ソフトウェアを，機器に組み込むなど，他のソフトウェア開発に使
- *      用できない形で再配布する場合には，次のいずれかの条件を満たすこ
- *      と．
- *    (a) 再配布に伴うドキュメント（利用者マニュアルなど）に，上記の著
- *        作権表示，この利用条件および下記の無保証規定を掲載すること．
- *    (b) 再配布の形態を，別に定める方法によって，TOPPERSプロジェクトに
- *        報告すること．
- *  (4) 本ソフトウェアの利用により直接的または間接的に生じるいかなる損
- *      害からも，上記著作権者およびTOPPERSプロジェクトを免責すること．
- *      また，本ソフトウェアのユーザまたはエンドユーザからのいかなる理
- *      由に基づく請求からも，上記著作権者およびTOPPERSプロジェクトを
- *      免責すること．
+ *  ��L���쌠�҂́C�ȉ���(1)�`(4)�̏����𖞂����ꍇ�Ɍ���C�{�\�t�g�E�F
+ *  �A�i�{�\�t�g�E�F�A�����ς������̂��܂ށD�ȉ������j���g�p�E�����E��
+ *  �ρE�Ĕz�z�i�ȉ��C���p�ƌĂԁj���邱�Ƃ𖳏��ŋ�������D
+ *  (1) �{�\�t�g�E�F�A���\�[�X�R�[�h�̌`�ŗ��p����ꍇ�ɂ́C��L�̒���
+ *      ���\���C���̗��p��������щ��L�̖��ۏ؋K�肪�C���̂܂܂̌`�Ń\�[
+ *      �X�R�[�h���Ɋ܂܂�Ă��邱�ƁD
+ *  (2) �{�\�t�g�E�F�A���C���C�u�����`���ȂǁC���̃\�t�g�E�F�A�J���Ɏg
+ *      �p�ł���`�ōĔz�z����ꍇ�ɂ́C�Ĕz�z�ɔ����h�L�������g�i���p
+ *      �҃}�j���A���Ȃǁj�ɁC��L�̒��쌠�\���C���̗��p��������щ��L
+ *      �̖��ۏ؋K����f�ڂ��邱�ƁD
+ *  (3) �{�\�t�g�E�F�A���C�@��ɑg�ݍ��ނȂǁC���̃\�t�g�E�F�A�J���Ɏg
+ *      �p�ł��Ȃ��`�ōĔz�z����ꍇ�ɂ́C���̂����ꂩ�̏����𖞂�����
+ *      �ƁD
+ *    (a) �Ĕz�z�ɔ����h�L�������g�i���p�҃}�j���A���Ȃǁj�ɁC��L�̒�
+ *        �쌠�\���C���̗��p��������щ��L�̖��ۏ؋K����f�ڂ��邱�ƁD
+ *    (b) �Ĕz�z�̌`�Ԃ��C�ʂɒ�߂���@�ɂ���āCTOPPERS�v���W�F�N�g��
+ *        �񍐂��邱�ƁD
+ *  (4) �{�\�t�g�E�F�A�̗��p�ɂ�蒼�ړI�܂��͊ԐړI�ɐ����邢���Ȃ鑹
+ *      �Q������C��L���쌠�҂����TOPPERS�v���W�F�N�g��Ɛӂ��邱�ƁD
+ *      �܂��C�{�\�t�g�E�F�A�̃��[�U�܂��̓G���h���[�U����̂����Ȃ闝
+ *      �R�Ɋ�Â�����������C��L���쌠�҂����TOPPERS�v���W�F�N�g��
+ *      �Ɛӂ��邱�ƁD
  * 
- *  本ソフトウェアは，無保証で提供されているものである．上記著作権者お
- *  よびTOPPERSプロジェクトは，本ソフトウェアに関して，特定の使用目的
- *  に対する適合性も含めて，いかなる保証も行わない．また，本ソフトウェ
- *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
- *  の責任を負わない．
+ *  �{�\�t�g�E�F�A�́C���ۏ؂Œ񋟂���Ă�����̂ł���D��L���쌠�҂�
+ *  ���TOPPERS�v���W�F�N�g�́C�{�\�t�g�E�F�A�Ɋւ��āC����̎g�p�ړI
+ *  �ɑ΂���K�������܂߂āC�����Ȃ�ۏ؂��s��Ȃ��D�܂��C�{�\�t�g�E�F
+ *  �A�̗��p�ɂ�蒼�ړI�܂��͊ԐړI�ɐ����������Ȃ鑹�Q�Ɋւ��Ă��C��
+ *  �̐ӔC�𕉂�Ȃ��D
  * 
  *  @(#) $Id: t_stddef.h 1513 2009-04-22 07:35:20Z ertl-hiro $
  */
 
 /*
- *		TOPPERS共通ヘッダファイル
+ *		TOPPERS���ʃw�b�_�t�@�C��
  *
- *  TOPPERS関連のすべてのソースファイルでインクルードすべきヘッダファイ
- *  ル．各種のカーネルやソフトウェア部品で共通に用いることを想定してい
- *  る．TOPPERSの各種のカーネルやソフトウェア部品で共通に用いるデータ型，
- *  定数，マクロの定義などを含む．
+ *  TOPPERS�֘A�̂��ׂẴ\�[�X�t�@�C���ŃC���N���[�h���ׂ��w�b�_�t�@�C
+ *  ���D�e��̃J�[�l����\�t�g�E�F�A���i�ŋ��ʂɗp���邱�Ƃ�z�肵�Ă�
+ *  ��DTOPPERS�̊e��̃J�[�l����\�t�g�E�F�A���i�ŋ��ʂɗp����f�[�^�^�C
+ *  �萔�C�}�N���̒�`�Ȃǂ��܂ށD
  *
- *  アセンブリ言語のソースファイルからこのファイルをインクルードする時
- *  は，TOPPERS_MACRO_ONLYを定義しておく．これにより，マクロ定義以外を
- *  除くようになっている．
+ *  �A�Z���u������̃\�[�X�t�@�C�����炱�̃t�@�C�����C���N���[�h���鎞
+ *  �́CTOPPERS_MACRO_ONLY���`���Ă����D����ɂ��C�}�N����`�ȊO��
+ *  �����悤�ɂȂ��Ă���D
  *
- *  このファイルをインクルードする前にインクルードしておくべきファイル
- *  はない．
+ *  ���̃t�@�C�����C���N���[�h����O�ɃC���N���[�h���Ă����ׂ��t�@�C��
+ *  �͂Ȃ��D
  */
 
 #ifndef TOPPERS_T_STDDEF_H
@@ -63,24 +63,14 @@ extern "C" {
 #endif
 
 /*
- *  ターゲット依存部
+ *  �^�[�Q�b�g�ˑ���
  */
 //#include "target_stddef.h"
-//#include <stddef.h>
+#include <stddef.h>
 #include <stdint.h>
-/*
- *  開発環境で共通な定義
- */
-#define TOPPERS_STDINT_TYPE1
-#include "tool_stddef.h"
 
 /*
- *  ARMで共通な定義
- */
-#include "core_stddef.h"
-
-/*
- *  C言語/EC++でthrow()に対処するための定義
+ *  C����/EC++��throw()�ɑΏ����邽�߂̒�`
  */
 #if !defined(__cplusplus) || defined(__embedded_cplusplus)
 #define throw()
@@ -89,138 +79,138 @@ extern "C" {
 #ifndef TOPPERS_MACRO_ONLY
 
 /*
- *  ターゲット依存のデータ型のマクロのデフォルト定義
+ *  �^�[�Q�b�g�ˑ��̃f�[�^�^�̃}�N���̃f�t�H���g��`
  */
 #ifndef TOPPERS_bool
-#define TOPPERS_bool	int				/* ブール型 */
+#define TOPPERS_bool	int				/* �u�[���^ */
 #endif /* TOPPERS_bool */
 
 #ifndef TOPPERS_size
-#define TOPPERS_size	uintptr_t		/* サイズ型 */
+#define TOPPERS_size	uintptr_t		/* �T�C�Y�^ */
 #endif /* TOPPERS_size */
 
 #ifndef TOPPERS_fp
 struct TOPPERS_dummy_t { int TOPPERS_dummy_field; };
 typedef	void			(*TOPPERS_fp_t)(struct TOPPERS_dummy_t);
-#define TOPPERS_fp		TOPPERS_fp_t	/* プログラムの起動番地 */
+#define TOPPERS_fp		TOPPERS_fp_t	/* �v���O�����̋N���Ԓn */
 #endif /* TOPPERS_fp */
 
 /*
- *  共通データ型
+ *  ���ʃf�[�^�^
  */
-typedef TOPPERS_bool	bool_t;		/* 真偽値 */
-typedef unsigned char	char_t;		/* 符号無しの文字型 */
+typedef TOPPERS_bool	bool_t;		/* �^�U�l */
+typedef unsigned char	char_t;		/* ���������̕����^ */
 
-typedef signed int		int_t;		/* 自然なサイズの符号付き整数 */
-typedef unsigned int	uint_t;		/* 自然なサイズの符号無し整数 */
+typedef signed int		int_t;		/* ���R�ȃT�C�Y�̕����t������ */
+typedef unsigned int	uint_t;		/* ���R�ȃT�C�Y�̕����������� */
 
-typedef signed long		long_t;		/* 長めのサイズの符号付き整数 */
-typedef unsigned long	ulong_t;	/* 長めのサイズの符号無し整数 */
+typedef signed long		long_t;		/* ���߂̃T�C�Y�̕����t������ */
+typedef unsigned long	ulong_t;	/* ���߂̃T�C�Y�̕����������� */
 
-typedef int_t			FN;			/* 機能コード */
-typedef	int_t			ER;			/* エラーコード */
-typedef	int_t			ID;			/* オブジェクトのID番号 */
-typedef	uint_t			ATR;		/* オブジェクトの属性 */
-typedef	uint_t			STAT;		/* オブジェクトの状態 */
-typedef	uint_t			MODE;		/* サービスコールの動作モード */
-typedef	int_t			PRI;		/* 優先度 */
-typedef	TOPPERS_size	SIZE;		/* メモリ領域のサイズ */
+typedef int_t			FN;			/* �@�\�R�[�h */
+typedef	int_t			ER;			/* �G���[�R�[�h */
+typedef	int_t			ID;			/* �I�u�W�F�N�g��ID�ԍ� */
+typedef	uint_t			ATR;		/* �I�u�W�F�N�g�̑��� */
+typedef	uint_t			STAT;		/* �I�u�W�F�N�g�̏�� */
+typedef	uint_t			MODE;		/* �T�[�r�X�R�[���̓��샂�[�h */
+typedef	int_t			PRI;		/* �D��x */
+typedef	TOPPERS_size	SIZE;		/* �������̈�̃T�C�Y */
 
-typedef	int_t			TMO;		/* タイムアウト指定 */
-typedef	uint_t			RELTIM;		/* 相対時間 */
-typedef	ulong_t			SYSTIM;		/* システム時刻 */
-typedef	ulong_t			SYSUTM;		/* 性能評価用システム時刻 */
+typedef	int_t			TMO;		/* �^�C���A�E�g�w�� */
+typedef	uint_t			RELTIM;		/* ���Ύ��� */
+typedef	ulong_t			SYSTIM;		/* �V�X�e������ */
+typedef	ulong_t			SYSUTM;		/* ���\�]���p�V�X�e������ */
 
-typedef	TOPPERS_fp		FP;			/* プログラムの起動番地 */
+typedef	TOPPERS_fp		FP;			/* �v���O�����̋N���Ԓn */
 
-typedef	int_t			ER_BOOL;	/* エラーコードまたは真偽値 */
-typedef	int_t			ER_ID;		/* エラーコードまたはID番号 */
-typedef	int_t			ER_UINT;	/* エラーコードまたは符号無し整数 */
+typedef	int_t			ER_BOOL;	/* �G���[�R�[�h�܂��͐^�U�l */
+typedef	int_t			ER_ID;		/* �G���[�R�[�h�܂���ID�ԍ� */
+typedef	int_t			ER_UINT;	/* �G���[�R�[�h�܂��͕����������� */
 
-typedef	uint32_t		ACPTN;		/* アクセス許可パターン */
-typedef	struct acvct {				/* アクセス許可ベクタ */
-	ACPTN		acptn1;				/* 通常操作1のアクセス許可パターン */
-	ACPTN		acptn2;				/* 通常操作2のアクセス許可パターン */
-	ACPTN		acptn3;				/* 管理操作のアクセス許可パターン */
-	ACPTN		acptn4;				/* 参照操作のアクセス許可パターン */
+typedef	uint32_t		ACPTN;		/* �A�N�Z�X���p�^�[�� */
+typedef	struct acvct {				/* �A�N�Z�X���x�N�^ */
+	ACPTN		acptn1;				/* �ʏ푀��1�̃A�N�Z�X���p�^�[�� */
+	ACPTN		acptn2;				/* �ʏ푀��2�̃A�N�Z�X���p�^�[�� */
+	ACPTN		acptn3;				/* �Ǘ�����̃A�N�Z�X���p�^�[�� */
+	ACPTN		acptn4;				/* �Q�Ƒ���̃A�N�Z�X���p�^�[�� */
 } ACVCT;
 
 #endif /* TOPPERS_MACRO_ONLY */
 
 /*
- *  整数定数を作るマクロ
+ *  �����萔�����}�N��
  */
 #ifndef UINT_C
-#define UINT_C(val)		(val ## U)		/* uint_t型の定数を作るマクロ */
+#define UINT_C(val)		(val ## U)		/* uint_t�^�̒萔�����}�N�� */
 #endif /* UINT_C */
 
 #ifndef ULONG_C
-#define ULONG_C(val)	(val ## UL)		/* ulong_t型の定数を作るマクロ */
+#define ULONG_C(val)	(val ## UL)		/* ulong_t�^�̒萔�����}�N�� */
 #endif /* ULONG_C */
 
 /*
- *  一般定数
+ *  ��ʒ萔
  */
 #ifndef NULL
-#define NULL		0			/* 無効ポインタ */
+#define NULL		0			/* �����|�C���^ */
 #endif /* NULL */
 
 #ifndef true
-#define true		1			/* 真 */
+#define true		1			/* �^ */
 #endif /* true */
 
 #ifndef false
-#define false		0			/* 偽 */
+#define false		0			/* �U */
 #endif /* false */
 
-#define E_OK		0			/* 正常終了 */
+#define E_OK		0			/* ����I�� */
 
 /*
- *  メインエラーコード
+ *  ���C���G���[�R�[�h
  */
-#define E_SYS		(-5)		/* システムエラー */
-#define E_NOSPT		(-9)		/* 未サポート機能 */
-#define E_RSFN		(-10)		/* 予約機能コード */
-#define E_RSATR		(-11)		/* 予約属性 */
-#define E_PAR		(-17)		/* パラメータエラー */
-#define E_ID		(-18)		/* 不正ID番号 */
-#define E_CTX		(-25)		/* コンテキストエラー */
-#define E_MACV		(-26)		/* メモリアクセス違反 */
-#define E_OACV		(-27)		/* オブジェクトアクセス違反 */
-#define E_ILUSE		(-28)		/* サービスコール不正使用 */
-#define E_NOMEM		(-33)		/* メモリ不足 */
-#define E_NOID		(-34)		/* ID番号不足 */
-#define E_NORES		(-35)		/* 資源不足 */
-#define E_OBJ		(-41)		/* オブジェクト状態エラー */
-#define E_NOEXS		(-42)		/* オブジェクト未生成 */
-#define E_QOVR		(-43)		/* キューイングオーバーフロー */
-#define E_RLWAI		(-49)		/* 待ち状態の強制解除 */
-#define E_TMOUT		(-50)		/* ポーリング失敗またはタイムアウト */
-#define E_DLT		(-51)		/* 待ちオブジェクトの削除 */
-#define E_CLS		(-52)		/* 待ちオブジェクトの状態変化 */
-#define E_WBLK		(-57)		/* ノンブロッキング受付け */
-#define E_BOVR		(-58)		/* バッファオーバーフロー */
+#define E_SYS		(-5)		/* �V�X�e���G���[ */
+#define E_NOSPT		(-9)		/* ���T�|�[�g�@�\ */
+#define E_RSFN		(-10)		/* �\��@�\�R�[�h */
+#define E_RSATR		(-11)		/* �\�񑮐� */
+#define E_PAR		(-17)		/* �p�����[�^�G���[ */
+#define E_ID		(-18)		/* �s��ID�ԍ� */
+#define E_CTX		(-25)		/* �R���e�L�X�g�G���[ */
+#define E_MACV		(-26)		/* �������A�N�Z�X�ᔽ */
+#define E_OACV		(-27)		/* �I�u�W�F�N�g�A�N�Z�X�ᔽ */
+#define E_ILUSE		(-28)		/* �T�[�r�X�R�[���s���g�p */
+#define E_NOMEM		(-33)		/* �������s�� */
+#define E_NOID		(-34)		/* ID�ԍ��s�� */
+#define E_NORES		(-35)		/* �����s�� */
+#define E_OBJ		(-41)		/* �I�u�W�F�N�g��ԃG���[ */
+#define E_NOEXS		(-42)		/* �I�u�W�F�N�g������ */
+#define E_QOVR		(-43)		/* �L���[�C���O�I�[�o�[�t���[ */
+#define E_RLWAI		(-49)		/* �҂���Ԃ̋������� */
+#define E_TMOUT		(-50)		/* �|�[�����O���s�܂��̓^�C���A�E�g */
+#define E_DLT		(-51)		/* �҂��I�u�W�F�N�g�̍폜 */
+#define E_CLS		(-52)		/* �҂��I�u�W�F�N�g�̏�ԕω� */
+#define E_WBLK		(-57)		/* �m���u���b�L���O��t�� */
+#define E_BOVR		(-58)		/* �o�b�t�@�I�[�o�[�t���[ */
 
 /*
- *  オブジェクト属性
+ *  �I�u�W�F�N�g����
  */
-#define TA_NULL		UINT_C(0)	/* オブジェクト属性を指定しない */
+#define TA_NULL		UINT_C(0)	/* �I�u�W�F�N�g�������w�肵�Ȃ� */
 
 /*
- *  タイムアウト指定
+ *  �^�C���A�E�g�w��
  */
-#define TMO_POL		0			/* ポーリング */
-#define TMO_FEVR	(-1)		/* 永久待ち */
-#define TMO_NBLK	(-2)		/* ノンブロッキング */
+#define TMO_POL		0			/* �|�[�����O */
+#define TMO_FEVR	(-1)		/* �i�v�҂� */
+#define TMO_NBLK	(-2)		/* �m���u���b�L���O */
 
 /*
- *  アクセス許可パターン
+ *  �A�N�Z�X���p�^�[��
  */
-#define TACP_KERNEL		(0U)	/* カーネルドメインだけにアクセスを許可 */
-#define TACP_SHARED		(~0U)	/* すべてのドメインからアクセスを許可 */
+#define TACP_KERNEL		(0U)	/* �J�[�l���h���C�������ɃA�N�Z�X������ */
+#define TACP_SHARED		(~0U)	/* ���ׂẴh���C������A�N�Z�X������ */
 
 /*
- *  型に関する情報を取り出すためのマクロ
+ *  �^�Ɋւ���������o�����߂̃}�N��
  */
 #ifndef offsetof
 #define	offsetof(structure, field)	((uintptr_t) &(((structure *) 0)->field))
@@ -230,13 +220,13 @@ typedef	struct acvct {				/* アクセス許可ベクタ */
 #define alignof(type)	offsetof(struct { char field1; type field2; }, field2)
 #endif /* alignof */
 
-#ifndef ALIGN_TYPE				/* アラインメントのチェック */
+#ifndef ALIGN_TYPE				/* �A���C�������g�̃`�F�b�N */
 #define ALIGN_TYPE(addr, type) \
 						((((uintptr_t)(addr)) & (alignof(type) - 1)) == 0U)
 #endif /* ALIGN_TYPE */
 
 /*
- *  assertマクロ
+ *  assert�}�N��
  */
 #undef assert
 #ifndef NDEBUG
@@ -251,14 +241,14 @@ typedef	struct acvct {				/* アクセス許可ベクタ */
 #endif
 
 /*
- *  エラーコード生成・分解マクロ
+ *  �G���[�R�[�h�����E�����}�N��
  *
- *  以下のマクロ定義は，符号付き整数が2の補数で表現されており，右シフト
- *  演算子（>>）が算術シフトされることを仮定している．そうでない開発環
- *  境では，target_stddef.hでこれらの定義を上書きしなければならない．
+ *  �ȉ��̃}�N����`�́C�����t��������2�̕␔�ŕ\������Ă���C�E�V�t�g
+ *  ���Z�q�i>>�j���Z�p�V�t�g����邱�Ƃ����肵�Ă���D�����łȂ��J����
+ *  ���ł́Ctarget_stddef.h�ł����̒�`���㏑�����Ȃ���΂Ȃ�Ȃ��D
  *
- *  MERCDマクロの定義は，メインエラーコードが負であることを仮定している．
- *  そうでない場合，2つの定義が一致しなくなる．
+ *  MERCD�}�N���̒�`�́C���C���G���[�R�[�h�����ł��邱�Ƃ����肵�Ă���D
+ *  �����łȂ��ꍇ�C2�̒�`����v���Ȃ��Ȃ�D
  */
 #ifndef ERCD
 #define ERCD(mercd, sercd) \
@@ -278,12 +268,12 @@ typedef	struct acvct {				/* アクセス許可ベクタ */
 #endif /* SERCD */
 
 /*
- *  アクセス許可パターン生成マクロ
+ *  �A�N�Z�X���p�^�[�������}�N��
  */
-#define TACP(domid)		(1U << ((domid) - 1))	/* domidだけにアクセスを許可 */
+#define TACP(domid)		(1U << ((domid) - 1))	/* domid�����ɃA�N�Z�X������ */
 
 /*
- *  相対時間（RELTIM）に指定できる最大値
+ *  ���Ύ��ԁiRELTIM�j�Ɏw��ł���ő�l
  */
 #if UINT_MAX < LONG_MAX
 #define TMAX_RELTIM		((RELTIM) UINT_MAX)

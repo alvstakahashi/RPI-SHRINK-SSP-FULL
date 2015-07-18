@@ -1,2 +1,2 @@
    text	   data	    bss	    dec	    hex	filename
-  50256	   2888	   1384	  54528	   d500	rpi-micon.elf
+  51464	   2756	   4928	  59148	   e70c	rpi-micon.elf

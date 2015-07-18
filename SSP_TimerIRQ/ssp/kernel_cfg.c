@@ -13,11 +13,11 @@
 
 const ID _kernel_tmax_tskid = (TMIN_TSKID + TNUM_TSKID - 1);
 
-const ATR     	_kernel_tinib_tskatr[TNUM_TSKID]    = {(TA_ACT),(TA_NULL)};
-const uint_t	_kernel_init_rdypmap = 1U;
-const intptr_t	_kernel_tinib_exinf[TNUM_TSKID]     = {(intptr_t)(0),(intptr_t)(0)};
-const TASK    	_kernel_tinib_task[TNUM_TSKID]      = {(task1),(task2)};
-const uint_t  	_kernel_tinib_epriority[TNUM_TSKID] = {INT_PRIORITY(1),INT_PRIORITY(1)};
+const ATR     	_kernel_tinib_tskatr[TNUM_TSKID]    = {(TA_NULL),(TA_NULL),(TA_ACT)};
+const uint_t	_kernel_init_rdypmap = 4U;
+const intptr_t	_kernel_tinib_exinf[TNUM_TSKID]     = {(intptr_t)(0),(intptr_t)(0),(intptr_t)(0)};
+const TASK    	_kernel_tinib_task[TNUM_TSKID]      = {(task3),(task2),(main)};
+const uint_t  	_kernel_tinib_epriority[TNUM_TSKID] = {INT_PRIORITY(1),INT_PRIORITY(1),INT_PRIORITY(1)};
 
 
 /*
@@ -42,6 +42,24 @@ STK_T *const	_kernel_stk = TOPPERS_STK;
 #ifdef TOPPERS_ISTKPT
 STK_T *const	_kernel_istkpt = TOPPERS_ISTKPT(TOPPERS_STK, TOPPERS_STKSZ);
 #endif /* TOPPERS_ISTKPT */
+
+/*-------------------------------------------
+ * タスク別スタック領域			takahashi
+ */
+STK_T	task_stack[TNUM_TSKID][COUNT_STK_T(TASK_STACKSZ)];
+
+
+/*---------------------------------------------
+ * タスク別コンテキスト保存領域		takahashi
+ */
+jmp_buf task_ctx[TNUM_TSKID];
+
+/*-----------------------------------------------
+ *  タスク待ち情報
+ */
+unsigned char task_wait[TNUM_TSKID];
+
+RELTIM	tskTout[TNUM_TSKID];
 
 /*
  *  Module Initialization Function

@@ -19,10 +19,10 @@ OBJS+= rpi_lib/serial/serial.o
 OBJS+= rpi_lib/bss/clearbss.o
 
 #ssp liblary
-OBJS+= ssp/rpi_prc_support.o ssp/kernel_cfg.o ssp/startup.o ssp/task.o ssp/task_manage.o
+OBJS+= ssp/kernel_cfg.o ssp/startup.o ssp/task.o ssp/task_manage.o
 
 #ssp include
-INCSSP = -I./ssp -I./include
+INCSSP = -I./ssp -I./include -I./arch/RPI
 
 CFLAGS = -mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfloat-abi=softfp -O0 -ggdb -g
 

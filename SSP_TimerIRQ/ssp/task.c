@@ -45,6 +45,7 @@
 #include "kernel_impl.h"
 #include "task.h"
 
+#include "kernel_cfg.h"
 
 
 
@@ -70,6 +71,10 @@ extern const uint_t  	tinib_epriority[];		/* ƒ^ƒXƒN‚ÌÀs—Dæ“xæ“xi“à•”•\Œ»
 #define TOPPERS_tskini
 
 #ifdef TOPPERS_tskini
+/*-------------------------------------------
+ * ƒfƒBƒXƒpƒbƒ`ƒƒ[‚ÌƒRƒ“ƒeƒLƒXƒg
+ */
+jmp_buf disp_ctx;		//ƒfƒBƒXƒpƒbƒ`ƒƒƒRƒ“ƒeƒLƒXƒg
 
 /*
  * Àsó‘Ôƒ^ƒXƒN‚Ì‹N“®—Dæ“x
@@ -90,6 +95,11 @@ bool_t	reqflg;
  *  ƒfƒBƒXƒpƒbƒ`‹Ö~ó‘Ô
  */
 bool_t	disdsp;
+
+/* 
+ * ‘O‰ñ@Àstask
+ */
+intptr_t last_ipri;
 
 /*
  *  read_primap‚Ì‰Šú’l
@@ -165,7 +175,7 @@ get_ipri(ID tskid)
 /*
  *  Š„‚İ”­¶‰ñ”‚ğ•Û‘¶‚·‚é•Ï”
  */
-uint16_t	intnest;
+volatile  uint16_t	intnest;
 
 
 static const uint8_t bitmap_search_table[] = { 0U, 1U, 0U, 2U, 0U, 1U, 0U,
@@ -269,18 +279,81 @@ test_dormant(uint_t ipri)
 void
 initialize_task(void)
 {
+	intptr_t ipri;
 	/* ƒŒƒfƒBƒLƒ…[‚Ìƒrƒbƒgƒ}ƒbƒv‰Šú‰» */
 	ready_primap = init_rdypmap;
 	
 	/* Às—Dæ“x‚Ì‰Šú‰» */
 	runtsk_ipri = IPRI_NULL;
 	
+	last_ipri = 0xff;		//‚ ‚è‚¦‚È‚¢’l‚É‚·‚é
+	
+	/* ƒ^ƒXƒNƒRƒ“ƒeƒLƒXƒg‚Ìİ’è*/
+	for(ipri = 0;ipri <  TNUM_TSKID;ipri++)
+	{
+		if (primap_test(ipri))
+		{
+			make_ctx(ipri);
+		}
+		task_wait[ipri] = 0;
+		tskTout[ipri] = 0;
+	}
 	/* Š„‚İ‹Ö~ƒtƒ‰ƒO‚Ì‰Šú‰» */
 	disdsp = false;
 }
 
 #endif /* TOPPERS_tskini */
 
+/*-----------------------------------------------------
+ *  ƒRƒ“ƒeƒLƒXƒg‚Ì€”õ‚ğ‚µ‚Ä‚¨‚­					takahashi
+ */
+static jmp_buf jmpp;		//‚±‚Ìƒ‹[ƒ`ƒ“‚ÌƒZ[ƒu—p
+ 
+void make_ctx(uint_t ipri_prm)
+{
+	uint_t ipri = ipri_prm;
+	intptr_t task_stackadr;
+	t_lock_cpu();
+	intptr_t debugtemp = 0;
+	if (setjmp(jmpp) == 0)	//‚±‚±‚É–ß‚è—p
+	{
+		//‘±‚«
+		// ƒ^ƒXƒNƒXƒ^ƒbƒN‚ÉØ‚è‘Ö‚¦‚é
+		task_stackadr = TOPPERS_TASKSTKPT(ipri);
+		set_task_stack(task_stackadr);
+#if 0
+		__asm__( "mov sp,%[Rs1]"
+				 ::[Rs1]"r"(task_stackadr));
+		__asm__("mov   %[Rd],sp"
+				:[Rd]"=r"(debugtemp));
+		printf("stack data = %08x\n",debugtemp);
+#endif		
+		if (setjmp(task_ctx[ipri]) == 0)
+		{
+			/*“o˜^‚µ‚½ê‡*/
+			longjmp(jmpp,1);	//–ß‚é
+		}
+		else
+		{
+			ipri = runtsk_ipri;			//longjmp‚Å–ß‚Á‚Ä—ˆ‚½‚Í•s’è
+			/* ƒ^ƒXƒN‹N“® */
+			t_unlock_cpu();
+			/* ƒ^ƒXƒN‚É—ˆ‚Ü‚µ‚½*/
+			/* ƒ^ƒXƒNÀsŠJn */
+			(*((TASK)(tinib_task[ipri])))(tinib_exinf[ipri]);
+			disdsp = false;
+			/* ƒrƒbƒgƒ}ƒbƒvƒNƒŠƒAD */
+			primap_clear(ipri);
+			//ƒ^ƒXƒN‚ªI‚í‚Á‚½ê‡‚Ç‚¤‚·‚é‚Ì‚©H--> ‚±‚Ì‚ ‚Æ‚Í@dispacher()‚És‚­
+			longjmp(disp_ctx,1);			//sta_ker‚Ì‘±‚«‚És‚­
+		}
+	}
+	else
+	{
+		//“o˜^I—¹
+		t_unlock_cpu();
+	}
+}
 /*
  *  ipri : ‹N“®‘ÎÛƒ^ƒXƒN‚Ì‹N“®—Dæ“x(“à•”•\Œ»)
  */
@@ -300,7 +373,7 @@ make_active(uint_t ipri)
 	else {
 		dsp = false;
 	}
-	
+	make_ctx(ipri);	
 	return dsp;
 }
 
@@ -319,58 +392,6 @@ make_active(uint_t ipri)
 void
 run_task(uint_t ipri)
 {
-	uint_t next_pri;	/* Ÿ‚ÉÀsŠJn‚·‚éƒ^ƒXƒN‚Ì‹N“®—Dæ“x */
-	uint_t saved_pri;	/* ŒÄ‚Ño‚µŒ³ƒ^ƒXƒN‚Ì‹N“®—Dæ“x */
-	
-	next_pri = ipri;
-	saved_pri = runtsk_ipri;
-	
-	do {
-		runtsk_ipri = tinib_epriority[next_pri];
-		
-		/* CPUƒƒbƒN‰ğœ */
-		t_unlock_cpu();
-		
-		/* ƒ^ƒXƒNÀsŠJn */
-		(*((TASK)(tinib_task[next_pri])))(tinib_exinf[next_pri]);
-		
-		if (t_sense_lock()) {
-			/*
-			 *  CPUƒƒbƒNó‘Ô‚Åext_tsk‚ªŒÄ‚Î‚ê‚½ê‡‚ÍCCPUƒƒbƒN‚ğ‰ğœ‚µ
-			 *  ‚Ä‚©‚çƒ^ƒXƒN‚ğI—¹‚·‚éDÀ‘•ã‚ÍCƒT[ƒrƒXƒR[ƒ‹“à‚Å‚ÌCPU
-			 *  ƒƒbƒN‚ğÈ—ª‚·‚ê‚Î‚æ‚¢‚¾‚¯D
-			 */
-		}
-		else {
-			/*
-			 *  ‚±‚Ìt_lock_cpu‚ğ‚±‚Ì‰º‚Ìdisdsp‚Ìİ’è‚Ì‚æ‚¤‚É‚µ‚È‚¢‚Ì‚ÍC
-			 *  CPUƒƒbƒN’†‚ÉÄ“xt_lock_cpu‚ğŒÄ‚Î‚È‚¢‚½‚ß‚Å‚ ‚éD
-			 */
-			t_lock_cpu();
-		}
-		
-		/* Š„‚İ—Dæ“xƒ}ƒXƒN‚Í‘S‰ğœó‘Ô‚Ì‚Í‚¸‚È‚Ì‚ÅC‰½‚à‚µ‚È‚¢ */
-		
-		/*
-		 *  ƒfƒBƒXƒpƒbƒ`‹Ö~ó‘Ô‚Åext_tsk‚ªŒÄ‚Î‚ê‚½ê‡‚ÍCƒfƒBƒXƒpƒb
-		 *  ƒ`‹–‰Âó‘Ô‚É‚µ‚Ä‚©‚çƒ^ƒXƒN‚ğI—¹‚·‚éD
-		 *
-		 *	–{—ˆ‚ÍˆÈ‰º‚Ì‚æ‚¤‚É‹Lq‚·‚×‚«‚Å‚ ‚é‚ªC‚¢‚¸‚ê‚É‚¹‚ædisdsp‚ğ
-		 *	false‚É‚·‚ê‚Î‚¢‚¢‚½‚ßC’P‚Éfalse‚Éİ’è‚·‚éD
-		 *
-		 *		if (disdsp) {
-		 *			disdsp = false;
-		 *		}
-		 */
-		disdsp = false;
-		
-		/* ƒrƒbƒgƒ}ƒbƒvƒNƒŠƒAD */
-		primap_clear(next_pri);
-		
-	  /* –ß‚èæƒ^ƒXƒN‚ÌÀs—Dæ“x‚æ‚è‚‚¢‹N“®—Dæ“x‚ğ‚à‚Âƒ^ƒXƒN‚ª‹N“®‚³‚ê‚½‚© */
-	} while((!primap_empty()) && (saved_pri > (next_pri = search_schedtsk())));
-	
-	runtsk_ipri = saved_pri;
 }
 
 #endif /* TOPPERS_tskrun */
@@ -381,6 +402,12 @@ run_task(uint_t ipri)
 
 #define TOPPERS_tsk_dsp
 #ifdef TOPPERS_tsk_dsp
+void dispatch(intptr_t ipri)
+{
+	last_ipri = ipri;
+	runtsk_ipri = ipri;
+	longjmp(task_ctx[ipri],1);
+}
 
 void
 dispatcher(void)
@@ -388,12 +415,187 @@ dispatcher(void)
 	do {
 		if(!primap_empty()) {
 			/* ƒ^ƒXƒN‚ÌŠJn */
-			run_task(search_schedtsk());
+			//run_task(search_schedtsk());
+			dispatch(search_schedtsk());		//‚±‚ê‚©‚ç‚Í‹A‚Á‚Ä‚±‚È‚¢
 		}
 		else {
+			last_ipri = 0xff;
 			idle_loop();
 		}
 	} while(true);
 }
+ER
+wai_tsk(void)
+{
+	ER		ercd;
+	uint_t	tskpri;
+	
+//	LOG_ACT_TSK_ENTER(tskid);
+//	CHECK_TSKCTX_UNL();
+//	CHECK_TSKID_SELF(tskid);
+	
+	tskpri = get_ipri_self(TSK_SELF);
+	//tskpri = runtsk_ipri;
+	t_lock_cpu();
+	task_wait[tskpri] = 1;		//waitó‘Ô
+	primap_clear(tskpri);		//ƒŒƒfƒBQ‚©‚çíœ
+	
+	//‚±‚±‚ÌƒRƒ“ƒeƒLƒNƒXƒg‚ğ“o˜^
+	if (setjmp(task_ctx[tskpri]) == 0)
+	{
+		/*“o˜^‚µ‚½ê‡*/
+		longjmp(disp_ctx,1);			//sta_ker‚Ì‘±‚«‚És‚­
+	}
+	else
+	{
+		// ƒ^ƒXƒN•œ‹A‚µ‚½ê‡
+		t_unlock_cpu();
+		return(ercd);
+	}	
+
+	t_unlock_cpu();
+
+
+	return(ercd);
+}
+
+ER
+go_tsk(ID tskid)
+{
+	ER		ercd;
+	uint_t	self_tskpri;	//ŒÄ‚Ño‚µƒ^ƒXƒN
+	uint_t	ipri;			//go ‚·‚éƒ^ƒXƒN
+	
+	
+//	LOG_ACT_TSK_ENTER(tskid);
+//	CHECK_TSKCTX_UNL();
+//	CHECK_TSKID_SELF(tskid);
+	
+	ipri = get_ipri(tskid);
+	self_tskpri = get_ipri_self(TSK_SELF);	
+	t_lock_cpu();
+	if (task_wait[ipri] == 0)
+	{
+		t_unlock_cpu();
+		return(E_OBJ);
+	}
+
+	task_wait[ipri] = 0;		//waitó‘Ô‰ğœ
+	primap_set(ipri);		//ƒŒƒfƒBQ’Ç‰Á
+	
+
+
+	//‚±‚±‚ÌƒRƒ“ƒeƒLƒNƒXƒg‚ğ“o˜^
+	if (setjmp(task_ctx[self_tskpri]) == 0)
+	{
+		/*“o˜^‚µ‚½ê‡*/
+		longjmp(disp_ctx,1);			//sta_ker‚Ì‘±‚«‚És‚­
+	}
+	else
+	{
+		// ƒ^ƒXƒN•œ‹A‚µ‚½ê‡
+		t_unlock_cpu();
+		return(ercd);
+	}	
+
+	t_unlock_cpu();
+
+
+	return(ercd);
+}
 
 #endif /* TOPPERS_tsk_dsp */
+
+void isig_tim()
+{
+	int tskid;
+
+	i_lock_cpu();
+
+	for(tskid = 0 ; tskid < TNUM_TSKID; tskid++)
+	{
+		if (tskTout[tskid] != 0)
+		{
+			if (--tskTout[tskid] == 0)
+			{
+				task_wait[tskid] = 0;		//waitó‘Ô‰ğœ
+				primap_set(tskid);		//ƒŒƒfƒBQ’Ç‰Á
+				reqflg = 1;
+			}
+		}
+	}
+	i_unlock_cpu();
+}
+
+#define MAXTOUT 0xfffffffe
+
+ER
+dly_tsk(RELTIM dlytim)
+{
+
+	ER		ercd;
+	uint_t	tskpri;
+	
+	if (dlytim > MAXTOUT)
+	{
+		return(E_PAR);
+	}
+	
+//	LOG_ACT_TSK_ENTER(tskid);
+//	CHECK_TSKCTX_UNL();
+//	CHECK_TSKID_SELF(tskid);
+	
+	tskpri = get_ipri_self(TSK_SELF);
+	//tskpri = runtsk_ipri;
+	t_lock_cpu();
+	task_wait[tskpri] = 1;		//waitó‘Ô
+	primap_clear(tskpri);		//ƒŒƒfƒBQ‚©‚çíœ
+	tskTout[tskpri] = dlytim+1;
+	
+	//‚±‚±‚ÌƒRƒ“ƒeƒLƒNƒXƒg‚ğ“o˜^
+	if (setjmp(task_ctx[tskpri]) == 0)
+	{
+		/*“o˜^‚µ‚½ê‡*/
+		longjmp(disp_ctx,1);			//sta_ker‚Ì‘±‚«‚És‚­
+	}
+	else
+	{
+		// ƒ^ƒXƒN•œ‹A‚µ‚½ê‡
+		t_unlock_cpu();
+		return(ercd);
+	}	
+
+	t_unlock_cpu();
+
+
+	return(ercd);
+}
+
+void handler(INTHDR userhandler)
+{
+	intptr_t newtskipi;
+	
+	intnest++;						//Š„‚è‚İƒlƒXƒg”ƒCƒ“ƒNƒŠƒƒ“ƒg
+	i_unlock_cpu();					//Š„‚è‚İ‹–‰Â
+	(*userhandler)();				//ƒ†[ƒU[ƒnƒ“ƒhƒ‰ŒÄ‚Ño‚µ
+	i_lock_cpu();					//Š„‚è‚İ•s‰Â
+	intnest--;						//Š„‚è‚İƒlƒXƒg”ƒfƒNƒŠƒƒ“ƒg
+
+	if (intnest == 0)				//‘½dŠ„‚è‚İ’†‚Å‚È‚¢
+	{
+		if (reqflg !=0)				//ƒXƒPƒWƒ…[ƒ‹•K—v
+		{
+			reqflg = 0;
+			newtskipi = search_schedtsk();			//Ÿ‚ÉƒfƒBƒXƒpƒbƒ`‚³‚ê‚éƒ^ƒXƒNID
+			if ((last_ipri != 0xff) && (last_ipri != newtskipi))
+			{
+				if (setjmp(task_ctx[last_ipri]) != 0)
+				{
+					// ƒ^ƒXƒN•œ‹A‚µ‚½ê‡
+					return;				//Š„‚è‚İ•œ‹A
+				}	
+			}
+			dispatch(newtskipi);	//‚±‚ê‚ÍƒŠƒ^[ƒ“‚µ‚È‚¢
+		}
+	}
+}

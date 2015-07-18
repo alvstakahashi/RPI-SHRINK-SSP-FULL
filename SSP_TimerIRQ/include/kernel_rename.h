@@ -30,7 +30,8 @@
 #define primap_set					_kernel_primap_set
 #define primap_clear				_kernel_primap_clear
 #define bitmap_search				_kernel_bitmap_search
-
+#define	handler						_kernel_handler
+#define	intnest						_kernel_intnest
 /*
  *  time_event.c
  */
@@ -323,6 +324,6 @@
 
 #endif /* TOPPERS_LABEL_ASM */
 
-//#include <stddef.h>
+#include <stddef.h>
 
 #endif /* TOPPERS_KERNEL_RENAME_H */

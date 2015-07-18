@@ -10,76 +10,76 @@
  *             Nagoya Municipal Industrial Research Institute, JAPAN
  *  Copyright (C) 2010 by Meika Sugimoto
  * 
- *  上記著作権者は，以下の (1)～(4) の条件を満たす場合に限り，本ソフトウェ
- *  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改変・
- *  再配布（以下，利用と呼ぶ）することを無償で許諾する．
- *  (1) 本ソフトウェアをソースコードの形で利用する場合には，上記の著作権
- *      表示，この利用条件および下記の無保証規定が，そのままの形でソース
- *      コード中に含まれていること．
- *  (2) 本ソフトウェアを，ライブラリ形式など，他のソフトウェア開発に使用
- *      できる形で再配布する場合には，再配布に伴うドキュメント（利用者マ
- *      ニュアルなど）に，上記の著作権表示，この利用条件および下記の無保
- *      証規定を掲載すること．
- *  (3) 本ソフトウェアを，機器に組み込むなど，他のソフトウェア開発に使用
- *      できない形で再配布する場合には，次のいずれかの条件を満たすこと．
- *    (a) 再配布に伴うドキュメント（利用者マニュアルなど）に，上記の著作
- *        権表示，この利用条件および下記の無保証規定を掲載すること．
- *    (b) 再配布の形態を，別に定める方法によって，TOPPERSプロジェクトに報
- *        告すること．
- *  (4) 本ソフトウェアの利用により直接的または間接的に生じるいかなる損害
- *      からも，上記著作権者およびTOPPERSプロジェクトを免責すること．また，
- *      本ソフトウェアのユーザまたはエンドユーザからのいかなる理由に基づ
- *      く請求からも，上記著作権者およびTOPPERSプロジェクトを免責すること．
+ *  ��L���쌠�҂́C�ȉ��� (1)�`(4) �̏����𖞂����ꍇ�Ɍ���C�{�\�t�g�E�F
+ *  �A�i�{�\�t�g�E�F�A�����ς������̂��܂ށD�ȉ������j���g�p�E�����E���ρE
+ *  �Ĕz�z�i�ȉ��C���p�ƌĂԁj���邱�Ƃ𖳏��ŋ�������D
+ *  (1) �{�\�t�g�E�F�A���\�[�X�R�[�h�̌`�ŗ��p����ꍇ�ɂ́C��L�̒��쌠
+ *      �\���C���̗��p��������щ��L�̖��ۏ؋K�肪�C���̂܂܂̌`�Ń\�[�X
+ *      �R�[�h���Ɋ܂܂�Ă��邱�ƁD
+ *  (2) �{�\�t�g�E�F�A���C���C�u�����`���ȂǁC���̃\�t�g�E�F�A�J���Ɏg�p
+ *      �ł���`�ōĔz�z����ꍇ�ɂ́C�Ĕz�z�ɔ����h�L�������g�i���p�҃}
+ *      �j���A���Ȃǁj�ɁC��L�̒��쌠�\���C���̗��p��������щ��L�̖���
+ *      �؋K����f�ڂ��邱�ƁD
+ *  (3) �{�\�t�g�E�F�A���C�@��ɑg�ݍ��ނȂǁC���̃\�t�g�E�F�A�J���Ɏg�p
+ *      �ł��Ȃ��`�ōĔz�z����ꍇ�ɂ́C���̂����ꂩ�̏����𖞂������ƁD
+ *    (a) �Ĕz�z�ɔ����h�L�������g�i���p�҃}�j���A���Ȃǁj�ɁC��L�̒���
+ *        ���\���C���̗��p��������щ��L�̖��ۏ؋K����f�ڂ��邱�ƁD
+ *    (b) �Ĕz�z�̌`�Ԃ��C�ʂɒ�߂���@�ɂ���āCTOPPERS�v���W�F�N�g�ɕ�
+ *        �����邱�ƁD
+ *  (4) �{�\�t�g�E�F�A�̗��p�ɂ�蒼�ړI�܂��͊ԐړI�ɐ����邢���Ȃ鑹�Q
+ *      ������C��L���쌠�҂����TOPPERS�v���W�F�N�g��Ɛӂ��邱�ƁD�܂��C
+ *      �{�\�t�g�E�F�A�̃��[�U�܂��̓G���h���[�U����̂����Ȃ闝�R�Ɋ��
+ *      ������������C��L���쌠�҂����TOPPERS�v���W�F�N�g��Ɛӂ��邱�ƁD
  * 
- *  本ソフトウェアは，無保証で提供されているものである．上記著作権者およ
- *  びTOPPERSプロジェクトは，本ソフトウェアに関して，特定の使用目的に対す
- *  る適合性も含めて，いかなる保証も行わない．また，本ソフトウェアの利用
- *  により直接的または間接的に生じたいかなる損害に関しても，その責任を負
- *  わない．
+ *  �{�\�t�g�E�F�A�́C���ۏ؂Œ񋟂���Ă�����̂ł���D��L���쌠�҂���
+ *  ��TOPPERS�v���W�F�N�g�́C�{�\�t�g�E�F�A�Ɋւ��āC����̎g�p�ړI�ɑ΂�
+ *  ��K�������܂߂āC�����Ȃ�ۏ؂��s��Ȃ��D�܂��C�{�\�t�g�E�F�A�̗��p
+ *  �ɂ�蒼�ړI�܂��͊ԐړI�ɐ����������Ȃ鑹�Q�Ɋւ��Ă��C���̐ӔC��
+ *  ��Ȃ��D
  * 
  */
 
 /*
- *		TOPPERS/SSPカーネル 標準ヘッダファイル
+ *		TOPPERS/SSP�J�[�l�� �W���w�b�_�t�@�C��
  *
- *  TOPPERS/SSPカーネルがサポートするサービスコールの宣言と，必要なデー
- *  タ型，定数，マクロの定義を含むヘッダファイル．
+ *  TOPPERS/SSP�J�[�l�����T�|�[�g����T�[�r�X�R�[���̐錾�ƁC�K�v�ȃf�[
+ *  �^�^�C�萔�C�}�N���̒�`���܂ރw�b�_�t�@�C���D
  *
- *  アセンブリ言語のソースファイルからこのファイルをインクルードする時
- *  は，TOPPERS_MACRO_ONLYを定義しておく．これにより，マクロ定義以外を
- *  除くようになっている．
+ *  �A�Z���u������̃\�[�X�t�@�C�����炱�̃t�@�C�����C���N���[�h���鎞
+ *  �́CTOPPERS_MACRO_ONLY���`���Ă����D����ɂ��C�}�N����`�ȊO��
+ *  �����悤�ɂȂ��Ă���D
  *
- *  このファイルをインクルードする前にインクルードしておくべきファイル
- *  はない．
+ *  ���̃t�@�C�����C���N���[�h����O�ɃC���N���[�h���Ă����ׂ��t�@�C��
+ *  �͂Ȃ��D
  */
 
 #ifndef TOPPERS_KERNEL_H
 #define TOPPERS_KERNEL_H
 
 /*
- *	TOPPERS共通のデータ型・定数・マクロ
+ *	TOPPERS���ʂ̃f�[�^�^�E�萔�E�}�N��
  */
 #include <t_stddef.h>
 
 /*
- *  ターゲット依存部
+ *  �^�[�Q�b�g�ˑ���
  */
 #include "target_kernel.h"
 #ifndef TOPPERS_MACRO_ONLY
 
 /*
- *  データ型の定義
+ *  �f�[�^�^�̒�`
  */
 
 /*
- *  ビットパターンやオブジェクト番号の型定義
+ *  �r�b�g�p�^�[����I�u�W�F�N�g�ԍ��̌^��`
  */
-typedef	uint_t		INTNO;		/* 割込み番号 */
-typedef	uint_t		INHNO;		/* 割込みハンドラ番号 */
-typedef	uint_t		EXCNO;		/* CPU例外ハンドラ番号 */
+typedef	uint_t		INTNO;		/* �����ݔԍ� */
+typedef	uint_t		INHNO;		/* �����݃n���h���ԍ� */
+typedef	uint_t		EXCNO;		/* CPU��O�n���h���ԍ� */
 
 /*
- *  処理単位の型定義
+ *  �����P�ʂ̌^��`
  */
 typedef void	(*TASK)(intptr_t exinf);
 typedef void	(*ISR)(intptr_t exinf);
@@ -91,26 +91,26 @@ typedef void	(*CYCHDR)(intptr_t exinf);
 typedef void	(*ALMHDR)(intptr_t exinf);
 
 /*
- *  メモリ領域確保のための型定義
+ *  �������̈�m�ۂ̂��߂̌^��`
  */
 #ifndef TOPPERS_STK_T
 #define TOPPERS_STK_T	intptr_t
 #endif /* TOPPERS_STK_T */
-typedef	TOPPERS_STK_T	STK_T;	/* スタック領域を確保するための型 */
+typedef	TOPPERS_STK_T	STK_T;	/* �X�^�b�N�̈���m�ۂ��邽�߂̌^ */
 
 
 /*
- *  サービスコールの宣言
+ *  �T�[�r�X�R�[���̐錾
  */
 
 /*
- *  タスク管理機能
+ *  �^�X�N�Ǘ��@�\
  */
 extern ER		act_tsk(ID tskid);
 extern ER		iact_tsk(ID tskid);
 
 /*
- *  システム状態管理機能
+ *  �V�X�e����ԊǗ��@�\
  */
 extern ER		loc_cpu(void);
 extern ER		iloc_cpu(void);
@@ -126,88 +126,90 @@ extern bool_t	sns_ker(void);
 extern ER		ext_ker(void);
 
 /*
- *  割込み管理機能
+ *  �����݊Ǘ��@�\
  */
 extern ER		dis_int(INTNO intno);
 extern ER		ena_int(INTNO intno);
 
 /*
- *  周期ハンドラ機能
+ *  �����n���h���@�\
  */
 extern ER		sta_cyc(ID cycid);
 extern ER		stp_cyc(ID cycid);
 
 /*
- *  アラームハンドラ機能
+ *  �A���[���n���h���@�\
  */
 extern ER		sta_alm(ID almid , RELTIM almtim);
 extern ER		stp_alm(ID almid);
 
 /*
- *  システム時間管理機能
+ *  �V�X�e�����ԊǗ��@�\
  */
 extern ER		get_tim(SYSTIM *p_systim);
+
+extern ER 		dly_tsk(RELTIM dlytim);
 
 #endif /* TOPPERS_MACRO_ONLY */
 
 /*
- *  オブジェクト属性の定義
+ *  �I�u�W�F�N�g�����̒�`
  */
-#define TA_RSTR			UINT_C(0x04)	/* 制約タスク */
+#define TA_RSTR			UINT_C(0x04)	/* ����^�X�N */
 
-#define TA_ACT			UINT_C(0x02)	/* タスクを起動された状態で生成 */
+#define TA_ACT			UINT_C(0x02)	/* �^�X�N���N�����ꂽ��ԂŐ��� */
 
-#define TA_STA			UINT_C(0x02)	/* 周期ハンドラを動作状態で生成 */
+#define TA_STA			UINT_C(0x02)	/* �����n���h���𓮍��ԂŐ��� */
 
-#define TA_NONKERNEL	UINT_C(0x02)	/* カーネル管理外の割込み */
+#define TA_NONKERNEL	UINT_C(0x02)	/* �J�[�l���Ǘ��O�̊����� */
 
-#define TA_ENAINT		UINT_C(0x01)	/* 割込み要求禁止フラグをクリア */
-#define TA_EDGE			UINT_C(0x02)	/* エッジトリガ */
+#define TA_ENAINT		UINT_C(0x01)	/* �����ݗv���֎~�t���O���N���A */
+#define TA_EDGE			UINT_C(0x02)	/* �G�b�W�g���K */
 
 /*
- *  その他の定数の定義
+ *  ���̑��̒萔�̒�`
  */
-#define TSK_SELF		0			/* 自タスク指定 */
-#define TSK_NONE		0			/* 該当するタスクがない */
+#define TSK_SELF		0			/* ���^�X�N�w�� */
+#define TSK_NONE		0			/* �Y������^�X�N���Ȃ� */
 
-#define TPRI_INI		0			/* タスクの起動時優先度 */
+#define TPRI_INI		0			/* �^�X�N�̋N�����D��x */
 
-#define TIPM_ENAALL		0			/* 割込み優先度マスク全解除 */
+#define TIPM_ENAALL		0			/* �����ݗD��x�}�X�N�S���� */
 
 /*
- *  構成定数とマクロ
+ *  �\���萔�ƃ}�N��
  */
 
 /*
- *  優先度の範囲
+ *  �D��x�͈̔�
  */
-#define TMIN_TPRI		1			/* タスク優先度の最小値（最高値）*/
+#define TMIN_TPRI		1			/* �^�X�N�D��x�̍ŏ��l�i�ō��l�j*/
 #ifndef TMAX_TPRI
-	#define TMAX_TPRI		16			/* タスク優先度の最大値（最低値）*/
+	#define TMAX_TPRI		16			/* �^�X�N�D��x�̍ő�l�i�Œ�l�j*/
 #elif (TMAX_TPRI != 8) || (TMAX_TPRI != 16)
 	#error "TMAX_TPRI must defined 8 or 16."
 #endif	/* TMAX_TPRI */
 
-#define TMIN_ISRPRI		1			/* 割込みサービスルーチン優先度の最小値 */
+#define TMIN_ISRPRI		1			/* �����݃T�[�r�X���[�`���D��x�̍ŏ��l */
 #ifndef TMAX_ISRPRI
-	#define TMAX_ISRPRI		16			/* 割込みサービスルーチン優先度の最大値 */
+	#define TMAX_ISRPRI		16			/* �����݃T�[�r�X���[�`���D��x�̍ő�l */
 #elif (TMAX_ISRPRI != 8) || (TMAX_ISRPRI != 16)
 	#error "TMAX_ISRPRI must defined 8 or 16."
 #endif	/* TMAX_ISRPRI */
 
 /*
- *  バージョン情報
+ *  �o�[�W�������
  */
-#define TKERNEL_MAKER	UINT_C(0x0118)	/* カーネルのメーカーコード */
-#define TKERNEL_PRID	UINT_C(0x0007)	/* カーネルの識別番号 */
-#define TKERNEL_SPVER	UINT_C(0xf511)	/* カーネル仕様のバージョン番号 */
-#define TKERNEL_PRVER	UINT_C(0x1100)	/* カーネルのバージョン番号 */
+#define TKERNEL_MAKER	UINT_C(0x0118)	/* �J�[�l���̃��[�J�[�R�[�h */
+#define TKERNEL_PRID	UINT_C(0x0007)	/* �J�[�l���̎��ʔԍ� */
+#define TKERNEL_SPVER	UINT_C(0xf511)	/* �J�[�l���d�l�̃o�[�W�����ԍ� */
+#define TKERNEL_PRVER	UINT_C(0x1100)	/* �J�[�l���̃o�[�W�����ԍ� */
 
 /*
- *  メモリ領域確保のためのマクロ
+ *  �������̈�m�ۂ̂��߂̃}�N��
  *
- *  以下のTOPPERS_COUNT_SZとTOPPERS_ROUND_SZの定義は，unitが2の巾乗であ
- *  ることを仮定している．
+ *  �ȉ���TOPPERS_COUNT_SZ��TOPPERS_ROUND_SZ�̒�`�́Cunit��2�̋Џ�ł�
+ *  �邱�Ƃ����肵�Ă���D
  */
 #ifndef TOPPERS_COUNT_SZ
 #define TOPPERS_COUNT_SZ(sz, unit)	(((sz) + (unit) - 1) / (unit))

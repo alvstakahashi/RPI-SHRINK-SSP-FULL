@@ -5,8 +5,10 @@
 #include <stdio.h>
 #include <stdint.h>
 
+#include "kernel_impl.h"
+#include "target_kernel.h"
 
-#ifdef RPIB-PLUS
+#ifdef RPIBPLUS
 #define	LED_ACT_PIN	47	//TYPE B PLUS
 #elif RPI2
 #define LED_ACT_PIN	47	// PRI2
@@ -33,65 +35,28 @@ void set_vector_table(void){
 	}
 }
 
-// タイマー割り込み処理
-void timerIRQ_handler(void){
-	// LEDの状態保持用変数
-	static unsigned int led = 0;
 
-	if(led){
-		printf("LED: OFF\n");
-		digitalWrite(LED_ACT_PIN, LOW);
-		iact_tsk(TASK1_ID);
-
-	}
-	else{
-		printf("LED: ON\n");
-		digitalWrite(LED_ACT_PIN, HIGH);
-		iact_tsk(TASK2_ID);
-	}
-	// LEDの状態を反転
-	led = !led;
-}
-
+extern void _kernel_handler(INTHDR userhandler);
+extern void isig_tim(void);
 
 // IRQ割り込みハンドラ
-void IRQ_handler(void){
-	// IRQ割り込みを停止
-//	disable_IRQ();-----------------------------もともとおかしい----------------
-
-	printf("get IRQ in IRQ handler\n");
-	printf("CPSR (in IRQ_handler) = 0x%08x\n",getmode());
-
+void IRQ_handler(void)
+{
 	// Basic IRQ pendingをチェック
-	if(*INTERRUPT_IRQ_BASIC_PENDING & 0x01 != 0){
+	if(*INTERRUPT_IRQ_BASIC_PENDING & 0x01 != 0)
+	{
 		// タイマー割り込み
-		printf("Timer IRQ start\n");
-		printf("Timer Raw IRQ before: 0x%08x\n",*TIMER_RAWIRQ);
-		printf("irq_pending0 before : 0x%08x\n",*INTERRUPT_IRQ_BASIC_PENDING);
-
         // 割り込みフラグクリア
         *TIMER_IRQ_CLR = 0;
 
-		// タイマ割り込み処理
-		enable_IRQ();
-		timerIRQ_handler();
-		disable_IRQ();
-
-		// フラグがクリアされたかチェック
-		printf("irq_pending0 after: 0x%08x\n",*INTERRUPT_IRQ_BASIC_PENDING);
-		printf("Timer Raw IRQ after: 0x%08x\n",*TIMER_RAWIRQ);
-		printf("Timer IRQ end\n");
+		_kernel_handler(isig_tim);
 	}
-	// TODO: その他の割り込みも調べる
-
-	// IRQ割り込みを許可
-//	enable_IRQ();------------------もともと　おかしい------------------------------
 	return;
 }
 
 
-
-int main(void){
+int setup(void)
+{
 	rpi_init();
 
 	// 起動確認用
@@ -118,8 +83,11 @@ int main(void){
 	*TIMER_PREDIVIDER = 0x000000F9;
 
 	// タイマー値設定(4sec)
-	*TIMER_LOAD = 4000000-1;
-	*TIMER_RELOAD = 4000000-1;
+//	*TIMER_LOAD = 4000000-1;
+//	*TIMER_RELOAD = 4000000-1;
+	// タイマー値設定(1msec)
+	*TIMER_LOAD = 1000-1;
+	*TIMER_RELOAD = 1000-1;
 
 	// 割り込みフラグをクリア
 	*TIMER_IRQ_CLR = 0;
@@ -141,11 +109,37 @@ int main(void){
 //	return 0;
 }
 
+void task3(intptr_t arg)
+{
+	printf("task3 RUNNING-----------------------------------------------------\n");
+}
 void task2(intptr_t arg)
 {
-	printf("task2 RUNNING-----------------------------------------------------\n");
+	for(;;)
+	{
+		printf("task2 RUNNING-----------------------------------------------------\n");
+		dly_tsk(500);
+	}
 }
-void task1(intptr_t arg)
+void main(intptr_t arg)
 {
+	int toggle= 0;
 	printf("task1 RUNNING-----------------------------------------------------\n");
-}
+	act_tsk(TASK2_ID);
+
+	for(;;)
+	{
+		if ((toggle ^= 1) != 0)
+		{
+			printf("LED: ON\n");
+			digitalWrite(LED_ACT_PIN, HIGH);
+		}
+		else
+		{
+			printf("LED: OFF\n");
+			digitalWrite(LED_ACT_PIN, LOW);
+		}
+		dly_tsk(1000);
+	}
+}		
+

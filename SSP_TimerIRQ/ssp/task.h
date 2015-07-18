@@ -41,6 +41,7 @@
 
 #ifndef TOPPERS_TASK_H
 #define TOPPERS_TASK_H
+#include <setjmp.h>
 
 #include "kernel_impl.h"
 
@@ -84,6 +85,7 @@ extern bool_t	reqflg;
  *  ディスパッチ禁止状態であることを示すフラグ．
  */
 extern bool_t	disdsp;
+extern jmp_buf disp_ctx;		//ディスパッチャコンテキスト
 
 /*
  *  タスクの初期化
@@ -118,5 +120,12 @@ extern void run_task(uint_t ipri);
  *  タスクディスパッチャ
  */
 extern void dispatcher(void);
+
+extern jmp_buf task_ctx[];
+
+extern void dispach(intptr_t task_id);
+
+extern void make_ctx(uint_t ipri);
+
 
 #endif /* TOPPERS_TASK_H */
