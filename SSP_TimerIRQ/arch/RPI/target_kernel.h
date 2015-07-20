@@ -81,7 +81,7 @@
 
 #define	set_task_stack(x)	__asm__( "mov sp,%[Rs1]"::[Rs1]"r"(x))
 
-
+#define	ipl_maskClear()
 
 Inline int getmode(void)
 {

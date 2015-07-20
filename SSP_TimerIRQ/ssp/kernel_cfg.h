@@ -6,9 +6,9 @@
 #define TNUM_CYCID	0
 #define TNUM_ALMID	0
 
-#define MAIN_TASK	3
+#define MAIN_TASK	1
 #define TASK2_ID	2
-#define TASK3_ID	1
+#define TASK3_ID	3
 
 #define	TASK_STACKSZ		1024
 #define TOPPERS_TASKSTKPT(task_id ) (( STK_T  )(( char * )( task_stack[task_id] ) + ( TASK_STACKSZ )))

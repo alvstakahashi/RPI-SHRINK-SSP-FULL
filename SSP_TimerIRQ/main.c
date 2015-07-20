@@ -16,6 +16,7 @@
 #define LED_ACT_PIN	16	//TYPE B
 #endif
 
+volatile int count = 0;
 
 void set_vector_table(void){
 	extern void *_initial_vector_start;
@@ -108,38 +109,39 @@ int setup(void)
 //
 //	return 0;
 }
-
-void task3(intptr_t arg)
+void main(intptr_t arg)
 {
-	printf("task3 RUNNING-----------------------------------------------------\n");
+	printf("main here\n");
+	act_tsk(TASK3_ID);
+	act_tsk(TASK2_ID);	
+	printf("main end\n");
 }
 void task2(intptr_t arg)
 {
-	for(;;)
-	{
-		printf("task2 RUNNING-----------------------------------------------------\n");
-		dly_tsk(500);
-	}
-}
-void main(intptr_t arg)
-{
 	int toggle= 0;
-	printf("task1 RUNNING-----------------------------------------------------\n");
-	act_tsk(TASK2_ID);
-
+	printf("task2 RUNNING-----------------------------------------------------\n");
 	for(;;)
 	{
 		if ((toggle ^= 1) != 0)
 		{
-			printf("LED: ON\n");
+			printf("LED: ON count= %d\n",count);
 			digitalWrite(LED_ACT_PIN, HIGH);
 		}
 		else
 		{
-			printf("LED: OFF\n");
+			printf("LED: OFF count= %d\n",count);
 			digitalWrite(LED_ACT_PIN, LOW);
 		}
 		dly_tsk(1000);
 	}
-}		
+}
+
+void task3(void)
+{
+	printf("task3-----------------\n");
+	for(;;)
+	{
+		count++;
+	}
+}
 

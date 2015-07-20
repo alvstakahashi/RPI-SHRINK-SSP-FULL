@@ -1,6 +1,10 @@
 # RPI-SHRINK-SSP-FULL
 BareMetalで遊ぶRaspberryPi[達人出版」の環境にて、SSPのシュリンク版を移植したものです。
 
+
+20150720
+1.WAIT-SSP(dly_tskのあるカーネル)にしました。
+
 ssp-rpi-20150618-RPI2 リリースノート
 
 raspberry pi2 タイプBに対応しました。

@@ -40,7 +40,7 @@
  */
 #include <stddef.h>
 #include <limits.h>
-
+#include <stdio.h>
 
 #include "kernel_impl.h"
 #include "task.h"
@@ -311,10 +311,10 @@ static jmp_buf jmpp;		//このルーチンのセーブ用
  
 void make_ctx(uint_t ipri_prm)
 {
+	intptr_t debugtemp = 0;
 	uint_t ipri = ipri_prm;
 	intptr_t task_stackadr;
 	t_lock_cpu();
-	intptr_t debugtemp = 0;
 	if (setjmp(jmpp) == 0)	//ここに戻り用
 	{
 		//続き
@@ -338,9 +338,13 @@ void make_ctx(uint_t ipri_prm)
 			ipri = runtsk_ipri;			//longjmpで戻って来た時は不定
 			/* タスク起動時 */
 			t_unlock_cpu();
+			ipl_maskClear();
 			/* タスクに来ました*/
 			/* タスク実行開始 */
 			(*((TASK)(tinib_task[ipri])))(tinib_exinf[ipri]);
+   			t_lock_cpu();
+			ipri = runtsk_ipri;			//longjmpで戻って来た時は不定
+	
 			disdsp = false;
 			/* ビットマップクリア． */
 			primap_clear(ipri);
@@ -449,6 +453,7 @@ wai_tsk(void)
 	else
 	{
 		// タスク復帰した場合
+		ipl_maskClear();
 		t_unlock_cpu();
 		return(ercd);
 	}	
@@ -494,6 +499,7 @@ go_tsk(ID tskid)
 	else
 	{
 		// タスク復帰した場合
+		ipl_maskClear();
 		t_unlock_cpu();
 		return(ercd);
 	}	
@@ -561,7 +567,11 @@ dly_tsk(RELTIM dlytim)
 	else
 	{
 		// タスク復帰した場合
+		ipl_maskClear();
 		t_unlock_cpu();
+#if 0
+		printf("dly_tsk End\n");
+#endif
 		return(ercd);
 	}	
 
@@ -589,13 +599,21 @@ void handler(INTHDR userhandler)
 			newtskipi = search_schedtsk();			//次にディスパッチされるタスクID
 			if ((last_ipri != 0xff) && (last_ipri != newtskipi))
 			{
+				// RUN中に高優先度のタスクに切り替わる場合
 				if (setjmp(task_ctx[last_ipri]) != 0)
 				{
-					// タスク復帰した場合
+					// 元のタスク復帰した場合
 					return;				//割り込み復帰
-				}	
+				}
+				// 高優先度のタスクにディスパッチ
+				dispatch(newtskipi);	//これはリターンしない
 			}
-			dispatch(newtskipi);	//これはリターンしない
+			if  (last_ipri != 0xff)
+			{
+				//idle中だった場合
+				dispatch(newtskipi);	//これはリターンしない
+			}
+			//同一タスクだった場合は、割り込みリターンする
 		}
 	}
 }
