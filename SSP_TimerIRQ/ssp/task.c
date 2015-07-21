@@ -335,10 +335,11 @@ void make_ctx(uint_t ipri_prm)
 		}
 		else
 		{
+			t_lock_cpu();
 			ipri = runtsk_ipri;			//longjmpで戻って来た時は不定
 			/* タスク起動時 */
-			t_unlock_cpu();
 			ipl_maskClear();
+			t_unlock_cpu();
 			/* タスクに来ました*/
 			/* タスク実行開始 */
 			(*((TASK)(tinib_task[ipri])))(tinib_exinf[ipri]);
@@ -583,7 +584,7 @@ dly_tsk(RELTIM dlytim)
 
 void handler(INTHDR userhandler)
 {
-	intptr_t newtskipi;
+	volatile static intptr_t newtskipi;
 	
 	intnest++;						//割り込みネスト数インクリメント
 	i_unlock_cpu();					//割り込み許可
@@ -600,20 +601,12 @@ void handler(INTHDR userhandler)
 			if ((last_ipri != 0xff) && (last_ipri != newtskipi))
 			{
 				// RUN中に高優先度のタスクに切り替わる場合
-				if (setjmp(task_ctx[last_ipri]) != 0)
+				if (setjmp(task_ctx[last_ipri]) == 0)
 				{
-					// 元のタスク復帰した場合
-					return;				//割り込み復帰
+					// 高優先度のタスクにディスパッチ
+					dispatch(newtskipi);	//これはリターンしない
 				}
-				// 高優先度のタスクにディスパッチ
-				dispatch(newtskipi);	//これはリターンしない
 			}
-			if  (last_ipri != 0xff)
-			{
-				//idle中だった場合
-				dispatch(newtskipi);	//これはリターンしない
-			}
-			//同一タスクだった場合は、割り込みリターンする
 		}
 	}
 }

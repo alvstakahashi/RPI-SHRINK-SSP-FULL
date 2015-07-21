@@ -141,7 +141,9 @@ void task3(void)
 	printf("task3-----------------\n");
 	for(;;)
 	{
+		dly_tsk(500);
 		count++;
+		printf("task3-----------------\n");
 	}
 }
 
