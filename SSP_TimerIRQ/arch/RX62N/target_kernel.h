@@ -57,6 +57,11 @@
 #ifndef TOPPERS_TARGET_KERNEL_H
 #define TOPPERS_TARGET_KERNEL_H
 
+
+#if defined __GNUC__
+#define Inline	static __inline__	/* インライン関数 */
+#endif
+
 /*
  *  プロセッサで共通な定義
  */
@@ -86,29 +91,51 @@
 /*
  *  NMIを除くすべての割込みの禁止
  */
+#if defined __GNUC__
+static inline void disint( void )
+{
+	__asm__("clrpsw	i");
+}
+#else
 #pragma inline_asm	disint
 static void
 disint( void )
 {
 	clrpsw	i
 }
+#endif
 
-#pragma inline_asm	ipl_maskClear
-static void 
-ipl_maskClear(void)
-{
-	MVTIPL	#0
-}
 /*
  *  NMIを除くすべての割込みの許可
  */
+#if defined __GNUC__
+static inline void enaint( void )
+{
+	__asm__("setpsw	i");
+}
+#else
 #pragma inline_asm	enaint
 static void
 enaint( void )
 {
 	setpsw	i
 }
+#endif
 
+
+#if defined __GNUC__
+static inline void ipl_maskClear( void )
+{
+	__asm__("MVTIPL #0");
+}
+#else
+#pragma inline_asm	ipl_maskClear
+static void 
+ipl_maskClear(void)
+{
+	MVTIPL	#0
+}
+#endif
 /*
  *  CPUロック状態への移行
  *
@@ -124,8 +151,13 @@ enaint( void )
  *  この関数は，CPUロック状態（lock_flagがTRUEの状態）で呼ばれることは
  *  ないものと想定している．
  */
+#if defined __GNUC__
+static inline
+#else
 #pragma inline  (x_lock_cpu)
-static void x_lock_cpu( void ) 
+static 
+#endif
+void x_lock_cpu( void ) 
 {	
 	disint();
 }
@@ -143,9 +175,13 @@ static void x_lock_cpu( void )
  *  この関数は，CPUロック状態（lock_flagがtrueの状態）でのみ呼ばれるも
  *  のと想定している．
  */
+#if defined __GNUC__
+static inline
+#else
 #pragma inline (x_unlock_cpu)
-static void
-x_unlock_cpu( void )
+static 
+#endif
+void x_unlock_cpu( void )
 {
 	enaint();
 }
@@ -164,9 +200,13 @@ extern uint32_t	DEFAULT_ISTACK[];
 #define DEFAULT_ISTKSZ		( 0x500U )
 #define DEFAULT_ISTK		( (void *)&DEFAULT_ISTACK[0] )
 
+#if defined __GNUC__
+static inline
+#else
 #pragma inline (idle_loop)
-static  void
-idle_loop(void)
+static  
+#endif
+void idle_loop(void)
 {
 	t_unlock_cpu();
 	ipl_maskClear();
@@ -177,17 +217,32 @@ idle_loop(void)
 /*
  *  プロセッサステータスレジスタ(PSW)の現在値の読出し
  */
+#if defined __GNUC__
+Inline int current_psw(void)
+{
+	int status;
+	__asm__("mvfc	psw,%[Rd]":[Rd]"=r"(status));
+	return(status);
+}
+
+#else
 #pragma inline_asm	current_psw
 static uint32_t
 current_psw( void )
 {
 	mvfc	psw, r1
 }
+#endif
 /*
  *  CPUロック状態の参照
  */
+#if defined __GNUC__
+static inline
+#else
 #pragma inline (x_sense_lock)
-static  bool_t
+static  
+#endif
+bool_t
 x_sense_lock( void )
 {
 	return (( bool_t )(( current_psw() & PSW_I_MASK) == 0 ));
@@ -203,20 +258,32 @@ x_sense_lock( void )
  *  RXでは，割込みの戻り先がタスクかどうかを判断するために intnest
  *  を使用している．これを用いてコンテキストを判断する．
  */
+#if defined __GNUC__
+static inline
+#else
 #pragma inline (sense_context) 
-static bool_t sense_context( void )
+static 
+#endif
+bool_t sense_context( void )
 {
 	/*  ネストカウンタ0より大なら非タスクコンテキスト  */
 	return ( intnest > 0U );
 }
 
+#if defined __GNUC__
+static inline void
+set_task_stack( intptr_t stkp )
+{
+	__asm__("MVTC	R1,isp");
+}
+#else
 #pragma inline_asm	set_task_stack
 static void
 set_task_stack( intptr_t stkp )
 {
 	MVTC	R1,isp
 }
-
+#endif
 
 #endif /* TOPPERS_TARGET_KERNEL_H */
 #endif

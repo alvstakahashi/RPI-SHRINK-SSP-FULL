@@ -148,8 +148,6 @@ extern ER		stp_alm(ID almid);
  */
 extern ER		get_tim(SYSTIM *p_systim);
 
-extern ER 		dly_tsk(RELTIM dlytim);
-
 #endif /* TOPPERS_MACRO_ONLY */
 
 /*

@@ -12,6 +12,7 @@ OBJS= main.o
 
 # systemcall
 OBJS += syscalls.o
+OBJS += setup.o
 
 # RaspberryPi library
 OBJS+= rpi_lib/rpi_init.o rpi_lib/gpio/gpio.o rpi_lib/timer/timer.o rpi_lib/delay/delay.o
@@ -20,6 +21,7 @@ OBJS+= rpi_lib/bss/clearbss.o
 
 #ssp liblary
 OBJS+= ssp/kernel_cfg.o ssp/startup.o ssp/task.o ssp/task_manage.o
+OBJS+= ssp/alarm.o ssp/cyclic.o ssp/time_event.o ssp/time_manage.o
 
 #ssp include
 INCSSP = -I./ssp -I./include -I./arch/RPI

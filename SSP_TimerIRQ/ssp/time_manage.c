@@ -2,15 +2,10 @@
  *  TOPPERS/SSP Kernel
  *      Smallest Set Profile Kernel
  *
- *  Copyright (C) 2000-2003 by Embedded and Real-Time Systems Laboratory
- *                              Toyohashi Univ. of Technology, JAPAN
- *  Copyright (C) 2005-2009 by Embedded and Real-Time Systems Laboratory
- *              Graduate School of Information Science, Nagoya Univ., JAPAN
- *  Copyright (C) 2010 by Naoki Saito
+ *  Copyright (C) 2011 by Naoki Saito
  *             Nagoya Municipal Industrial Research Institute, JAPAN
- *  Copyright (C) 2010-2011 by Meika Sugimoto
  * 
- *  上記著作権者は，以下の (1)～(4) の条件を満たす場合に限り，本ソフトウェ
+ *  上記著作権者は，以下の (1)?(4) の条件を満たす場合に限り，本ソフトウェ
  *  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改変・
  *  再配布（以下，利用と呼ぶ）することを無償で許諾する．
  *  (1) 本ソフトウェアをソースコードの形で利用する場合には，上記の著作権
@@ -40,43 +35,30 @@
  */
 
 /*
- *		カーネルの初期化と終了処理
+ *		システム時間管理
  */
 
-#include "task.h"
-#include "t_stddef.h"
 #include "kernel_impl.h"
+#include "check.h"
+#include "time_event.h"
 
+#define TOPPERS_get_tim
+#ifdef TOPPERS_get_tim
 
-/*
- *  カーネル動作状態フラグ
- *
- *  スタートアップルーチンで，false（＝0）に初期化されることを期待して
- *  いる．
- */
-bool_t	kerflg = false;
-
-
-/*
- *  カーネルの起動
- *    NMIを除く全ての割込みがマスクされた状態(全割込みロック状態に相当)で呼び出される．
- *  パワーオンからコールされる　スタックは4バイト消費されている　takahashi
- *  割り込みベクタ初期化済み、ハードウエア初期化済み、RAM初期化済みで呼び出される
- 
- */
-void
-sta_ker(void)
+ER
+get_tim(SYSTIM *p_systim)
 {
-	initialize_object();			//必要
-	kerflg = true;
-	intnest = 0;
-	dispatcher();
+	ER		ercd;
+	
+	CHECK_TSKCTX_UNL();
+	
+	t_lock_cpu();
+	*p_systim = current_time;
+	ercd = E_OK;
+	t_unlock_cpu();
+	
+  error_exit:
+	return(ercd);
 }
 
-
-/*
- *  カーネルの終了
-一旦以下全部削除
-
- */
-
+#endif /* TOPPERS_get_tim */
