@@ -138,7 +138,7 @@ _getpid (int n)
 
 caddr_t _sbrk (int incr) {
   prev_heap_end = heap_end;
-  if (heap_end + incr > (unsigned int)stack_ptr)
+  if (heap_end + incr > stack_ptr)
     return (caddr_t) -1;
   heap_end += incr;
   return (caddr_t) prev_heap_end;
