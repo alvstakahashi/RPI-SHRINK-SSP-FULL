@@ -397,6 +397,7 @@ make_active(uint_t ipri)
 void
 run_task(uint_t ipri)
 {
+	dispatch((intptr_t)ipri);
 }
 
 #endif /* TOPPERS_tskrun */
