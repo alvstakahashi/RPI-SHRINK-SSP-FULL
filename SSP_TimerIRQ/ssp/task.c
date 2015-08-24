@@ -389,6 +389,14 @@ make_active(uint_t ipri)
  *  apri : 実行開始タスクの起動時優先度
  *  呼び出し条件： CPUロック
  */
+#define TOPPERS_tsk_dsp
+#ifdef TOPPERS_tsk_dsp
+void dispatch(intptr_t ipri)
+{
+	last_ipri = ipri;
+	runtsk_ipri = ipri;
+	longjmp(task_ctx[ipri],1);
+}
 
 #define TOPPERS_tskrun
 
@@ -406,14 +414,6 @@ run_task(uint_t ipri)
  *  この関数は全割込みロック状態と同等の状態で sta_ker から呼ばれる
  */
 
-#define TOPPERS_tsk_dsp
-#ifdef TOPPERS_tsk_dsp
-void dispatch(intptr_t ipri)
-{
-	last_ipri = ipri;
-	runtsk_ipri = ipri;
-	longjmp(task_ctx[ipri],1);
-}
 
 void
 dispatcher(void)
