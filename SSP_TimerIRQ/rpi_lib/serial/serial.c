@@ -1,3 +1,7 @@
+#ifdef RPI3
+#include "miniUart1.h"
+#endif
+
 #include "rpi_serial.h"
 #include "../peripherals/rpi_peripherals.h"
 #include "../rpi_type.h"
@@ -29,6 +33,9 @@ void setSerialTimeout(int read_ms,int write_ms){
 }
 
 int Serial_begin(int baudrate){
+#ifdef RPI3
+	uart_init();
+#else
 	unsigned int baudrate_temp[11]={300, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200 };
 	unsigned int ib_list[] = {625, 156,78,39,19,13,9,6,4,3,1};
 	unsigned int fb_list[] = {0,16,8,4,34,1,49,33,57,16,40};
@@ -74,20 +81,26 @@ int Serial_begin(int baudrate){
 	// CTS dis, RTS dis, OUT1-2=0, RTS dis, DTR dis, RXE en, TXE en, loop back dis, SIRLP=0, SIREN=0, UARTEN en
 	*UART0_CR 	= 0x0301;
 	/****	初期設定終了	***/
-
+#endif
 	return 0;
 }
 
 void Serial_end(void){
+#ifndef RPI3
 	// UART無効化
 	*UART0_CR = 0;
+#endif
 }
 
 int Serial_available(void){
+#ifdef RPI3
+	return((int)uart_check());
+#else
 	if(!(*UART0_FR & (0x01 << 4))){
 		return 1;
 	}
 	return 0;
+#endif
 }
 
 int Serial_write(char *buf,int len){
@@ -102,6 +115,10 @@ int Serial_write(char *buf,int len){
 }
 
 int uart0_getc(void){
+	int c ;
+#ifdef RPI3
+	c = (int)uart_recv();
+#else
 	unsigned long long to;
 	// タイムアウトが設定されている場合はセット
 	if(read_to != -1){
@@ -115,11 +132,15 @@ int uart0_getc(void){
 		}
 	}
 	// 読み込み
-	int c = *UART0_DR;
+	c = *UART0_DR;
+#endif
 	return c & 0xff;
 }
 
 int uart0_putc(int c){
+#ifdef RPI3
+	uart_send((unsigned int)c);
+#else
 	unsigned long long to;
 	// タイムアウトが設定されている場合はセット
 	if(write_to != -1){
@@ -135,6 +156,7 @@ int uart0_putc(int c){
 	
 	// 書き込み
 	*UART0_DR = c;
+#endif
 	return 1;
 }
 

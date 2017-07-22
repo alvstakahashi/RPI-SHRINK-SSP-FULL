@@ -3,10 +3,10 @@
  
 #include "../rpi_type.h"
 
-#ifndef RPI2
-#define PHY_PERI_ADDR(x) (0x20000000 + (x))
-#else
+#if defined(RPI2) || defined(RPI3)
 #define PHY_PERI_ADDR(x) (0x3F000000 + (x))
+#else
+#define PHY_PERI_ADDR(x) (0x20000000 + (x))
 #endif
 
 // GPIO Peripheral

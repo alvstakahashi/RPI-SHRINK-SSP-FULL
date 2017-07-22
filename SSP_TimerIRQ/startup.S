@@ -5,10 +5,86 @@
 
 #include "target_asm.inc"
 
+#ifdef TOPPERS_USE_BCM2837
+#define CPSR_SVC_MODE	UINT_C(0x13)
+#define AOR				|
+/*
+ *  CPSRの割込み禁止ビット
+ */
+//#define CPSR_INT_MASK	UINT_C(0xc0)
+#define CPSR_IRQ_BIT	UINT_C(0x80)
+#define CPSR_FIQ_BIT	UINT_C(0x40)
+
+/*
+ *  FIQとIRQの両方を禁止するCPSRのビットパターン
+ */
+#define CPSR_FIQ_IRQ_BIT	(CPSR_FIQ_BIT AOR CPSR_IRQ_BIT)
+
+#endif
+
+
 @ startup
 	.global _start
 	.align
 _start:
+#ifdef TOPPERS_USE_BCM2837
+_initial_vector_start:
+	ldr	pc, _vec_Reset
+	ldr	pc, _vec_Undef
+	ldr	pc, _vec_SWI
+	ldr	pc, _vec_PrefAbort
+	ldr	pc, _vec_DataAbort
+	ldr	pc, _vec_Reserved
+	ldr	pc, _vec_IRQ
+	ldr	pc, _vec_FIQ
+_vec_Reset:		.word	_reset
+_vec_Undef:		.word	_hangup
+_vec_SWI:		.word	_hangup
+_vec_PrefAbort:	.word	_hangup
+_vec_DataAbort:	.word	_hangup
+_vec_Reserved:	.word	_hangup
+_vec_IRQ:		.word	_IRQ_iterrupt
+//_vec_IRQ:		.word	__kernel_default_int_handler_entry
+_vec_FIQ:		.word	_hangup
+_initial_vector_end:
+#endif
+_reset:
+#if defined(TOPPERS_USE_BCM2836) || defined(TOPPERS_USE_BCM2837)
+	/*
+	 *  セキュア解除
+	 *  config.txt に disable_commandline_tags=1 を記載すること．
+	 */
+	mrc p15, 0, r0, c1, c1, 0
+	orr r0, r0, #0x1
+	mcr p15, 0, r0, c1, c1, 0
+
+#if defined(TOPPERS_USE_BCM2837)
+	/*
+	 *  キャッシュ無効化
+	 *  ブートローダが有効にしているので無効化．
+	 */
+	mov r12,#0
+	mcr p15, 0, r12, c7, c10, 1
+	dsb
+	mov r12, #0
+	mcr p15, 0, r12, c7, c5, 0
+	mov r12, #0
+	mcr p15, 0, r12, c7, c5, 6
+	dsb
+	isb
+#endif
+
+	/* コア0のみ動作 */
+	mrc  p15, 0, r0, c0, c0, 5
+	mov  r1, #0xF
+	ands r0, r0, r1
+	beq  start_core0
+ALABEL(start_coren)
+	wfi
+	b    start_coren
+ALABEL(start_core0)
+#endif
+
 	// IRQモードのスタックポインタ設定
 	// IRQ,FIQ disable, Thumb disable, IRQ mode
 	ldr	r0, =0x000000d2
@@ -75,7 +151,32 @@ _IRQ_iterrupt:
 	rfeia sp!
 
 
+
+.globl PUT32
+PUT32:
+    str r1,[r0]
+    bx lr
+
+.globl GET32
+GET32:
+    ldr r0,[r0]
+    bx lr
+
+.globl dummy
+dummy:
+    bx lr
+
+.globl GETPC
+GETPC:
+    mov r0,lr
+    bx lr
+
+.globl GETCPSR
+GETCPSR:
+    mrs r0,cpsr
+    bx lr
 // ベクターテーブル設定用
+#ifndef TOPPERS_USE_BCM2837
 	.global  _initial_vector_start
 _initial_vector_start:
 	ldr	pc, _vec_Reset
@@ -99,3 +200,4 @@ _vec_FIQ:		.word	_hangup
 _initial_vector_end:
 	mov r0,r0
 // 最後に何か命令を置かないと_initial_vector_endラベルが消える
+#endif

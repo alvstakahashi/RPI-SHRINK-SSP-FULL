@@ -8,16 +8,15 @@
 #include "kernel_impl.h"
 #include "target_kernel.h"
 
-#ifdef RPIBPLUS
+#if defined(RPIBPLUS) || defined(RPI2) || defined(RPI3)
 #define	LED_ACT_PIN	47	//TYPE B PLUS
-#elif RPI2
-#define LED_ACT_PIN	47	// PRI2
 #else
 #define LED_ACT_PIN	16	//TYPE B
 #endif
 
 volatile int count = 0;
 
+#ifndef RPI3
 void set_vector_table(void){
 	extern void *_initial_vector_start;
 	extern void *_initial_vector_end;
@@ -35,7 +34,7 @@ void set_vector_table(void){
 		vec++;
 	}
 }
-
+#endif
 
 extern void _kernel_handler(INTHDR userhandler);
 extern void isig_tim(void);
@@ -43,6 +42,19 @@ extern void isig_tim(void);
 // IRQ割り込みハンドラ
 void IRQ_handler(void)
 {
+#ifdef RPI3
+	target_hrt_int_clear();
+
+	// Basic IRQ pendingをチェック
+//	if(*INTERRUPT_IRQ_BASIC_PENDING & 0x01 != 0)
+	{
+		// タイマー割り込み
+        // 割り込みフラグクリア
+        *TIMER_IRQ_CLR = 0;
+
+		_kernel_handler(isig_tim);
+	}
+#else
 	// Basic IRQ pendingをチェック
 	if(*INTERRUPT_IRQ_BASIC_PENDING & 0x01 != 0)
 	{
@@ -52,6 +64,7 @@ void IRQ_handler(void)
 
 		_kernel_handler(isig_tim);
 	}
+#endif
 	return;
 }
 
@@ -64,8 +77,10 @@ int setup(void)
 	pinMode(LED_ACT_PIN,OUTPUT);
 	digitalWrite(LED_ACT_PIN, LOW);
 
+#ifndef RPI3
 	// ベクタテーブルセット
 	set_vector_table();
+#endif
 
 	// すべての割り込み不許可
 	*INTERRUPT_DISABLE_BASIC_IRQS = 0xffffffff;
@@ -96,6 +111,9 @@ int setup(void)
 	// タイマー開始
 	// Timer enable, 32bit Timer
 	*TIMER_CONTROL |= 0x000000A2;
+#ifdef RPI3
+	target_hrt_initialize(0);
+#endif
 
 	// 割り込み許可
 	*INTERRUPT_ENABLE_BASIC_IRQS = 0x01;
@@ -124,12 +142,12 @@ void task2(intptr_t arg)
 	{
 		if ((toggle ^= 1) != 0)
 		{
-			printf("LED: ON count= %d\n",count);
+			printf("TASK2 LED: ON count= %d\n",count);
 			digitalWrite(LED_ACT_PIN, HIGH);
 		}
 		else
 		{
-			printf("LED: OFF count= %d\n",count);
+			printf("TASK2 LED: OFF count= %d\n",count);
 			digitalWrite(LED_ACT_PIN, LOW);
 		}
 		dly_tsk(1000);
