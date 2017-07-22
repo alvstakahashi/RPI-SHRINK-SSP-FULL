@@ -29,7 +29,7 @@ RPITYPE=RPIB-PLUS	//raspberryPi B+
 $ make RPITYPE=RPI2
 
 ビルド環境
-以下ULRのubuntu32bit環境でビルド可能です。
+以下URLのubuntu32bit環境でビルド可能です。
 http://dev.toppers.jp/trac_user/contrib/browser/CROS-TOOL-VMWARE
 
 
@@ -41,7 +41,7 @@ http://dev.toppers.jp/trac_user/contrib/browser/CROS-TOOL-VMWARE
 
 20150602版は正しく動かないので、削除しました。
 
-以下ULRのubuntu32bit環境でビルド可能です。
+以下URLのubuntu32bit環境でビルド可能です。
 http://dev.toppers.jp/trac_user/contrib/browser/CROS-TOOL-VMWARE
 
 Raspberry pi TYPE B+　対応にしました。
