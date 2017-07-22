@@ -14,6 +14,10 @@
 #define LED_ACT_PIN	16	//TYPE B
 #endif
 
+
+#define CORE0_IRQ_SOURCE 	0x40000060
+#define INT_SRC_GPU 		0x00000100			//なぜかタイマー割り込み
+
 volatile int count = 0;
 
 #ifndef RPI3
@@ -47,6 +51,7 @@ void IRQ_handler(void)
 
 	// Basic IRQ pendingをチェック
 //	if(*INTERRUPT_IRQ_BASIC_PENDING & 0x01 != 0)
+	if ((*(unsigned int*)CORE0_IRQ_SOURCE & INT_SRC_GPU) != 0)
 	{
 		// タイマー割り込み
         // 割り込みフラグクリア
