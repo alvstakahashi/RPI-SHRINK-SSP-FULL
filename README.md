@@ -1,6 +1,14 @@
 # RPI-SHRINK-SSP-FULL
 BareMetalで遊ぶRaspberryPi[達人出版」の環境にて、SSPのシュリンク版を移植したものです。
 
+2017.7.22
+raspberry-pi3 対応
+・makefile.rpi3 を利用すればRPI3用バイナリができます。
+・pi1 pi2 は従来のmakefileを利用
+・pi3 の場合は、config.txtに以下2行のみ記載してください
+disable_commandline_tags=1
+kernel_old=1
+ 
 
 20150720
 1.WAIT-SSP(dly_tskのあるカーネル)にしました。
