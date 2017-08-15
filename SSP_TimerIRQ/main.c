@@ -76,6 +76,7 @@ void IRQ_handler(void)
 
 int setup(void)
 {
+	initializeJtagPin();
 	rpi_init();
 
 	// 起動確認用

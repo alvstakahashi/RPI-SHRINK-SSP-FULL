@@ -54,9 +54,6 @@ _reset:
 	 *  セキュア解除
 	 *  config.txt に disable_commandline_tags=1 を記載すること．
 	 */
-	mrc p15, 0, r0, c1, c1, 0
-	orr r0, r0, #0x1
-	mcr p15, 0, r0, c1, c1, 0
 
 #if defined(TOPPERS_USE_BCM2837)
 	/*
@@ -92,7 +89,7 @@ ALABEL(start_core0)
 	ldr	sp, =0x00008000
 
 	// SVCモードのスタックポインタ設定
-	// IRQ,FIQ disable, Thumb disable, SVC mode 
+	// IRQ,FIQ disable, Thumb disable, SVC mode
 	ldr	r0, =0x000000d3
 	msr	cpsr, r0
 	ldr	sp, =0x06400000
@@ -105,13 +102,13 @@ ALABEL(start_core0)
 
 .global _hangup
 _hangup:
-	// IRQ,FIQ disable, Thumb disable, SVC mode 
+	// IRQ,FIQ disable, Thumb disable, SVC mode
 	ldr	r0, =0x000000d3
 	msr	cpsr, r0
 	b .
 
 _IRQ_iterrupt:
-	/* 
+	/*
 	 * IRQモードで実行される
 　　　　 * スタックはスーパーバイザーモードにコンテキスト
 	 * を保存
@@ -133,11 +130,11 @@ _IRQ_iterrupt:
 //	;      ------------------------------
 //	;     |            R0-R12            |  0　
 //	;      ------------------------------
-//	;     |          LR_svc              |  
+//	;     |          LR_svc              |
 //	;      ------------------------------
-//	;     |     例外前のPC(戻り先)       |  
+//	;     |     例外前のPC(戻り先)       |
 //	;      ------------------------------
-//	;     |        例外前のCPSR          |  
+//	;     |        例外前のCPSR          |
 //	;      ------------------------------
 //	;-------------------------------------------------------------
 	// C言語の割り込みハンドラ呼び出し

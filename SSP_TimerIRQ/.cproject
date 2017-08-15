@@ -1,41 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
 	<storageModule moduleId="org.eclipse.cdt.core.settings">
-		<cconfiguration id="cdt.managedbuild.toolchain.gnu.mingw.base.905890395">
-			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.toolchain.gnu.mingw.base.905890395" moduleId="org.eclipse.cdt.core.settings" name="デフォルト">
+		<cconfiguration id="0.547486862">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="0.547486862" moduleId="org.eclipse.cdt.core.settings" name="デフォルト">
 				<externalSettings/>
 				<extensions>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration buildProperties="" description="" id="cdt.managedbuild.toolchain.gnu.mingw.base.905890395" name="デフォルト" parent="org.eclipse.cdt.build.core.emptycfg">
-					<folderInfo id="cdt.managedbuild.toolchain.gnu.mingw.base.905890395.2009711089" name="/" resourcePath="">
-						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.1892219964" name="cdt.managedbuild.toolchain.gnu.mingw.base" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
-							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE" id="cdt.managedbuild.target.gnu.platform.mingw.base.1024373613" name="デバッグ・プラットフォーム" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
-							<builder command="make" id="cdt.managedbuild.builder.gnu.cross.580035598" managedBuildOn="false" superClass="cdt.managedbuild.builder.gnu.cross"/>
-							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.736033467" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
-								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1354218920" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
-							</tool>
-							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.947250604" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
-							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.1462817408" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base">
-								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1639261641" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
-							</tool>
-							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.874641802" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base">
-								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1564850534" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
-							</tool>
-							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.base.1639218973" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base"/>
-							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.1755660032" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base">
-								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1847061416" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
-									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
-									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
-								</inputType>
-							</tool>
+				<configuration buildProperties="" description="" id="0.547486862" name="デフォルト" parent="org.eclipse.cdt.build.core.prefbase.cfg">
+					<folderInfo id="0.547486862." name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.1972988662" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE" id="cdt.managedbuild.target.gnu.platform.mingw.base.1196277154" name="デバッグ・プラットフォーム" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
+							<builder id="cdt.managedbuild.builder.gnu.cross.488535797" managedBuildOn="false" superClass="cdt.managedbuild.builder.gnu.cross"/>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.1903152049" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.1945341872" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.2056197906" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.351421564" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.base.1479101342" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.530604607" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base"/>
 						</toolChain>
 					</folderInfo>
 				</configuration>
@@ -44,15 +33,18 @@
 		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-		<project id="SSP_TimerIRQ.null.1779984168" name="SSP_TimerIRQ"/>
+		<project id="SSP_TimerIRQ-RPI3-JTAG.null.1407220845" name="SSP_TimerIRQ-RPI3-JTAG"/>
 	</storageModule>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="0.547486862">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope" versionNumber="2">
 		<configuration configurationName="デフォルト">
-			<resource resourceType="PROJECT" workspacePath="/SSP_TimerIRQ"/>
+			<resource resourceType="PROJECT" workspacePath="/SSP_TimerIRQ-RPI3-JTAG"/>
 		</configuration>
 	</storageModule>
 </cproject>
