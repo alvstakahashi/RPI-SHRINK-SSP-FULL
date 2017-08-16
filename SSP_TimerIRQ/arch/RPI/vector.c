@@ -88,11 +88,11 @@ void __attribute__((interrupt("IRQ")))
 IRQ_handler(void)
 {
 	interrpt_IN();			//割り込み入り口　IRQ --> SVC
-	target_hrt_int_clear();
+//	target_hrt_int_clear();
 
 	// Basic IRQ pendingをチェック
-//	if(*INTERRUPT_IRQ_BASIC_PENDING & 0x01 != 0)
-	if ((*(unsigned int*)CORE0_IRQ_SOURCE & INT_SRC_GPU) != 0)
+	if(*INTERRUPT_IRQ_BASIC_PENDING & 0x01 != 0)
+//	if ((*(unsigned int*)CORE0_IRQ_SOURCE & INT_SRC_GPU) != 0)
 	{
 		// タイマー割り込み
         // 割り込みフラグクリア

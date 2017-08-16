@@ -21,7 +21,6 @@ OBJS+= rpi_lib/bss/clearbss.o
 
 #ssp liblary
 OBJS+= ssp/kernel_cfg.o ssp/startup.o ssp/task.o ssp/task_manage.o
-OBJS += arch/RPI3/chip_timer.o
 OBJS += arch/RPI/vector.o 
 
 #ssp include

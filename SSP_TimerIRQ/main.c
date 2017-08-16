@@ -31,10 +31,10 @@ int setup(void)
 	digitalWrite(LED_ACT_PIN, LOW);
 
 	// すべての割り込み不許可
-	*INTERRUPT_DISABLE_BASIC_IRQS = 0xffffffff;
-	*INTERRUPT_DISABLE_IRQS1 = 0xffffffff;
-	*INTERRUPT_DISABLE_IRQS2 = 0xffffffff;
-	*INTERRUPT_FIQ_CTRL = 0;
+//	*INTERRUPT_DISABLE_BASIC_IRQS = 0xffffffff;
+//	*INTERRUPT_DISABLE_IRQS1 = 0xffffffff;
+//	*INTERRUPT_DISABLE_IRQS2 = 0xffffffff;
+//	*INTERRUPT_FIQ_CTRL = 0;
 
 	// タイマ割り込み設定
 	*INTERRUPT_ENABLE_BASIC_IRQS = 0x01;
@@ -59,15 +59,12 @@ int setup(void)
 	// タイマー開始
 	// Timer enable, 32bit Timer
 	*TIMER_CONTROL |= 0x000000A2;
-#ifdef RPI3
-	target_hrt_initialize(0);
-#endif
 
 	// 割り込み許可
 	*INTERRUPT_ENABLE_BASIC_IRQS = 0x01;
 
 	// IRQ許可
-	enable_IRQ();
+//	enable_IRQ();
 
 	sta_ker();
 
