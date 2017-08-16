@@ -1,6 +1,15 @@
 # RPI-SHRINK-SSP-FULL
 BareMetalで遊ぶRaspberryPi[達人出版」の環境にて、SSPのシュリンク版を移植したものです。
 
+2017.8.16
+branch forRPI3-JTAG を作成
+待ちあり版、RPI3専用、aarch32仕様、JTAG対応
+GCCのattribute(interrupt)を使いさらにアセンブリ言語の部分を
+縮小した。
+現在startup部分のみ
+ベクターテーブルおよび割り込みはCで記載
+
+
 2017.7.22
 raspberry-pi3 対応
 ・makefile.rpi3 を利用すればRPI3用バイナリができます。
