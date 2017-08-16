@@ -20,59 +20,6 @@
 
 volatile int count = 0;
 
-#ifndef RPI3
-void set_vector_table(void){
-	extern void *_initial_vector_start;
-	extern void *_initial_vector_end;
-	// volatileをつけないと最適化に消される（涙目）
-	volatile unsigned int *vec = 0;
-	volatile unsigned int *p;
-	volatile unsigned int *s = (unsigned int *)&_initial_vector_start;
-	volatile unsigned int *e = (unsigned int *)&_initial_vector_end;
-
-	printf("Vector table check\n");
-	printf("Addr : Hex\n");
-	for (p = s; p < e; p++) {
-		*vec = *p;
-		printf("0x%02x : 0x%08x\n",vec,*vec);
-		vec++;
-	}
-}
-#endif
-
-extern void _kernel_handler(INTHDR userhandler);
-extern void isig_tim(void);
-
-// IRQ割り込みハンドラ
-void IRQ_handler_user(void)
-{
-#ifdef RPI3
-	target_hrt_int_clear();
-
-	// Basic IRQ pendingをチェック
-//	if(*INTERRUPT_IRQ_BASIC_PENDING & 0x01 != 0)
-	if ((*(unsigned int*)CORE0_IRQ_SOURCE & INT_SRC_GPU) != 0)
-	{
-		// タイマー割り込み
-        // 割り込みフラグクリア
-        *TIMER_IRQ_CLR = 0;
-
-		_kernel_handler(isig_tim);
-	}
-#else
-	// Basic IRQ pendingをチェック
-	if(*INTERRUPT_IRQ_BASIC_PENDING & 0x01 != 0)
-	{
-		// タイマー割り込み
-        // 割り込みフラグクリア
-        *TIMER_IRQ_CLR = 0;
-
-		_kernel_handler(isig_tim);
-	}
-#endif
-	return;
-}
-
 
 int setup(void)
 {
@@ -82,11 +29,6 @@ int setup(void)
 	// 起動確認用
 	pinMode(LED_ACT_PIN,OUTPUT);
 	digitalWrite(LED_ACT_PIN, LOW);
-
-#ifndef RPI3
-	// ベクタテーブルセット
-	set_vector_table();
-#endif
 
 	// すべての割り込み不許可
 	*INTERRUPT_DISABLE_BASIC_IRQS = 0xffffffff;

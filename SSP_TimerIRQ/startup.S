@@ -102,29 +102,3 @@ GETPC:
 GETCPSR:
     mrs r0,cpsr
     bx lr
-// ベクターテーブル設定用
-#ifndef TOPPERS_USE_BCM2837
-	.global  _initial_vector_start
-_initial_vector_start:
-	ldr	pc, _vec_Reset
-	ldr	pc, _vec_Undef
-	ldr	pc, _vec_SWI
-	ldr	pc, _vec_PrefAbort
-	ldr	pc, _vec_DataAbort
-	ldr	pc, _vec_Reserved
-	ldr	pc, _vec_IRQ
-	ldr	pc, _vec_FIQ
-_vec_Reset:		.word	_start
-_vec_Undef:		.word	_hangup
-_vec_SWI:		.word	_hangup
-_vec_PrefAbort:	.word	_hangup
-_vec_DataAbort:	.word	_hangup
-_vec_Reserved:	.word	_hangup
-_vec_IRQ:		.word	_IRQ_iterrupt
-//_vec_IRQ:		.word	__kernel_default_int_handler_entry
-_vec_FIQ:		.word	_hangup
-	.global  _initial_vector_end
-_initial_vector_end:
-	mov r0,r0
-// 最後に何か命令を置かないと_initial_vector_endラベルが消える
-#endif
