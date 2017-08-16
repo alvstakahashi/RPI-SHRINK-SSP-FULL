@@ -3,8 +3,10 @@ ENTRY(_start)
 SECTIONS
 {
 	. = 0x0;
-
-	.text : { *(.text*) }
+	.text : {
+                *(.rodata.i)
+                *(.rodata.v)
+				 *(.text*) }
 	. = ALIGN(4);
 
 	__rodata_start = .;

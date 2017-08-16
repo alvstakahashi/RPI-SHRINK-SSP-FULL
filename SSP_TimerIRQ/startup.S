@@ -27,27 +27,6 @@
 	.global _start
 	.align
 _start:
-#ifdef TOPPERS_USE_BCM2837
-_initial_vector_start:
-	ldr	pc, _vec_Reset
-	ldr	pc, _vec_Undef
-	ldr	pc, _vec_SWI
-	ldr	pc, _vec_PrefAbort
-	ldr	pc, _vec_DataAbort
-	ldr	pc, _vec_Reserved
-	ldr	pc, _vec_IRQ
-	ldr	pc, _vec_FIQ
-_vec_Reset:		.word	_reset
-_vec_Undef:		.word	_hangup
-_vec_SWI:		.word	_hangup
-_vec_PrefAbort:	.word	_hangup
-_vec_DataAbort:	.word	_hangup
-_vec_Reserved:	.word	_hangup
-_vec_IRQ:		.word	_IRQ_iterrupt
-//_vec_IRQ:		.word	__kernel_default_int_handler_entry
-_vec_FIQ:		.word	_hangup
-_initial_vector_end:
-#endif
 _reset:
 #if defined(TOPPERS_USE_BCM2836) || defined(TOPPERS_USE_BCM2837)
 	/*
@@ -99,55 +78,6 @@ ALABEL(start_core0)
 
 	// 終了（無限ループ）
 	b .
-
-.global _hangup
-_hangup:
-	// IRQ,FIQ disable, Thumb disable, SVC mode
-	ldr	r0, =0x000000d3
-	msr	cpsr, r0
-	b .
-
-_IRQ_iterrupt:
-	/*
-	 * IRQモードで実行される
-　　　　 * スタックはスーパーバイザーモードにコンテキスト
-	 * を保存
-	 */
-	sub   lr, lr, #4 			/* 戻り先アドレス  */
-	srsdb #CPSR_SVC! 			/*lr(戻り先) spsr(cpsr_svc)を	*/
-						/* スーパーバイザーモードのスタックへ保存	*/
-
-						/*
-						 *  割込み前のモード(スーパーバイザーモード)へ
-						 *  移行し，コンテキストを保存する
-						 */
-	msr   cpsr_cxsf, #(CPSR_SVC AOR CPSR_CPULOCK AOR CPSR_ALWAYS_SET)
-	stmfd sp!, {r0-r12,lr}				/* 全部保存する								*/
-//	;----------------------------------------------------------
-//	;ここまでで、スーパーバイザースタックに以下のように積まれる
-//	;
-//	;           例外フレーム(ARMv6-7)            offset
-//	;      ------------------------------
-//	;     |            R0-R12            |  0　
-//	;      ------------------------------
-//	;     |          LR_svc              |
-//	;      ------------------------------
-//	;     |     例外前のPC(戻り先)       |
-//	;      ------------------------------
-//	;     |        例外前のCPSR          |
-//	;      ------------------------------
-//	;-------------------------------------------------------------
-	// C言語の割り込みハンドラ呼び出し
-	bl	IRQ_handler
-	/*
-	 *  割込み処理からのリターンにより，CPUロック解除状態に移行するよ
-	 *  うにする．ARMはCPSRのIRQビットによってCPUロック状態を表してい
-	 *  るため，そのままリターンすればよい．
-	 */
-	ldmfd sp!, {r0-r12,lr}			//; 全部戻す
-	rfeia sp!
-
-
 
 .globl PUT32
 PUT32:

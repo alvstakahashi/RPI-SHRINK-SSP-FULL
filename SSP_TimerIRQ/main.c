@@ -44,7 +44,7 @@ extern void _kernel_handler(INTHDR userhandler);
 extern void isig_tim(void);
 
 // IRQ割り込みハンドラ
-void IRQ_handler(void)
+void IRQ_handler_user(void)
 {
 #ifdef RPI3
 	target_hrt_int_clear();
