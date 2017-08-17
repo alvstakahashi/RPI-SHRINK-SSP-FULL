@@ -35,11 +35,13 @@ CFLAGS+= -ffreestanding
 CFLAGS += -O0 -g -gdwarf-2
 CFLAGS += -DRPI3 -DTOPPERS_USE_BCM2837
 
+LDFLAGS = -Wl,-Map=kernel7.map
+
 ########################
 all:	kernel7.img
 
 kernel7.elf:	$(STARTUP) $(OBJS)
-	$(LD) -static -nostartfiles -T kernel.lds $^ -o $@  $(ULIBDIR) $(ULIBS) $(LIB) -lc -lm -lgcc 
+	$(LD) -static -nostartfiles -T kernel.lds $^ $(LDFLAGS) -o $@  $(ULIBDIR) $(ULIBS) $(LIB) -lc -lm -lgcc 
 	$(OBJDUMP) -D kernel7.elf > kernel7.disas
 	$(SIZE) kernel7.elf > kernel7.size
 	$(READELF) -a kernel7.elf > kernel7.readelf

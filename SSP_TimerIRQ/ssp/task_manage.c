@@ -85,7 +85,7 @@ act_tsk(ID tskid)
 	uint_t	tskpri;
 	
 	LOG_ACT_TSK_ENTER(tskid);
-	CHECK_TSKCTX_UNL();
+//	CHECK_TSKCTX_UNL();
 	CHECK_TSKID_SELF(tskid);
 	
 	tskpri = get_ipri_self(tskid);
@@ -122,7 +122,7 @@ iact_tsk(ID tskid)
 	uint_t	ipri;
 	
 	LOG_IACT_TSK_ENTER(tskid);
-	CHECK_INTCTX_UNL();
+//	CHECK_INTCTX_UNL();
 	CHECK_TSKID(tskid);
 	ipri = get_ipri(tskid);
 

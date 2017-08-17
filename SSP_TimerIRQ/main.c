@@ -50,8 +50,8 @@ int setup(void)
 //	*TIMER_LOAD = 4000000-1;
 //	*TIMER_RELOAD = 4000000-1;
 	// タイマー値設定(1msec)
-	*TIMER_LOAD = 1000-1;
-	*TIMER_RELOAD = 1000-1;
+	*TIMER_LOAD = 10-1;
+	*TIMER_RELOAD = 10-1;
 
 	// 割り込みフラグをクリア
 	*TIMER_IRQ_CLR = 0;
@@ -76,7 +76,7 @@ void main(intptr_t arg)
 {
 	printf("main here\n");
 	act_tsk(TASK3_ID);
-	act_tsk(TASK2_ID);	
+	act_tsk(TASK2_ID);
 	printf("main end\n");
 }
 void task2(intptr_t arg)
@@ -95,7 +95,7 @@ void task2(intptr_t arg)
 			printf("TASK2 LED: OFF count= %d\n",count);
 			digitalWrite(LED_ACT_PIN, LOW);
 		}
-		dly_tsk(1000);
+		dly_tsk(100000);
 	}
 }
 
@@ -104,7 +104,7 @@ void task3(void)
 	printf("task3-----------------\n");
 	for(;;)
 	{
-		dly_tsk(500);
+		dly_tsk(50000);
 		count++;
 		printf("task3-----------------\n");
 	}

@@ -15,7 +15,7 @@ extern void _kernel_handler(INTHDR userhandler);
 extern void isig_tim(void);
 
 #define CORE0_IRQ_SOURCE 	0x40000060
-#define INT_SRC_GPU 		0x00000100			//‚È‚º‚©ƒ^ƒCƒ}[Š„‚èž‚Ý
+#define INT_SRC_GPU 		0x00000100			//ï¿½È‚ï¿½ï¿½ï¿½ï¿½^ï¿½Cï¿½}ï¿½[ï¿½ï¿½ï¿½èžï¿½ï¿½
 
 
 #define	NOP	0xe1a00000
@@ -32,7 +32,7 @@ extern void	IRQ_handler(void);
 const long int instructionTable[]	/* Address 0x0000 0000 */
 	__attribute__ ((section (".rodata.i"))) = {
 	JMP,	//0x00:	ldr pc, [pc, #24]	; 0x20	reset
-	JMP,	//0x04:				; 0x24 
+	JMP,	//0x04:				; 0x24
 	JMP,	//0x08:				; 0x28
 	JMP,	//0x0c:				; 0x2C
 	JMP,	//0x10:				; 0x30
@@ -45,9 +45,9 @@ void (*const vectorTable[])(void)	/* Address 0x0000 0020*/
 	__attribute__ ((section (".rodata.v"))) = {
 	_start,			// 0x20	Reset
 	undefinedInstruction,	// 0x24 Undefined Instruction
-	softwareInterrupt,	// 0x28 Software Interrupt 
+	softwareInterrupt,	// 0x28 Software Interrupt
 	prefetchAbort,		// 0x2C Prefetch Abort
-	dataAbort,		// 0x30 Data Abort 
+	dataAbort,		// 0x30 Data Abort
 	0x00,			// 0x34 Reserved
 	IRQ_handler,		// 0x38 IRQ
 	fastInterrupt		// 0x3C FIQ
@@ -83,22 +83,22 @@ void  fastInterrupt(void)
 
 
 
-// IRQŠ„‚èž‚Ýƒnƒ“ƒhƒ‰
-void __attribute__((interrupt("IRQ"))) 
+// IRQï¿½ï¿½ï¿½èžï¿½Ýƒnï¿½ï¿½ï¿½hï¿½ï¿½
+void __attribute__((interrupt("IRQ")))
 IRQ_handler(void)
 {
-	interrpt_IN();			//Š„‚èž‚Ý“ü‚èŒû@IRQ --> SVC
+//	interrpt_IN();			//ï¿½ï¿½ï¿½èžï¿½Ý“ï¿½ï¿½ï¿½@IRQ --> SVC
 //	target_hrt_int_clear();
 
-	// Basic IRQ pending‚ðƒ`ƒFƒbƒN
+	// Basic IRQ pendingï¿½ï¿½ï¿½`ï¿½Fï¿½bï¿½N
 	if(*INTERRUPT_IRQ_BASIC_PENDING & 0x01 != 0)
 //	if ((*(unsigned int*)CORE0_IRQ_SOURCE & INT_SRC_GPU) != 0)
 	{
-		// ƒ^ƒCƒ}[Š„‚èž‚Ý
-        // Š„‚èž‚Ýƒtƒ‰ƒOƒNƒŠƒA
+		// ï¿½^ï¿½Cï¿½}ï¿½[ï¿½ï¿½ï¿½èžï¿½ï¿½
+        // ï¿½ï¿½ï¿½èžï¿½Ýƒtï¿½ï¿½ï¿½Oï¿½Nï¿½ï¿½ï¿½A
         *TIMER_IRQ_CLR = 0;
 
 		_kernel_handler(isig_tim);
 	}
-	interrpt_OUT();			//Š„‚èž‚ÝoŒû SVC --> IRQ
+//	interrpt_OUT();			//ï¿½ï¿½ï¿½èžï¿½Ýoï¿½ï¿½ SVC --> IRQ
 }

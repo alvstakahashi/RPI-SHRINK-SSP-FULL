@@ -65,7 +65,7 @@ ALABEL(start_core0)
 	// IRQ,FIQ disable, Thumb disable, IRQ mode
 	ldr	r0, =0x000000d2
 	msr	cpsr, r0
-	ldr	sp, =0x00008000
+	ldr	sp, =0x06000000
 
 	// SVCモードのスタックポインタ設定
 	// IRQ,FIQ disable, Thumb disable, SVC mode
