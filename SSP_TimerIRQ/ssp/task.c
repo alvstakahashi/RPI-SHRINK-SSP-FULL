@@ -317,17 +317,6 @@ void make_ctx(uint_t ipri_prm)
 //	t_lock_cpu();
 	if (setjmp(jmpp) == 0)	//ここに戻り用
 	{
-		//続き
-		// タスクスタックに切り替える
-		task_stackadr = TOPPERS_TASKSTKPT(ipri);
-		set_task_stack(task_stackadr);
-#if 0
-		__asm__( "mov sp,%[Rs1]"
-				 ::[Rs1]"r"(task_stackadr));
-		__asm__("mov   %[Rd],sp"
-				:[Rd]"=r"(debugtemp));
-		printf("stack data = %08x\n",debugtemp);
-#endif		
 		if (setjmp(task_ctx[ipri]) == 0)
 		{
 			/*登録した場合*/
@@ -339,6 +328,12 @@ void make_ctx(uint_t ipri_prm)
 			ipri = runtsk_ipri;			//longjmpで戻って来た時は不定
 			/* タスク起動時 */
 			ipl_maskClear();
+
+			//続き
+			// タスクスタックに切り替える
+			task_stackadr = TOPPERS_TASKSTKPT(ipri);
+			set_task_stack(task_stackadr);
+
 			t_unlock_cpu();
 			/* タスクに来ました*/
 			/* タスク実行開始 */
