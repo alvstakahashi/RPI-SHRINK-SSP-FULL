@@ -1,6 +1,18 @@
 # RPI-SHRINK-SSP-FULL
 BareMetalで遊ぶRaspberryPi[達人出版」の環境にて、SSPのシュリンク版を移植したものです。
 
+2017.8.18 
+branch forRPI3-JTAG を更新
+ラジコン制御用にタイマー周期を10usにした。
+その他バグ修正
+1.割り込み時の割り込み許可禁止箇所の見直し
+2.割り込み用スタックエリアの使用。基本カーネルはIRQモード、タスクはSVCモードとした
+3.GCCのattribute(interrupt)ではlrが保存されないので、保存するようにした。
+　別紙　lrレジスタの保存について.txt に経緯を記載
+
+
+
+
 2017.8.16
 branch forRPI3-JTAG を作成
 待ちあり版、RPI3専用、aarch32仕様、JTAG対応
