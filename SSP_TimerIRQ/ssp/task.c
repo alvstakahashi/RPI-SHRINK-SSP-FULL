@@ -9,34 +9,34 @@
  *  Copyright (C) 2010 by Naoki Saito
  *             Nagoya Municipal Industrial Research Institute, JAPAN
  *  Copyright (C) 2010 by Meika Sugimoto
- *
- *  ��L���쌠�҂́C�ȉ��� (1)�`(4) �̏����𖞂����ꍇ�Ɍ���C�{�\�t�g�E�F
- *  �A�i�{�\�t�g�E�F�A����ς������̂��܂ށD�ȉ������j���g�p�E�����E��ρE
- *  �Ĕz�z�i�ȉ��C���p�ƌĂԁj���邱�Ƃ𖳏��ŋ����D
- *  (1) �{�\�t�g�E�F�A���\�[�X�R�[�h�̌`�ŗ��p����ꍇ�ɂ́C��L�̒��쌠
- *      �\���C���̗��p��������щ��L�̖��ۏ؋K�肪�C���̂܂܂̌`�Ń\�[�X
- *      �R�[�h���Ɋ܂܂�Ă��邱�ƁD
- *  (2) �{�\�t�g�E�F�A���C���C�u�����`���ȂǁC���̃\�t�g�E�F�A�J���Ɏg�p
- *      �ł���`�ōĔz�z����ꍇ�ɂ́C�Ĕz�z�ɔ����h�L�������g�i���p�҃}
- *      �j���A���Ȃǁj�ɁC��L�̒��쌠�\���C���̗��p��������щ��L�̖���
- *      �؋K����f�ڂ��邱�ƁD
- *  (3) �{�\�t�g�E�F�A���C�@��ɑg�ݍ��ނȂǁC���̃\�t�g�E�F�A�J���Ɏg�p
- *      �ł��Ȃ��`�ōĔz�z����ꍇ�ɂ́C���̂����ꂩ�̏����𖞂������ƁD
- *    (a) �Ĕz�z�ɔ����h�L�������g�i���p�҃}�j���A���Ȃǁj�ɁC��L�̒���
- *        ���\���C���̗��p��������щ��L�̖��ۏ؋K����f�ڂ��邱�ƁD
- *    (b) �Ĕz�z�̌`�Ԃ��C�ʂɒ�߂��@�ɂ���āCTOPPERS�v���W�F�N�g�ɕ�
- *        �����邱�ƁD
- *  (4) �{�\�t�g�E�F�A�̗��p�ɂ�蒼�ړI�܂��͊ԐړI�ɐ����邢���Ȃ鑹�Q
- *      ������C��L���쌠�҂����TOPPERS�v���W�F�N�g��Ɛӂ��邱�ƁD�܂��C
- *      �{�\�t�g�E�F�A�̃��[�U�܂��̓G���h���[�U����̂����Ȃ闝�R�Ɋ��
- *      ������������C��L���쌠�҂����TOPPERS�v���W�F�N�g��Ɛӂ��邱�ƁD
- *
- *  �{�\�t�g�E�F�A�́C���ۏ؂Œ񋟂���Ă�����̂ł���D��L���쌠�҂���
- *  ��TOPPERS�v���W�F�N�g�́C�{�\�t�g�E�F�A�Ɋւ��āC����̎g�p�ړI�ɑ΂�
- *  ��K�������܂߂āC�����Ȃ�ۏ؂��s��Ȃ��D�܂��C�{�\�t�g�E�F�A�̗��p
- *  �ɂ�蒼�ړI�܂��͊ԐړI�ɐ����������Ȃ鑹�Q�Ɋւ��Ă��C���̐ӔC��
- *  ��Ȃ��D
- *
+ * 
+ *  上記著作権者は，以下の (1)～(4) の条件を満たす場合に限り，本ソフトウェ
+ *  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改変・
+ *  再配布（以下，利用と呼ぶ）することを無償で許諾する．
+ *  (1) 本ソフトウェアをソースコードの形で利用する場合には，上記の著作権
+ *      表示，この利用条件および下記の無保証規定が，そのままの形でソース
+ *      コード中に含まれていること．
+ *  (2) 本ソフトウェアを，ライブラリ形式など，他のソフトウェア開発に使用
+ *      できる形で再配布する場合には，再配布に伴うドキュメント（利用者マ
+ *      ニュアルなど）に，上記の著作権表示，この利用条件および下記の無保
+ *      証規定を掲載すること．
+ *  (3) 本ソフトウェアを，機器に組み込むなど，他のソフトウェア開発に使用
+ *      できない形で再配布する場合には，次のいずれかの条件を満たすこと．
+ *    (a) 再配布に伴うドキュメント（利用者マニュアルなど）に，上記の著作
+ *        権表示，この利用条件および下記の無保証規定を掲載すること．
+ *    (b) 再配布の形態を，別に定める方法によって，TOPPERSプロジェクトに報
+ *        告すること．
+ *  (4) 本ソフトウェアの利用により直接的または間接的に生じるいかなる損害
+ *      からも，上記著作権者およびTOPPERSプロジェクトを免責すること．また，
+ *      本ソフトウェアのユーザまたはエンドユーザからのいかなる理由に基づ
+ *      く請求からも，上記著作権者およびTOPPERSプロジェクトを免責すること．
+ * 
+ *  本ソフトウェアは，無保証で提供されているものである．上記著作権者およ
+ *  びTOPPERSプロジェクトは，本ソフトウェアに関して，特定の使用目的に対す
+ *  る適合性も含めて，いかなる保証も行わない．また，本ソフトウェアの利用
+ *  により直接的または間接的に生じたいかなる損害に関しても，その責任を負
+ *  わない．
+ * 
  */
 #include <stddef.h>
 #include <limits.h>
@@ -50,7 +50,7 @@
 
 
 /*
- *  �g���[�X���O�}�N���̃f�t�H���g��`
+ *  トレースログマクロのデフォルト定義
  */
 
 #ifndef LOG_DSP_ENTER
@@ -62,9 +62,9 @@
 #endif /* LOG_DSP_ENTER */
 
 
-extern const intptr_t	tinib_exinf[];			/* �^�X�N�̊g����� */
-extern const TASK    	tinib_task[];			/* �^�X�N�̋N���Ԓn */
-extern const uint_t  	tinib_epriority[];		/* �^�X�N�̎��s���D��x��x�i�����\���j */
+extern const intptr_t	tinib_exinf[];			/* タスクの拡張情報 */
+extern const TASK    	tinib_task[];			/* タスクの起動番地 */
+extern const uint_t  	tinib_epriority[];		/* タスクの実行時優先度先度（内部表現） */
 
 
 
@@ -72,37 +72,37 @@ extern const uint_t  	tinib_epriority[];		/* �^�X�N�̎��s���D�
 
 #ifdef TOPPERS_tskini
 /*-------------------------------------------
- * �f�B�X�p�b�`���[�̃R���e�L�X�g
+ * ディスパッチャーのコンテキスト
  */
-jmp_buf disp_ctx;		//�f�B�X�p�b�`���R���e�L�X�g
+jmp_buf disp_ctx;		//ディスパッチャコンテキスト
 
 /*
- * ���s��ԃ^�X�N�̋N�����D��x
+ * 実行状態タスクの起動時優先度
  */
 uint_t runtsk_ipri;
 
 /*
- *  ���f�B�L���[�T�[�`�̂��߂̃r�b�g�}�b�v
+ *  レディキューサーチのためのビットマップ
  */
 volatile uint_t	ready_primap;
 
 /*
- *  �^�X�N�f�B�X�p�b�`�N���v���t���O
+ *  タスクディスパッチ起動要求フラグ
  */
 bool_t	reqflg;
 
 /*
- *  �f�B�X�p�b�`�֎~���
+ *  ディスパッチ禁止状態
  */
 bool_t	disdsp;
 
-/*
- * �O��@���stask
+/* 
+ * 前回　実行task
  */
 intptr_t last_ipri;
 
 /*
- *  read_primap�̏���l
+ *  read_primapの初期値
  */
 extern const uint_t init_rdypmap;
 
@@ -112,13 +112,13 @@ extern const uint_t init_rdypmap;
 #ifdef TOPPERS_get_ipri_self
 
 /*
- *  �^�X�NID����N�����D��x�����o�����߂̃}�N��
+ *  タスクIDから起動時優先度を取り出すためのマクロ
  */
 uint_t
 get_ipri_self(ID tskid)
 {
 	uint_t inipri;
-
+	
 	if(tskid != TSK_SELF)
 	{
 		inipri = (uint_t)((tskid) - TMIN_TSKID);
@@ -144,22 +144,22 @@ get_ipri(ID tskid)
 #endif /* TOPPERS_get_ipri */
 
 /*
- *  �r�b�g�}�b�v�T�[�`�֐�
+ *  ビットマップサーチ関数
  *
- *  bitmap����1�̃r�b�g�̓��C�ł����ʁi�E�j�̂��̂��T�[�`���C���̃r�b
- *  �g�ԍ���Ԃ��D�r�b�g�ԍ��́C�ŉ��ʃr�b�g��0�Ƃ���Dbitmap��0���w��
- *  ���Ă͂Ȃ�Ȃ��D���̊֐��ł́Cbitmap��8�r�b�g�ł��邱�Ƃ����肵�C
- *  uint8_t�^�Ƃ��Ă���D
+ *  bitmap内の1のビットの内，最も下位（右）のものをサーチし，そのビッ
+ *  ト番号を返す．ビット番号は，最下位ビットを0とする．bitmapに0を指定
+ *  してはならない．この関数では，bitmapが8ビットであることを仮定し，
+ *  uint8_t型としている．
  *
- *  �r�b�g�T�[�`���߂����v���Z�b�T�ł́C�r�b�g�T�[�`���߂��g���悤��
- *  ��������������ǂ��ꍇ������D���̂悤�ȏꍇ�ɂ́C�^�[�Q�b�g
- *  �ˑ����Ńr�b�g�T�[�`���߂��g����bitmap_search���`���C
- *  OMIT_BITMAP_SEARCH���}�N����`����΂悢�D�܂��C�r�b�g�T�[�`���߂�
- *  �T�[�`���t�Ȃǂ̗��R�ŗD��x�ƃr�b�g�Ƃ̑Ή���ύX�������ꍇ��
- *  �́CPRIMAP_BIT���}�N����`����΂悢�D
+ *  ビットサーチ命令を持つプロセッサでは，ビットサーチ命令を使うように
+ *  書き直した方が効率が良い場合がある．このような場合には，ターゲット
+ *  依存部でビットサーチ命令を使ったbitmap_searchを定義し，
+ *  OMIT_BITMAP_SEARCHをマクロ定義すればよい．また，ビットサーチ命令の
+ *  サーチ方向が逆などの理由で優先度とビットとの対応を変更したい場合に
+ *  は，PRIMAP_BITをマクロ定義すればよい．
  *
- *  �܂��C�W�����C�u������ffs������Ȃ�C���̂悤�ɒ�`���ĕW�����C�u
- *  �������g��������ǂ��\��������D
+ *  また，標準ライブラリにffsがあるなら，次のように定義して標準ライブ
+ *  ラリを使った方が効率が良い可能性もある．
  *		#define	bitmap_search(bitmap) (ffs(bitmap) - 1)
  */
 #ifndef PRIMAP_BIT
@@ -173,7 +173,7 @@ get_ipri(ID tskid)
 
 
 /*
- *  �����ݔ����񐔂�ۑ�����ϐ�
+ *  割込み発生回数を保存する変数
  */
 volatile  uint16_t	intnest;
 
@@ -198,52 +198,52 @@ static  uint_t bitmap_search(uint_t bitmap)
 #endif /* OMIT_BITMAP_SEARCH */
 
 /*
- *  �D��x�r�b�g�}�b�v���󂩂̃`�F�b�N
+ *  優先度ビットマップが空かのチェック
  */
-#pragma inline (primap_empty)
+#pragma inline (primap_empty) 
 static bool_t primap_empty(void)
 {
 	return (ready_primap == 0U);
 }
 
 /*
- *  �w�肵���D��x�̗D��x�r�b�g�}�b�v���Z�b�g����Ă��邩�ǂ����̃`�F�b�N
+ *  指定した優先度の優先度ビットマップがセットされているかどうかのチェック
  */
-#pragma inline (primap_test)
+#pragma inline (primap_test) 
 static bool_t primap_test(uint_t pri)
 {
 	return ((ready_primap & PRIMAP_BIT(pri)) != 0U);
 }
 
 /*
- *  �D��x�r�b�g�}�b�v�̃T�[�`
+ *  優先度ビットマップのサーチ
  */
-#pragma inline (primap_search)
+#pragma inline (primap_search) 
 static uint_t primap_search(void)
 {
 	return bitmap_search((uint_t)ready_primap);
 }
 
 /*
- *  �D��x�r�b�g�}�b�v�̃Z�b�g
+ *  優先度ビットマップのセット
  */
-#pragma inline (primap_set)
+#pragma inline (primap_set) 
 static void primap_set(uint_t pri)
 {
 	ready_primap |= PRIMAP_BIT(pri);
 }
 
 /*
- *  �D��x�r�b�g�}�b�v�̃N���A
+ *  優先度ビットマップのクリア
  */
-#pragma inline (primap_clear)
+#pragma inline (primap_clear) 
 static void primap_clear(uint_t pri)
 {
 	ready_primap &= ~PRIMAP_BIT(pri);
 }
 
 /*
- *  �ō��D�揇�ʃ^�X�N�̃T�[�`
+ *  最高優先順位タスクのサーチ
  */
 #define TOPPERS_tsksched
 
@@ -258,9 +258,9 @@ search_schedtsk(void)
 #endif /* TOPPERS_tsksched */
 
 /*
- * �w�肵���N�����D��x�̃^�X�N�����s�ł����Ԃ��ǂ����̃e�X�g
+ * 指定した起動時優先度のタスクが実行できる状態かどうかのテスト
  *
- * ���s�ł���ꍇ��true��Ԃ��D
+ * 実行できる場合はtrueを返す．
  */
 bool_t
 test_dormant(uint_t ipri)
@@ -269,7 +269,7 @@ test_dormant(uint_t ipri)
 }
 
 /*
- *  �^�X�N�Ǘ����W���[���̏���
+ *  タスク管理モジュールの初期化
  */
 
 #define TOPPERS_tskini
@@ -280,15 +280,15 @@ void
 initialize_task(void)
 {
 	intptr_t ipri;
-	/* ���f�B�L���[�̃r�b�g�}�b�v���� */
+	/* レディキューのビットマップ初期化 */
 	ready_primap = init_rdypmap;
-
-	/* ���s���D��x�̏��� */
+	
+	/* 実行時優先度の初期化 */
 	runtsk_ipri = IPRI_NULL;
-
-	last_ipri = 0xff;		//���肦�Ȃ��l�ɂ���
-
-	/* �^�X�N�R���e�L�X�g�̐ݒ�*/
+	
+	last_ipri = 0xff;		//ありえない値にする
+	
+	/* タスクコンテキストの設定*/
 	for(ipri = 0;ipri <  TNUM_TSKID;ipri++)
 	{
 		if (primap_test(ipri))
@@ -298,27 +298,27 @@ initialize_task(void)
 		task_wait[ipri] = 0;
 		tskTout[ipri] = 0;
 	}
-	/* �����݋֎~�t���O�̏��� */
+	/* 割込み禁止フラグの初期化 */
 	disdsp = false;
 }
 
 #endif /* TOPPERS_tskini */
 
 /*-----------------------------------------------------
- *  �R���e�L�X�g�̏��������Ă���					takahashi
+ *  コンテキストの準備をしておく					takahashi
  */
-static jmp_buf jmpp;		//���̃��[�`���̃Z�[�u�p
-
+static jmp_buf jmpp;		//このルーチンのセーブ用
+ 
 void make_ctx(uint_t ipri_prm)
 {
 	intptr_t debugtemp = 0;
 	uint_t ipri = ipri_prm;
 	intptr_t task_stackadr;
 //	t_lock_cpu();
-	if (setjmp(jmpp) == 0)	//�����ɖ߂�p
+	if (setjmp(jmpp) == 0)	//ここに戻り用
 	{
-		//����
-		// �^�X�N�X�^�b�N�ɐ؂�ւ���
+		//続き
+		// タスクスタックに切り替える
 		task_stackadr = TOPPERS_TASKSTKPT(ipri);
 		set_task_stack(task_stackadr);
 #if 0
@@ -327,58 +327,58 @@ void make_ctx(uint_t ipri_prm)
 		__asm__("mov   %[Rd],sp"
 				:[Rd]"=r"(debugtemp));
 		printf("stack data = %08x\n",debugtemp);
-#endif
+#endif		
 		if (setjmp(task_ctx[ipri]) == 0)
 		{
-			/*�o�^�����ꍇ*/
-			longjmp(jmpp,1);	//�߂�
+			/*登録した場合*/
+			longjmp(jmpp,1);	//戻る
 		}
 		else
 		{
 			t_lock_cpu();
-			ipri = runtsk_ipri;			//longjmp�Ŗ߂��ė������͕s��
-			/* �^�X�N�N���� */
+			ipri = runtsk_ipri;			//longjmpで戻って来た時は不定
+			/* タスク起動時 */
 			ipl_maskClear();
 			t_unlock_cpu();
-			/* �^�X�N�ɗ��܂���*/
-			/* �^�X�N���s�J�n */
+			/* タスクに来ました*/
+			/* タスク実行開始 */
 			(*((TASK)(tinib_task[ipri])))(tinib_exinf[ipri]);
    			t_lock_cpu();
-			ipri = runtsk_ipri;			//longjmp�Ŗ߂��ė������͕s��
-
+			ipri = runtsk_ipri;			//longjmpで戻って来た時は不定
+	
 			disdsp = false;
-			/* �r�b�g�}�b�v�N���A�D */
+			/* ビットマップクリア． */
 			primap_clear(ipri);
-			//�^�X�N���I������ꍇ�ǂ�����̂��H--> ���̂��Ƃ́@dispacher()�ɍs��
-			longjmp(disp_ctx,1);			//sta_ker�̑����ɍs��
+			//タスクが終わった場合どうするのか？--> このあとは　dispacher()に行く
+			longjmp(disp_ctx,1);			//sta_kerの続きに行く
 		}
 	}
 	else
 	{
-		//�o�^�I��
+		//登録終了
 //		t_unlock_cpu();
 	}
 }
 /*
- *  ipri : �N���Ώۃ^�X�N�̋N�����D��x(�����\��)
+ *  ipri : 起動対象タスクの起動時優先度(内部表現)
  */
-#define TOPPERS_tskact
+#define TOPPERS_tskact 
 #ifdef TOPPERS_tskact
 
 bool_t
 make_active(uint_t ipri)
 {
 	bool_t dsp;
-
+	
 	primap_set(ipri);
-
+	
 	if(ipri < runtsk_ipri) {
 		dsp = !disdsp;
 	}
 	else {
 		dsp = false;
 	}
-	make_ctx(ipri);
+	make_ctx(ipri);	
 	return dsp;
 }
 
@@ -386,8 +386,8 @@ make_active(uint_t ipri)
 
 
 /*
- *  apri : ���s�J�n�^�X�N�̋N�����D��x
- *  �Ăяo�������F CPU���b�N
+ *  apri : 実行開始タスクの起動時優先度
+ *  呼び出し条件： CPUロック
  */
 #define TOPPERS_tsk_dsp
 #ifdef TOPPERS_tsk_dsp
@@ -411,7 +411,7 @@ run_task(uint_t ipri)
 #endif /* TOPPERS_tskrun */
 
 /*
- *  ���̊֐��͑S�����݃��b�N��ԂƓ����̏�Ԃ� sta_ker ����Ă΂��
+ *  この関数は全割込みロック状態と同等の状態で sta_ker から呼ばれる
  */
 
 
@@ -420,9 +420,9 @@ dispatcher(void)
 {
 	do {
 		if(!primap_empty()) {
-			/* �^�X�N�̊J�n */
+			/* タスクの開始 */
 			//run_task(search_schedtsk());
-			dispatch(search_schedtsk());		//���ꂩ��͋A���Ă��Ȃ�
+			dispatch(search_schedtsk());		//これからは帰ってこない
 		}
 		else {
 			last_ipri = 0xff;
@@ -435,30 +435,30 @@ wai_tsk(void)
 {
 	ER		ercd;
 	uint_t	tskpri;
-
+	
 //	LOG_ACT_TSK_ENTER(tskid);
 //	CHECK_TSKCTX_UNL();
 //	CHECK_TSKID_SELF(tskid);
-
+	
 	tskpri = get_ipri_self(TSK_SELF);
 	//tskpri = runtsk_ipri;
 	t_lock_cpu();
-	task_wait[tskpri] = 1;		//wait���
-	primap_clear(tskpri);		//���f�BQ����폜
-
-	//�����̃R���e�L�N�X�g��o�^
+	task_wait[tskpri] = 1;		//wait状態
+	primap_clear(tskpri);		//レディQから削除
+	
+	//ここのコンテキクストを登録
 	if (setjmp(task_ctx[tskpri]) == 0)
 	{
-		/*�o�^�����ꍇ*/
-		longjmp(disp_ctx,1);			//sta_ker�̑����ɍs��
+		/*登録した場合*/
+		longjmp(disp_ctx,1);			//sta_kerの続きに行く
 	}
 	else
 	{
-		// �^�X�N���A�����ꍇ
+		// タスク復帰した場合
 		ipl_maskClear();
 		t_unlock_cpu();
 		return(ercd);
-	}
+	}	
 
 	t_unlock_cpu();
 
@@ -470,16 +470,16 @@ ER
 go_tsk(ID tskid)
 {
 	ER		ercd;
-	uint_t	self_tskpri;	//�Ăяo���^�X�N
-	uint_t	ipri;			//go ����^�X�N
-
-
+	uint_t	self_tskpri;	//呼び出しタスク
+	uint_t	ipri;			//go するタスク
+	
+	
 //	LOG_ACT_TSK_ENTER(tskid);
 //	CHECK_TSKCTX_UNL();
 //	CHECK_TSKID_SELF(tskid);
-
+	
 	ipri = get_ipri(tskid);
-	self_tskpri = get_ipri_self(TSK_SELF);
+	self_tskpri = get_ipri_self(TSK_SELF);	
 	t_lock_cpu();
 	if (task_wait[ipri] == 0)
 	{
@@ -487,24 +487,24 @@ go_tsk(ID tskid)
 		return(E_OBJ);
 	}
 
-	task_wait[ipri] = 0;		//wait��ԉ���
-	primap_set(ipri);		//���f�BQ�ǉ�
+	task_wait[ipri] = 0;		//wait状態解除
+	primap_set(ipri);		//レディQ追加
+	
 
 
-
-	//�����̃R���e�L�N�X�g��o�^
+	//ここのコンテキクストを登録
 	if (setjmp(task_ctx[self_tskpri]) == 0)
 	{
-		/*�o�^�����ꍇ*/
-		longjmp(disp_ctx,1);			//sta_ker�̑����ɍs��
+		/*登録した場合*/
+		longjmp(disp_ctx,1);			//sta_kerの続きに行く
 	}
 	else
 	{
-		// �^�X�N���A�����ꍇ
+		// タスク復帰した場合
 		ipl_maskClear();
 		t_unlock_cpu();
 		return(ercd);
-	}
+	}	
 
 	t_unlock_cpu();
 
@@ -526,8 +526,8 @@ void isig_tim()
 		{
 			if (--tskTout[tskid] == 0)
 			{
-				task_wait[tskid] = 0;		//wait��ԉ���
-				primap_set(tskid);		//���f�BQ�ǉ�
+				task_wait[tskid] = 0;		//wait状態解除
+				primap_set(tskid);		//レディQ追加
 				reqflg = 1;
 			}
 		}
@@ -543,39 +543,39 @@ dly_tsk(RELTIM dlytim)
 
 	ER		ercd;
 	uint_t	tskpri;
-
+	
 	if (dlytim > MAXTOUT)
 	{
 		return(E_PAR);
 	}
-
+	
 //	LOG_ACT_TSK_ENTER(tskid);
 //	CHECK_TSKCTX_UNL();
 //	CHECK_TSKID_SELF(tskid);
-
+	
 	tskpri = get_ipri_self(TSK_SELF);
 	//tskpri = runtsk_ipri;
 	t_lock_cpu();
-	task_wait[tskpri] = 1;		//wait���
-	primap_clear(tskpri);		//���f�BQ����폜
+	task_wait[tskpri] = 1;		//wait状態
+	primap_clear(tskpri);		//レディQから削除
 	tskTout[tskpri] = dlytim+1;
-
-	//�����̃R���e�L�N�X�g��o�^
+	
+	//ここのコンテキクストを登録
 	if (setjmp(task_ctx[tskpri]) == 0)
 	{
-		/*�o�^�����ꍇ*/
-		longjmp(disp_ctx,1);			//sta_ker�̑����ɍs��
+		/*登録した場合*/
+		longjmp(disp_ctx,1);			//sta_kerの続きに行く
 	}
 	else
 	{
-		// �^�X�N���A�����ꍇ
+		// タスク復帰した場合
 		ipl_maskClear();
 		t_unlock_cpu();
 #if 0
 		printf("dly_tsk End\n");
 #endif
 		return(ercd);
-	}
+	}	
 
 	t_unlock_cpu();
 
@@ -586,26 +586,26 @@ dly_tsk(RELTIM dlytim)
 void handler(INTHDR userhandler)
 {
 	volatile static intptr_t newtskipi;
+	
+	intnest++;						//割り込みネスト数インクリメント
+//	i_unlock_cpu();					//割り込み許可
+	(*userhandler)();				//ユーザーハンドラ呼び出し
+//	i_lock_cpu();					//割り込み不可
+	intnest--;						//割り込みネスト数デクリメント
 
-	intnest++;						//���荞�݃l�X�g���C���N�������g
-//	i_unlock_cpu();					//���荞�݋���
-	(*userhandler)();				//���[�U�[�n���h���Ăяo��
-//	i_lock_cpu();					//���荞�ݕs��
-	intnest--;						//���荞�݃l�X�g���f�N�������g
-
-	if (intnest == 0)				//���d���荞�ݒ��łȂ�
+	if (intnest == 0)				//多重割り込み中でない
 	{
-		if (reqflg !=0)				//�X�P�W���[���K�v
+		if (reqflg !=0)				//スケジュール必要
 		{
 			reqflg = 0;
-			newtskipi = search_schedtsk();			//���Ƀf�B�X�p�b�`�����^�X�NID
+			newtskipi = search_schedtsk();			//次にディスパッチされるタスクID
 			if ((last_ipri != 0xff) && (last_ipri != newtskipi))
 			{
-				// RUN���ɍ��D��x�̃^�X�N�ɐ؂�ւ��ꍇ
+				// RUN中に高優先度のタスクに切り替わる場合
 				if (setjmp(task_ctx[last_ipri]) == 0)
 				{
-					// ���D��x�̃^�X�N�Ƀf�B�X�p�b�`
-					dispatch(newtskipi);	//����̓��^�[�����Ȃ�
+					// 高優先度のタスクにディスパッチ
+					dispatch(newtskipi);	//これはリターンしない
 				}
 			}
 		}

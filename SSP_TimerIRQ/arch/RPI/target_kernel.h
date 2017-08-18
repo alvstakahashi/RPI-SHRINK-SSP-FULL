@@ -81,8 +81,14 @@
 
 #define	set_task_stack(x)	__asm__( "mov sp,%[Rs1]"::[Rs1]"r"(x))
 
+#if 0
 #define	interrpt_IN()		__asm__("ldr	r0, =0x000000d3;msr cpsr_c,r0;":::"r0")
 #define interrpt_OUT()		__asm__("ldr	r0, =0x000000d2;msr cpsr_c,r0;":::"r0")
+#else
+#define	interrpt_IN()
+#define interrpt_OUT()
+#endif
+
 
 #define disable_IRQ()		__asm__("mrs	r0, cpsr;ldr	r1,	=0x80;orr r0, r0, r1;msr	cpsr_c, r0;":::"r0","r1")
 #define enable_IRQ()		__asm__("mrs	r0, cpsr;ldr	r1,	=0x80;bic r0, r0, #0x80;;msr	cpsr_c, r0;":::"r0")
