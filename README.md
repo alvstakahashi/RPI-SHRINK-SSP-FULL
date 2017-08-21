@@ -1,6 +1,13 @@
 # RPI-SHRINK-SSP-FULL
 BareMetalで遊ぶRaspberryPi[達人出版」の環境にて、SSPのシュリンク版を移植したものです。
 
+2017.08.21 
+branch forRPI3-JTAG を更新　バグ修正
+1.カーネル動作全般をSVCモード動作に戻した
+2.割り込みのレジスタ退避を追加
+
+
+
 2017.8.18 
 branch forRPI3-JTAG を更新
 ラジコン制御用にタイマー周期を10usにした。

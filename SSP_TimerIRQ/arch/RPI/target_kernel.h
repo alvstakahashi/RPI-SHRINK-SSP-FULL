@@ -87,14 +87,12 @@
 #else
 #define	interrpt_IN()		do { \
 								__asm__("ldr	r0, =0x000000d3;msr cpsr_c,r0;":::"r0");\
-								__asm__("push {lr};":::);\
-								__asm__("ldr	r0, =0x000000d2;msr cpsr_c,r0;":::"r0");\
+								__asm__("stmfd sp!, {r5-r10,lr};":::);\
                                } while(0)
 
 
 #define interrpt_OUT()		do { \
-								__asm__("ldr	r0, =0x000000d3;msr cpsr_c,r0;":::"r0");\
-								__asm__("pop  {lr};":::);\
+								__asm__("ldmfd sp!, {r5-r10,lr};":::);\
 								__asm__("ldr	r0, =0x000000d2;msr cpsr_c,r0;":::"r0");\
                                } while(0)
 
