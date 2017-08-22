@@ -596,12 +596,16 @@ void handler(INTHDR userhandler)
 			newtskipi = search_schedtsk();			//次にディスパッチされるタスクID
 			if ((last_ipri != 0xff) && (last_ipri != newtskipi))
 			{
+				//ここでコンテキスト、正確には、calleeセーブレジスタの保存
+				saveCTX();
 				// RUN中に高優先度のタスクに切り替わる場合
 				if (setjmp(task_ctx[last_ipri]) == 0)
 				{
 					// 高優先度のタスクにディスパッチ
 					dispatch(newtskipi);	//これはリターンしない
 				}
+				//コンテキスト　calleeセーブレジスタ復帰
+				loadCTX();
 			}
 		}
 	}

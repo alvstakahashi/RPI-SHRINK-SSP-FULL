@@ -87,12 +87,12 @@
 #else
 #define	interrpt_IN()		do { \
 								__asm__("ldr	r0, =0x000000d3;msr cpsr_c,r0;":::"r0");\
-								__asm__("stmfd sp!, {r5-r10,lr};":::);\
+								__asm__("push {lr};":::);\
                                } while(0)
 
 
 #define interrpt_OUT()		do { \
-								__asm__("ldmfd sp!, {r5-r10,lr};":::);\
+								__asm__("pop  {lr};":::);\
 								__asm__("ldr	r0, =0x000000d2;msr cpsr_c,r0;":::"r0");\
                                } while(0)
 
@@ -102,7 +102,11 @@
 #define disable_IRQ()		__asm__("mrs	r0, cpsr;ldr	r1,	=0x80;orr r0, r0, r1;msr	cpsr_c, r0;":::"r0","r1")
 #define enable_IRQ()		__asm__("mrs	r0, cpsr;ldr	r1,	=0x80;bic r0, r0, #0x80;;msr	cpsr_c, r0;":::"r0")
 
-#define	ipl_maskClear()		__asm__("ldr	r0, =0x000000d3;msr cpsr_c,r0;":::"r0")
+#define	ipl_maskClear()	
+
+
+#define saveCTX()	__asm__("stmfd sp!, {r5-r10};":::)
+#define loadCTX()	__asm__("ldmfd sp!, {r5-r10};":::)
 
 Inline int getmode(void)
 {
