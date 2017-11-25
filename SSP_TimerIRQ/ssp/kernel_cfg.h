@@ -3,24 +3,10 @@
 #define TOPPERS_KERNEL_CFG_H
 
 #define TNUM_TSKID	3
-#define TNUM_CYCID	0
-#define TNUM_ALMID	0
 
 #define MAIN_TASK	1
 #define TASK2_ID	2
 #define TASK3_ID	3
-
-#define	TASK_STACKSZ		1024
-#define TOPPERS_TASKSTKPT(task_id ) (( STK_T  )(( char * )( task_stack[task_id] ) + ( TASK_STACKSZ )))
-//STK_T *const	_kernel_istkpt = TOPPERS_ISTKPT(TOPPERS_STK, TOPPERS_STKSZ);
-extern STK_T	task_stack[TNUM_TSKID][COUNT_STK_T(TASK_STACKSZ)];
-
-extern unsigned char task_wait[TNUM_TSKID];
-
-extern RELTIM	tskTout[TNUM_TSKID];
-
-
-
 
 #endif /* TOPPERS_KERNEL_CFG_H */
 

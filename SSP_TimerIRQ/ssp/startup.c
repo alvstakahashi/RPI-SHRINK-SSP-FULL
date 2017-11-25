@@ -70,7 +70,6 @@ sta_ker(void)
 	initialize_object();			//•K—v
 	kerflg = true;
 	intnest = 0;
-	setjmp(disp_ctx);	//“o˜^‚àjump‚µ‚Ä‚à‚¢‚¸‚ê‚àŸ‚Ös‚­
 	dispatcher();
 }
 

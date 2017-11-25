@@ -123,7 +123,7 @@ iact_tsk(ID tskid)
 	
 	LOG_IACT_TSK_ENTER(tskid);
 //	CHECK_INTCTX_UNL();
-	CHECK_TSKID(tskid);
+//	CHECK_TSKID(tskid);
 	ipri = get_ipri(tskid);
 
 	i_lock_cpu();

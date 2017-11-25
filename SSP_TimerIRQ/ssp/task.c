@@ -10,47 +10,46 @@
  *             Nagoya Municipal Industrial Research Institute, JAPAN
  *  Copyright (C) 2010 by Meika Sugimoto
  * 
- *  ä¸Šè¨˜è‘—ä½œæ¨©è€…ã¯ï¼Œä»¥ä¸‹ã® (1)ï½(4) ã®æ¡ä»¶ã‚’æº€ãŸã™å ´åˆã«é™ã‚Šï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§
- *  ã‚¢ï¼ˆæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’æ”¹å¤‰ã—ãŸã‚‚ã®ã‚’å«ã‚€ï¼ä»¥ä¸‹åŒã˜ï¼‰ã‚’ä½¿ç”¨ãƒ»è¤‡è£½ãƒ»æ”¹å¤‰ãƒ»
- *  å†é…å¸ƒï¼ˆä»¥ä¸‹ï¼Œåˆ©ç”¨ã¨å‘¼ã¶ï¼‰ã™ã‚‹ã“ã¨ã‚’ç„¡å„Ÿã§è¨±è«¾ã™ã‚‹ï¼
- *  (1) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã®å½¢ã§åˆ©ç”¨ã™ã‚‹å ´åˆã«ã¯ï¼Œä¸Šè¨˜ã®è‘—ä½œæ¨©
- *      è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿è¨¼è¦å®šãŒï¼Œãã®ã¾ã¾ã®å½¢ã§ã‚½ãƒ¼ã‚¹
- *      ã‚³ãƒ¼ãƒ‰ä¸­ã«å«ã¾ã‚Œã¦ã„ã‚‹ã“ã¨ï¼
- *  (2) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ï¼Œãƒ©ã‚¤ãƒ–ãƒ©ãƒªå½¢å¼ãªã©ï¼Œä»–ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢é–‹ç™ºã«ä½¿ç”¨
- *      ã§ãã‚‹å½¢ã§å†é…å¸ƒã™ã‚‹å ´åˆã«ã¯ï¼Œå†é…å¸ƒã«ä¼´ã†ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆï¼ˆåˆ©ç”¨è€…ãƒ
- *      ãƒ‹ãƒ¥ã‚¢ãƒ«ãªã©ï¼‰ã«ï¼Œä¸Šè¨˜ã®è‘—ä½œæ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿
- *      è¨¼è¦å®šã‚’æ²è¼‰ã™ã‚‹ã“ã¨ï¼
- *  (3) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ï¼Œæ©Ÿå™¨ã«çµ„ã¿è¾¼ã‚€ãªã©ï¼Œä»–ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢é–‹ç™ºã«ä½¿ç”¨
- *      ã§ããªã„å½¢ã§å†é…å¸ƒã™ã‚‹å ´åˆã«ã¯ï¼Œæ¬¡ã®ã„ãšã‚Œã‹ã®æ¡ä»¶ã‚’æº€ãŸã™ã“ã¨ï¼
- *    (a) å†é…å¸ƒã«ä¼´ã†ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆï¼ˆåˆ©ç”¨è€…ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ãªã©ï¼‰ã«ï¼Œä¸Šè¨˜ã®è‘—ä½œ
- *        æ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿è¨¼è¦å®šã‚’æ²è¼‰ã™ã‚‹ã“ã¨ï¼
- *    (b) å†é…å¸ƒã®å½¢æ…‹ã‚’ï¼Œåˆ¥ã«å®šã‚ã‚‹æ–¹æ³•ã«ã‚ˆã£ã¦ï¼ŒTOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã«å ±
- *        å‘Šã™ã‚‹ã“ã¨ï¼
- *  (4) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®åˆ©ç”¨ã«ã‚ˆã‚Šç›´æ¥çš„ã¾ãŸã¯é–“æ¥çš„ã«ç”Ÿã˜ã‚‹ã„ã‹ãªã‚‹æå®³
- *      ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å…è²¬ã™ã‚‹ã“ã¨ï¼ã¾ãŸï¼Œ
- *      æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®ãƒ¦ãƒ¼ã‚¶ã¾ãŸã¯ã‚¨ãƒ³ãƒ‰ãƒ¦ãƒ¼ã‚¶ã‹ã‚‰ã®ã„ã‹ãªã‚‹ç†ç”±ã«åŸºã¥
- *      ãè«‹æ±‚ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å…è²¬ã™ã‚‹ã“ã¨ï¼
+ *  ã‹L’˜ìŒ Ò‚ÍCˆÈ‰º‚Ì (1)`(4) ‚ÌğŒ‚ğ–‚½‚·ê‡‚ÉŒÀ‚èC–{ƒ\ƒtƒgƒEƒF
+ *  ƒAi–{ƒ\ƒtƒgƒEƒFƒA‚ğ‰ü•Ï‚µ‚½‚à‚Ì‚ğŠÜ‚ŞDˆÈ‰º“¯‚¶j‚ğg—pE•¡»E‰ü•ÏE
+ *  Ä”z•ziˆÈ‰ºC—˜—p‚ÆŒÄ‚Ôj‚·‚é‚±‚Æ‚ğ–³‚Å‹–‘ø‚·‚éD
+ *  (1) –{ƒ\ƒtƒgƒEƒFƒA‚ğƒ\[ƒXƒR[ƒh‚ÌŒ`‚Å—˜—p‚·‚éê‡‚É‚ÍCã‹L‚Ì’˜ìŒ 
+ *      •\¦C‚±‚Ì—˜—pğŒ‚¨‚æ‚Ñ‰º‹L‚Ì–³•ÛØ‹K’è‚ªC‚»‚Ì‚Ü‚Ü‚ÌŒ`‚Åƒ\[ƒX
+ *      ƒR[ƒh’†‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚é‚±‚ÆD
+ *  (2) –{ƒ\ƒtƒgƒEƒFƒA‚ğCƒ‰ƒCƒuƒ‰ƒŠŒ`®‚È‚ÇC‘¼‚Ìƒ\ƒtƒgƒEƒFƒAŠJ”­‚Ég—p
+ *      ‚Å‚«‚éŒ`‚ÅÄ”z•z‚·‚éê‡‚É‚ÍCÄ”z•z‚É”º‚¤ƒhƒLƒ…ƒƒ“ƒgi—˜—pÒƒ}
+ *      ƒjƒ…ƒAƒ‹‚È‚Çj‚ÉCã‹L‚Ì’˜ìŒ •\¦C‚±‚Ì—˜—pğŒ‚¨‚æ‚Ñ‰º‹L‚Ì–³•Û
+ *      Ø‹K’è‚ğŒfÚ‚·‚é‚±‚ÆD
+ *  (3) –{ƒ\ƒtƒgƒEƒFƒA‚ğC‹@Ší‚É‘g‚İ‚Ş‚È‚ÇC‘¼‚Ìƒ\ƒtƒgƒEƒFƒAŠJ”­‚Ég—p
+ *      ‚Å‚«‚È‚¢Œ`‚ÅÄ”z•z‚·‚éê‡‚É‚ÍCŸ‚Ì‚¢‚¸‚ê‚©‚ÌğŒ‚ğ–‚½‚·‚±‚ÆD
+ *    (a) Ä”z•z‚É”º‚¤ƒhƒLƒ…ƒƒ“ƒgi—˜—pÒƒ}ƒjƒ…ƒAƒ‹‚È‚Çj‚ÉCã‹L‚Ì’˜ì
+ *        Œ •\¦C‚±‚Ì—˜—pğŒ‚¨‚æ‚Ñ‰º‹L‚Ì–³•ÛØ‹K’è‚ğŒfÚ‚·‚é‚±‚ÆD
+ *    (b) Ä”z•z‚ÌŒ`‘Ô‚ğC•Ê‚É’è‚ß‚é•û–@‚É‚æ‚Á‚ÄCTOPPERSƒvƒƒWƒFƒNƒg‚É•ñ
+ *        ‚·‚é‚±‚ÆD
+ *  (4) –{ƒ\ƒtƒgƒEƒFƒA‚Ì—˜—p‚É‚æ‚è’¼Ú“I‚Ü‚½‚ÍŠÔÚ“I‚É¶‚¶‚é‚¢‚©‚È‚é‘¹ŠQ
+ *      ‚©‚ç‚àCã‹L’˜ìŒ Ò‚¨‚æ‚ÑTOPPERSƒvƒƒWƒFƒNƒg‚ğ–ÆÓ‚·‚é‚±‚ÆD‚Ü‚½C
+ *      –{ƒ\ƒtƒgƒEƒFƒA‚Ìƒ†[ƒU‚Ü‚½‚ÍƒGƒ“ƒhƒ†[ƒU‚©‚ç‚Ì‚¢‚©‚È‚é——R‚ÉŠî‚Ã
+ *      ‚­¿‹‚©‚ç‚àCã‹L’˜ìŒ Ò‚¨‚æ‚ÑTOPPERSƒvƒƒWƒFƒNƒg‚ğ–ÆÓ‚·‚é‚±‚ÆD
  * 
- *  æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã¯ï¼Œç„¡ä¿è¨¼ã§æä¾›ã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã§ã‚ã‚‹ï¼ä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆ
- *  ã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯ï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã«é–¢ã—ã¦ï¼Œç‰¹å®šã®ä½¿ç”¨ç›®çš„ã«å¯¾ã™
- *  ã‚‹é©åˆæ€§ã‚‚å«ã‚ã¦ï¼Œã„ã‹ãªã‚‹ä¿è¨¼ã‚‚è¡Œã‚ãªã„ï¼ã¾ãŸï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®åˆ©ç”¨
- *  ã«ã‚ˆã‚Šç›´æ¥çš„ã¾ãŸã¯é–“æ¥çš„ã«ç”Ÿã˜ãŸã„ã‹ãªã‚‹æå®³ã«é–¢ã—ã¦ã‚‚ï¼Œãã®è²¬ä»»ã‚’è² 
- *  ã‚ãªã„ï¼
+ *  –{ƒ\ƒtƒgƒEƒFƒA‚ÍC–³•ÛØ‚Å’ñ‹Ÿ‚³‚ê‚Ä‚¢‚é‚à‚Ì‚Å‚ ‚éDã‹L’˜ìŒ Ò‚¨‚æ
+ *  ‚ÑTOPPERSƒvƒƒWƒFƒNƒg‚ÍC–{ƒ\ƒtƒgƒEƒFƒA‚ÉŠÖ‚µ‚ÄC“Á’è‚Ìg—p–Ú“I‚É‘Î‚·
+ *  ‚é“K‡«‚àŠÜ‚ß‚ÄC‚¢‚©‚È‚é•ÛØ‚às‚í‚È‚¢D‚Ü‚½C–{ƒ\ƒtƒgƒEƒFƒA‚Ì—˜—p
+ *  ‚É‚æ‚è’¼Ú“I‚Ü‚½‚ÍŠÔÚ“I‚É¶‚¶‚½‚¢‚©‚È‚é‘¹ŠQ‚ÉŠÖ‚µ‚Ä‚àC‚»‚ÌÓ”C‚ğ•‰
+ *  ‚í‚È‚¢D
  * 
  */
 #include <stddef.h>
 #include <limits.h>
-#include <stdio.h>
+
 
 #include "kernel_impl.h"
 #include "task.h"
 
-#include "kernel_cfg.h"
 
 
 
 /*
- *  ãƒˆãƒ¬ãƒ¼ã‚¹ãƒ­ã‚°ãƒã‚¯ãƒ­ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®šç¾©
+ *  ƒgƒŒ[ƒXƒƒOƒ}ƒNƒ‚ÌƒfƒtƒHƒ‹ƒg’è‹`
  */
 
 #ifndef LOG_DSP_ENTER
@@ -62,47 +61,38 @@
 #endif /* LOG_DSP_ENTER */
 
 
-extern const intptr_t	tinib_exinf[];			/* ã‚¿ã‚¹ã‚¯ã®æ‹¡å¼µæƒ…å ± */
-extern const TASK    	tinib_task[];			/* ã‚¿ã‚¹ã‚¯ã®èµ·å‹•ç•ªåœ° */
-extern const uint_t  	tinib_epriority[];		/* ã‚¿ã‚¹ã‚¯ã®å®Ÿè¡Œæ™‚å„ªå…ˆåº¦å…ˆåº¦ï¼ˆå†…éƒ¨è¡¨ç¾ï¼‰ */
+extern const intptr_t	tinib_exinf[];			/* ƒ^ƒXƒN‚ÌŠg’£î•ñ */
+extern const TASK    	tinib_task[];			/* ƒ^ƒXƒN‚Ì‹N“®”Ô’n */
+extern const uint_t  	tinib_epriority[];		/* ƒ^ƒXƒN‚ÌÀs—Dæ“xæ“xi“à•”•\Œ»j */
 
 
 
 #define TOPPERS_tskini
 
 #ifdef TOPPERS_tskini
-/*-------------------------------------------
- * ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒãƒ£ãƒ¼ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
- */
-jmp_buf disp_ctx;		//ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒãƒ£ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
 
 /*
- * å®Ÿè¡ŒçŠ¶æ…‹ã‚¿ã‚¹ã‚¯ã®èµ·å‹•æ™‚å„ªå…ˆåº¦
+ * Àsó‘Ôƒ^ƒXƒN‚Ì‹N“®—Dæ“x
  */
 uint_t runtsk_ipri;
 
 /*
- *  ãƒ¬ãƒ‡ã‚£ã‚­ãƒ¥ãƒ¼ã‚µãƒ¼ãƒã®ãŸã‚ã®ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—
+ *  ƒŒƒfƒBƒLƒ…[ƒT[ƒ`‚Ì‚½‚ß‚Ìƒrƒbƒgƒ}ƒbƒv
  */
 volatile uint_t	ready_primap;
 
 /*
- *  ã‚¿ã‚¹ã‚¯ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒèµ·å‹•è¦æ±‚ãƒ•ãƒ©ã‚°
+ *  ƒ^ƒXƒNƒfƒBƒXƒpƒbƒ`‹N“®—v‹ƒtƒ‰ƒO
  */
 bool_t	reqflg;
 
 /*
- *  ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒç¦æ­¢çŠ¶æ…‹
+ *  ƒfƒBƒXƒpƒbƒ`‹Ö~ó‘Ô
  */
 bool_t	disdsp;
 
-/* 
- * å‰å›ã€€å®Ÿè¡Œtask
- */
-intptr_t last_ipri;
-
 /*
- *  read_primapã®åˆæœŸå€¤
+ *  read_primap‚Ì‰Šú’l
  */
 extern const uint_t init_rdypmap;
 
@@ -112,7 +102,7 @@ extern const uint_t init_rdypmap;
 #ifdef TOPPERS_get_ipri_self
 
 /*
- *  ã‚¿ã‚¹ã‚¯IDã‹ã‚‰èµ·å‹•æ™‚å„ªå…ˆåº¦ã‚’å–ã‚Šå‡ºã™ãŸã‚ã®ãƒã‚¯ãƒ­
+ *  ƒ^ƒXƒNID‚©‚ç‹N“®—Dæ“x‚ğæ‚èo‚·‚½‚ß‚Ìƒ}ƒNƒ
  */
 uint_t
 get_ipri_self(ID tskid)
@@ -144,22 +134,22 @@ get_ipri(ID tskid)
 #endif /* TOPPERS_get_ipri */
 
 /*
- *  ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ã‚µãƒ¼ãƒé–¢æ•°
+ *  ƒrƒbƒgƒ}ƒbƒvƒT[ƒ`ŠÖ”
  *
- *  bitmapå†…ã®1ã®ãƒ“ãƒƒãƒˆã®å†…ï¼Œæœ€ã‚‚ä¸‹ä½ï¼ˆå³ï¼‰ã®ã‚‚ã®ã‚’ã‚µãƒ¼ãƒã—ï¼Œãã®ãƒ“ãƒƒ
- *  ãƒˆç•ªå·ã‚’è¿”ã™ï¼ãƒ“ãƒƒãƒˆç•ªå·ã¯ï¼Œæœ€ä¸‹ä½ãƒ“ãƒƒãƒˆã‚’0ã¨ã™ã‚‹ï¼bitmapã«0ã‚’æŒ‡å®š
- *  ã—ã¦ã¯ãªã‚‰ãªã„ï¼ã“ã®é–¢æ•°ã§ã¯ï¼ŒbitmapãŒ8ãƒ“ãƒƒãƒˆã§ã‚ã‚‹ã“ã¨ã‚’ä»®å®šã—ï¼Œ
- *  uint8_tå‹ã¨ã—ã¦ã„ã‚‹ï¼
+ *  bitmap“à‚Ì1‚Ìƒrƒbƒg‚Ì“àCÅ‚à‰ºˆÊi‰Ej‚Ì‚à‚Ì‚ğƒT[ƒ`‚µC‚»‚Ìƒrƒb
+ *  ƒg”Ô†‚ğ•Ô‚·Dƒrƒbƒg”Ô†‚ÍCÅ‰ºˆÊƒrƒbƒg‚ğ0‚Æ‚·‚éDbitmap‚É0‚ğw’è
+ *  ‚µ‚Ä‚Í‚È‚ç‚È‚¢D‚±‚ÌŠÖ”‚Å‚ÍCbitmap‚ª8ƒrƒbƒg‚Å‚ ‚é‚±‚Æ‚ğ‰¼’è‚µC
+ *  uint8_tŒ^‚Æ‚µ‚Ä‚¢‚éD
  *
- *  ãƒ“ãƒƒãƒˆã‚µãƒ¼ãƒå‘½ä»¤ã‚’æŒã¤ãƒ—ãƒ­ã‚»ãƒƒã‚µã§ã¯ï¼Œãƒ“ãƒƒãƒˆã‚µãƒ¼ãƒå‘½ä»¤ã‚’ä½¿ã†ã‚ˆã†ã«
- *  æ›¸ãç›´ã—ãŸæ–¹ãŒåŠ¹ç‡ãŒè‰¯ã„å ´åˆãŒã‚ã‚‹ï¼ã“ã®ã‚ˆã†ãªå ´åˆã«ã¯ï¼Œã‚¿ãƒ¼ã‚²ãƒƒãƒˆ
- *  ä¾å­˜éƒ¨ã§ãƒ“ãƒƒãƒˆã‚µãƒ¼ãƒå‘½ä»¤ã‚’ä½¿ã£ãŸbitmap_searchã‚’å®šç¾©ã—ï¼Œ
- *  OMIT_BITMAP_SEARCHã‚’ãƒã‚¯ãƒ­å®šç¾©ã™ã‚Œã°ã‚ˆã„ï¼ã¾ãŸï¼Œãƒ“ãƒƒãƒˆã‚µãƒ¼ãƒå‘½ä»¤ã®
- *  ã‚µãƒ¼ãƒæ–¹å‘ãŒé€†ãªã©ã®ç†ç”±ã§å„ªå…ˆåº¦ã¨ãƒ“ãƒƒãƒˆã¨ã®å¯¾å¿œã‚’å¤‰æ›´ã—ãŸã„å ´åˆã«
- *  ã¯ï¼ŒPRIMAP_BITã‚’ãƒã‚¯ãƒ­å®šç¾©ã™ã‚Œã°ã‚ˆã„ï¼
+ *  ƒrƒbƒgƒT[ƒ`–½—ß‚ğ‚ÂƒvƒƒZƒbƒT‚Å‚ÍCƒrƒbƒgƒT[ƒ`–½—ß‚ğg‚¤‚æ‚¤‚É
+ *  ‘‚«’¼‚µ‚½•û‚ªŒø—¦‚ª—Ç‚¢ê‡‚ª‚ ‚éD‚±‚Ì‚æ‚¤‚Èê‡‚É‚ÍCƒ^[ƒQƒbƒg
+ *  ˆË‘¶•”‚ÅƒrƒbƒgƒT[ƒ`–½—ß‚ğg‚Á‚½bitmap_search‚ğ’è‹`‚µC
+ *  OMIT_BITMAP_SEARCH‚ğƒ}ƒNƒ’è‹`‚·‚ê‚Î‚æ‚¢D‚Ü‚½CƒrƒbƒgƒT[ƒ`–½—ß‚Ì
+ *  ƒT[ƒ`•ûŒü‚ª‹t‚È‚Ç‚Ì——R‚Å—Dæ“x‚Æƒrƒbƒg‚Æ‚Ì‘Î‰‚ğ•ÏX‚µ‚½‚¢ê‡‚É
+ *  ‚ÍCPRIMAP_BIT‚ğƒ}ƒNƒ’è‹`‚·‚ê‚Î‚æ‚¢D
  *
- *  ã¾ãŸï¼Œæ¨™æº–ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã«ffsãŒã‚ã‚‹ãªã‚‰ï¼Œæ¬¡ã®ã‚ˆã†ã«å®šç¾©ã—ã¦æ¨™æº–ãƒ©ã‚¤ãƒ–
- *  ãƒ©ãƒªã‚’ä½¿ã£ãŸæ–¹ãŒåŠ¹ç‡ãŒè‰¯ã„å¯èƒ½æ€§ã‚‚ã‚ã‚‹ï¼
+ *  ‚Ü‚½C•W€ƒ‰ƒCƒuƒ‰ƒŠ‚Éffs‚ª‚ ‚é‚È‚çCŸ‚Ì‚æ‚¤‚É’è‹`‚µ‚Ä•W€ƒ‰ƒCƒu
+ *  ƒ‰ƒŠ‚ğg‚Á‚½•û‚ªŒø—¦‚ª—Ç‚¢‰Â”\«‚à‚ ‚éD
  *		#define	bitmap_search(bitmap) (ffs(bitmap) - 1)
  */
 #ifndef PRIMAP_BIT
@@ -173,9 +163,9 @@ get_ipri(ID tskid)
 
 
 /*
- *  å‰²è¾¼ã¿ç™ºç”Ÿå›æ•°ã‚’ä¿å­˜ã™ã‚‹å¤‰æ•°
+ *  Š„‚İ”­¶‰ñ”‚ğ•Û‘¶‚·‚é•Ï”
  */
-volatile  uint16_t	intnest;
+volatile uint16_t	intnest;
 
 
 static const uint8_t bitmap_search_table[] = { 0U, 1U, 0U, 2U, 0U, 1U, 0U,
@@ -198,7 +188,7 @@ static  uint_t bitmap_search(uint_t bitmap)
 #endif /* OMIT_BITMAP_SEARCH */
 
 /*
- *  å„ªå…ˆåº¦ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ãŒç©ºã‹ã®ãƒã‚§ãƒƒã‚¯
+ *  —Dæ“xƒrƒbƒgƒ}ƒbƒv‚ª‹ó‚©‚Ìƒ`ƒFƒbƒN
  */
 #pragma inline (primap_empty) 
 static bool_t primap_empty(void)
@@ -207,7 +197,7 @@ static bool_t primap_empty(void)
 }
 
 /*
- *  æŒ‡å®šã—ãŸå„ªå…ˆåº¦ã®å„ªå…ˆåº¦ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ãŒã‚»ãƒƒãƒˆã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã®ãƒã‚§ãƒƒã‚¯
+ *  w’è‚µ‚½—Dæ“x‚Ì—Dæ“xƒrƒbƒgƒ}ƒbƒv‚ªƒZƒbƒg‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚Ìƒ`ƒFƒbƒN
  */
 #pragma inline (primap_test) 
 static bool_t primap_test(uint_t pri)
@@ -216,7 +206,7 @@ static bool_t primap_test(uint_t pri)
 }
 
 /*
- *  å„ªå…ˆåº¦ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ã®ã‚µãƒ¼ãƒ
+ *  —Dæ“xƒrƒbƒgƒ}ƒbƒv‚ÌƒT[ƒ`
  */
 #pragma inline (primap_search) 
 static uint_t primap_search(void)
@@ -225,7 +215,7 @@ static uint_t primap_search(void)
 }
 
 /*
- *  å„ªå…ˆåº¦ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ã®ã‚»ãƒƒãƒˆ
+ *  —Dæ“xƒrƒbƒgƒ}ƒbƒv‚ÌƒZƒbƒg
  */
 #pragma inline (primap_set) 
 static void primap_set(uint_t pri)
@@ -234,7 +224,7 @@ static void primap_set(uint_t pri)
 }
 
 /*
- *  å„ªå…ˆåº¦ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ã®ã‚¯ãƒªã‚¢
+ *  —Dæ“xƒrƒbƒgƒ}ƒbƒv‚ÌƒNƒŠƒA
  */
 #pragma inline (primap_clear) 
 static void primap_clear(uint_t pri)
@@ -243,7 +233,7 @@ static void primap_clear(uint_t pri)
 }
 
 /*
- *  æœ€é«˜å„ªå…ˆé †ä½ã‚¿ã‚¹ã‚¯ã®ã‚µãƒ¼ãƒ
+ *  Å‚—Dæ‡ˆÊƒ^ƒXƒN‚ÌƒT[ƒ`
  */
 #define TOPPERS_tsksched
 
@@ -258,9 +248,9 @@ search_schedtsk(void)
 #endif /* TOPPERS_tsksched */
 
 /*
- * æŒ‡å®šã—ãŸèµ·å‹•æ™‚å„ªå…ˆåº¦ã®ã‚¿ã‚¹ã‚¯ãŒå®Ÿè¡Œã§ãã‚‹çŠ¶æ…‹ã‹ã©ã†ã‹ã®ãƒ†ã‚¹ãƒˆ
+ * w’è‚µ‚½‹N“®—Dæ“x‚Ìƒ^ƒXƒN‚ªÀs‚Å‚«‚éó‘Ô‚©‚Ç‚¤‚©‚ÌƒeƒXƒg
  *
- * å®Ÿè¡Œã§ãã‚‹å ´åˆã¯trueã‚’è¿”ã™ï¼
+ * Às‚Å‚«‚éê‡‚Ítrue‚ğ•Ô‚·D
  */
 bool_t
 test_dormant(uint_t ipri)
@@ -269,7 +259,7 @@ test_dormant(uint_t ipri)
 }
 
 /*
- *  ã‚¿ã‚¹ã‚¯ç®¡ç†ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆæœŸåŒ–
+ *  ƒ^ƒXƒNŠÇ—ƒ‚ƒWƒ…[ƒ‹‚Ì‰Šú‰»
  */
 
 #define TOPPERS_tskini
@@ -279,83 +269,20 @@ test_dormant(uint_t ipri)
 void
 initialize_task(void)
 {
-	intptr_t ipri;
-	/* ãƒ¬ãƒ‡ã‚£ã‚­ãƒ¥ãƒ¼ã®ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—åˆæœŸåŒ– */
+	/* ƒŒƒfƒBƒLƒ…[‚Ìƒrƒbƒgƒ}ƒbƒv‰Šú‰» */
 	ready_primap = init_rdypmap;
 	
-	/* å®Ÿè¡Œæ™‚å„ªå…ˆåº¦ã®åˆæœŸåŒ– */
+	/* Às—Dæ“x‚Ì‰Šú‰» */
 	runtsk_ipri = IPRI_NULL;
 	
-	last_ipri = 0xff;		//ã‚ã‚Šãˆãªã„å€¤ã«ã™ã‚‹
-	
-	/* ã‚¿ã‚¹ã‚¯ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®è¨­å®š*/
-	for(ipri = 0;ipri <  TNUM_TSKID;ipri++)
-	{
-		if (primap_test(ipri))
-		{
-			make_ctx(ipri);
-		}
-		task_wait[ipri] = 0;
-		tskTout[ipri] = 0;
-	}
-	/* å‰²è¾¼ã¿ç¦æ­¢ãƒ•ãƒ©ã‚°ã®åˆæœŸåŒ– */
+	/* Š„‚İ‹Ö~ƒtƒ‰ƒO‚Ì‰Šú‰» */
 	disdsp = false;
 }
 
 #endif /* TOPPERS_tskini */
 
-/*-----------------------------------------------------
- *  ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®æº–å‚™ã‚’ã—ã¦ãŠã					takahashi
- */
-static jmp_buf jmpp;		//ã“ã®ãƒ«ãƒ¼ãƒãƒ³ã®ã‚»ãƒ¼ãƒ–ç”¨
- 
-void make_ctx(uint_t ipri_prm)
-{
-	intptr_t debugtemp = 0;
-	uint_t ipri = ipri_prm;
-	intptr_t task_stackadr;
-//	t_lock_cpu();
-	if (setjmp(jmpp) == 0)	//ã“ã“ã«æˆ»ã‚Šç”¨
-	{
-		if (setjmp(task_ctx[ipri]) == 0)
-		{
-			/*ç™»éŒ²ã—ãŸå ´åˆ*/
-			longjmp(jmpp,1);	//æˆ»ã‚‹
-		}
-		else
-		{
-			t_lock_cpu();
-			ipri = runtsk_ipri;			//longjmpã§æˆ»ã£ã¦æ¥ãŸæ™‚ã¯ä¸å®š
-			/* ã‚¿ã‚¹ã‚¯èµ·å‹•æ™‚ */
-			ipl_maskClear();
-
-			//ç¶šã
-			// ã‚¿ã‚¹ã‚¯ã‚¹ã‚¿ãƒƒã‚¯ã«åˆ‡ã‚Šæ›¿ãˆã‚‹
-			task_stackadr = TOPPERS_TASKSTKPT(ipri);
-			set_task_stack(task_stackadr);
-
-			t_unlock_cpu();
-			/* ã‚¿ã‚¹ã‚¯ã«æ¥ã¾ã—ãŸ*/
-			/* ã‚¿ã‚¹ã‚¯å®Ÿè¡Œé–‹å§‹ */
-			(*((TASK)(tinib_task[ipri])))(tinib_exinf[ipri]);
-   			t_lock_cpu();
-			ipri = runtsk_ipri;			//longjmpã§æˆ»ã£ã¦æ¥ãŸæ™‚ã¯ä¸å®š
-	
-			disdsp = false;
-			/* ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ã‚¯ãƒªã‚¢ï¼ */
-			primap_clear(ipri);
-			//ã‚¿ã‚¹ã‚¯ãŒçµ‚ã‚ã£ãŸå ´åˆã©ã†ã™ã‚‹ã®ã‹ï¼Ÿ--> ã“ã®ã‚ã¨ã¯ã€€dispacher()ã«è¡Œã
-			longjmp(disp_ctx,1);			//sta_kerã®ç¶šãã«è¡Œã
-		}
-	}
-	else
-	{
-		//ç™»éŒ²çµ‚äº†
-//		t_unlock_cpu();
-	}
-}
 /*
- *  ipri : èµ·å‹•å¯¾è±¡ã‚¿ã‚¹ã‚¯ã®èµ·å‹•æ™‚å„ªå…ˆåº¦(å†…éƒ¨è¡¨ç¾)
+ *  ipri : ‹N“®‘ÎÛƒ^ƒXƒN‚Ì‹N“®—Dæ“x(“à•”•\Œ»)
  */
 #define TOPPERS_tskact 
 #ifdef TOPPERS_tskact
@@ -373,7 +300,7 @@ make_active(uint_t ipri)
 	else {
 		dsp = false;
 	}
-	make_ctx(ipri);	
+	
 	return dsp;
 }
 
@@ -381,17 +308,9 @@ make_active(uint_t ipri)
 
 
 /*
- *  apri : å®Ÿè¡Œé–‹å§‹ã‚¿ã‚¹ã‚¯ã®èµ·å‹•æ™‚å„ªå…ˆåº¦
- *  å‘¼ã³å‡ºã—æ¡ä»¶ï¼š CPUãƒ­ãƒƒã‚¯
+ *  apri : ÀsŠJnƒ^ƒXƒN‚Ì‹N“®—Dæ“x
+ *  ŒÄ‚Ño‚µğŒF CPUƒƒbƒN
  */
-#define TOPPERS_tsk_dsp
-#ifdef TOPPERS_tsk_dsp
-void dispatch(intptr_t ipri)
-{
-	last_ipri = ipri;
-	runtsk_ipri = ipri;
-	longjmp(task_ctx[ipri],1);
-}
 
 #define TOPPERS_tskrun
 
@@ -400,213 +319,101 @@ void dispatch(intptr_t ipri)
 void
 run_task(uint_t ipri)
 {
-	dispatch((intptr_t)ipri);
+	uint_t next_pri;	/* Ÿ‚ÉÀsŠJn‚·‚éƒ^ƒXƒN‚Ì‹N“®—Dæ“x */
+	uint_t saved_pri;	/* ŒÄ‚Ño‚µŒ³ƒ^ƒXƒN‚Ì‹N“®—Dæ“x */
+	
+	next_pri = ipri;
+	saved_pri = runtsk_ipri;
+	
+	do {
+		runtsk_ipri = tinib_epriority[next_pri];
+		
+		/* CPUƒƒbƒN‰ğœ */
+		ipl_maskClear();		
+		t_unlock_cpu();
+		/* ƒ^ƒXƒNÀsŠJn */
+		(*((TASK)(tinib_task[next_pri])))(tinib_exinf[next_pri]);
+		
+		if (t_sense_lock()) {
+			/*
+			 *  CPUƒƒbƒNó‘Ô‚Åext_tsk‚ªŒÄ‚Î‚ê‚½ê‡‚ÍCCPUƒƒbƒN‚ğ‰ğœ‚µ
+			 *  ‚Ä‚©‚çƒ^ƒXƒN‚ğI—¹‚·‚éDÀ‘•ã‚ÍCƒT[ƒrƒXƒR[ƒ‹“à‚Å‚ÌCPU
+			 *  ƒƒbƒN‚ğÈ—ª‚·‚ê‚Î‚æ‚¢‚¾‚¯D
+			 */
+		}
+		else {
+			/*
+			 *  ‚±‚Ìt_lock_cpu‚ğ‚±‚Ì‰º‚Ìdisdsp‚Ìİ’è‚Ì‚æ‚¤‚É‚µ‚È‚¢‚Ì‚ÍC
+			 *  CPUƒƒbƒN’†‚ÉÄ“xt_lock_cpu‚ğŒÄ‚Î‚È‚¢‚½‚ß‚Å‚ ‚éD
+			 */
+			t_lock_cpu();
+		}
+		
+		/* Š„‚İ—Dæ“xƒ}ƒXƒN‚Í‘S‰ğœó‘Ô‚Ì‚Í‚¸‚È‚Ì‚ÅC‰½‚à‚µ‚È‚¢ */
+		
+		/*
+		 *  ƒfƒBƒXƒpƒbƒ`‹Ö~ó‘Ô‚Åext_tsk‚ªŒÄ‚Î‚ê‚½ê‡‚ÍCƒfƒBƒXƒpƒb
+		 *  ƒ`‹–‰Âó‘Ô‚É‚µ‚Ä‚©‚çƒ^ƒXƒN‚ğI—¹‚·‚éD
+		 *
+		 *	–{—ˆ‚ÍˆÈ‰º‚Ì‚æ‚¤‚É‹Lq‚·‚×‚«‚Å‚ ‚é‚ªC‚¢‚¸‚ê‚É‚¹‚ædisdsp‚ğ
+		 *	false‚É‚·‚ê‚Î‚¢‚¢‚½‚ßC’P‚Éfalse‚Éİ’è‚·‚éD
+		 *
+		 *		if (disdsp) {
+		 *			disdsp = false;
+		 *		}
+		 */
+		disdsp = false;
+		
+		/* ƒrƒbƒgƒ}ƒbƒvƒNƒŠƒAD */
+		primap_clear(next_pri);
+		
+	  /* –ß‚èæƒ^ƒXƒN‚ÌÀs—Dæ“x‚æ‚è‚‚¢‹N“®—Dæ“x‚ğ‚à‚Âƒ^ƒXƒN‚ª‹N“®‚³‚ê‚½‚© */
+	} while((!primap_empty()) && (saved_pri > (next_pri = search_schedtsk())));
+	
+	runtsk_ipri = saved_pri;
 }
 
 #endif /* TOPPERS_tskrun */
 
 /*
- *  ã“ã®é–¢æ•°ã¯å…¨å‰²è¾¼ã¿ãƒ­ãƒƒã‚¯çŠ¶æ…‹ã¨åŒç­‰ã®çŠ¶æ…‹ã§ sta_ker ã‹ã‚‰å‘¼ã°ã‚Œã‚‹
+ *  ‚±‚ÌŠÖ”‚Í‘SŠ„‚İƒƒbƒNó‘Ô‚Æ“¯“™‚Ìó‘Ô‚Å sta_ker ‚©‚çŒÄ‚Î‚ê‚é
  */
 
+#define TOPPERS_tsk_dsp
+#ifdef TOPPERS_tsk_dsp
 
 void
 dispatcher(void)
 {
 	do {
 		if(!primap_empty()) {
-			/* ã‚¿ã‚¹ã‚¯ã®é–‹å§‹ */
-			//run_task(search_schedtsk());
-			dispatch(search_schedtsk());		//ã“ã‚Œã‹ã‚‰ã¯å¸°ã£ã¦ã“ãªã„
+			/* ƒ^ƒXƒN‚ÌŠJn */
+			run_task(search_schedtsk());
 		}
 		else {
-			last_ipri = 0xff;
 			idle_loop();
 		}
 	} while(true);
 }
-ER
-wai_tsk(void)
-{
-	ER		ercd;
-	uint_t	tskpri;
-	
-//	LOG_ACT_TSK_ENTER(tskid);
-//	CHECK_TSKCTX_UNL();
-//	CHECK_TSKID_SELF(tskid);
-	
-	tskpri = get_ipri_self(TSK_SELF);
-	//tskpri = runtsk_ipri;
-	t_lock_cpu();
-	task_wait[tskpri] = 1;		//waitçŠ¶æ…‹
-	primap_clear(tskpri);		//ãƒ¬ãƒ‡ã‚£Qã‹ã‚‰å‰Šé™¤
-	
-	//ã“ã“ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¯ã‚¹ãƒˆã‚’ç™»éŒ²
-	if (setjmp(task_ctx[tskpri]) == 0)
-	{
-		/*ç™»éŒ²ã—ãŸå ´åˆ*/
-		longjmp(disp_ctx,1);			//sta_kerã®ç¶šãã«è¡Œã
-	}
-	else
-	{
-		// ã‚¿ã‚¹ã‚¯å¾©å¸°ã—ãŸå ´åˆ
-		ipl_maskClear();
-		t_unlock_cpu();
-		return(ercd);
-	}	
-
-	t_unlock_cpu();
-
-
-	return(ercd);
-}
-
-ER
-go_tsk(ID tskid)
-{
-	ER		ercd;
-	uint_t	self_tskpri;	//å‘¼ã³å‡ºã—ã‚¿ã‚¹ã‚¯
-	uint_t	ipri;			//go ã™ã‚‹ã‚¿ã‚¹ã‚¯
-	
-	
-//	LOG_ACT_TSK_ENTER(tskid);
-//	CHECK_TSKCTX_UNL();
-//	CHECK_TSKID_SELF(tskid);
-	
-	ipri = get_ipri(tskid);
-	self_tskpri = get_ipri_self(TSK_SELF);	
-	t_lock_cpu();
-	if (task_wait[ipri] == 0)
-	{
-		t_unlock_cpu();
-		return(E_OBJ);
-	}
-
-	task_wait[ipri] = 0;		//waitçŠ¶æ…‹è§£é™¤
-	primap_set(ipri);		//ãƒ¬ãƒ‡ã‚£Qè¿½åŠ 
-	
-
-
-	//ã“ã“ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¯ã‚¹ãƒˆã‚’ç™»éŒ²
-	if (setjmp(task_ctx[self_tskpri]) == 0)
-	{
-		/*ç™»éŒ²ã—ãŸå ´åˆ*/
-		longjmp(disp_ctx,1);			//sta_kerã®ç¶šãã«è¡Œã
-	}
-	else
-	{
-		// ã‚¿ã‚¹ã‚¯å¾©å¸°ã—ãŸå ´åˆ
-		ipl_maskClear();
-		t_unlock_cpu();
-		return(ercd);
-	}	
-
-	t_unlock_cpu();
-
-
-	return(ercd);
-}
 
 #endif /* TOPPERS_tsk_dsp */
-
-void isig_tim()
-{
-	int tskid;
-
-//	i_lock_cpu();
-
-	for(tskid = 0 ; tskid < TNUM_TSKID; tskid++)
-	{
-		if (tskTout[tskid] != 0)
-		{
-			if (--tskTout[tskid] == 0)
-			{
-				task_wait[tskid] = 0;		//waitçŠ¶æ…‹è§£é™¤
-				primap_set(tskid);		//ãƒ¬ãƒ‡ã‚£Qè¿½åŠ 
-				reqflg = 1;
-			}
-		}
-	}
-//	i_unlock_cpu();
-}
-
-#define MAXTOUT 0xfffffffe
-
-ER
-dly_tsk(RELTIM dlytim)
-{
-
-	ER		ercd;
-	uint_t	tskpri;
-	
-	if (dlytim > MAXTOUT)
-	{
-		return(E_PAR);
-	}
-	
-//	LOG_ACT_TSK_ENTER(tskid);
-//	CHECK_TSKCTX_UNL();
-//	CHECK_TSKID_SELF(tskid);
-	
-	tskpri = get_ipri_self(TSK_SELF);
-	//tskpri = runtsk_ipri;
-	t_lock_cpu();
-	task_wait[tskpri] = 1;		//waitçŠ¶æ…‹
-	primap_clear(tskpri);		//ãƒ¬ãƒ‡ã‚£Qã‹ã‚‰å‰Šé™¤
-	tskTout[tskpri] = dlytim+1;
-	
-	//ã“ã“ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¯ã‚¹ãƒˆã‚’ç™»éŒ²
-	if (setjmp(task_ctx[tskpri]) == 0)
-	{
-		/*ç™»éŒ²ã—ãŸå ´åˆ*/
-		longjmp(disp_ctx,1);			//sta_kerã®ç¶šãã«è¡Œã
-	}
-	else
-	{
-		// ã‚¿ã‚¹ã‚¯å¾©å¸°ã—ãŸå ´åˆ
-		ipl_maskClear();
-		t_unlock_cpu();
-#if 0
-		printf("dly_tsk End\n");
-#endif
-		return(ercd);
-	}	
-
-	t_unlock_cpu();
-
-
-	return(ercd);
-}
-
 void handler(INTHDR userhandler)
 {
 	volatile static intptr_t newtskipi;
 	
-	intnest++;						//å‰²ã‚Šè¾¼ã¿ãƒã‚¹ãƒˆæ•°ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ãƒˆ
-//	i_unlock_cpu();					//å‰²ã‚Šè¾¼ã¿è¨±å¯
-	(*userhandler)();				//ãƒ¦ãƒ¼ã‚¶ãƒ¼ãƒãƒ³ãƒ‰ãƒ©å‘¼ã³å‡ºã—
-//	i_lock_cpu();					//å‰²ã‚Šè¾¼ã¿ä¸å¯
-	intnest--;						//å‰²ã‚Šè¾¼ã¿ãƒã‚¹ãƒˆæ•°ãƒ‡ã‚¯ãƒªãƒ¡ãƒ³ãƒˆ
+	intnest++;						//Š„‚è‚İƒlƒXƒg”ƒCƒ“ƒNƒŠƒƒ“ƒg
+	i_unlock_cpu();					//Š„‚è‚İ‹–‰Â
+	(*userhandler)();				//ƒ†[ƒU[ƒnƒ“ƒhƒ‰ŒÄ‚Ño‚µ
+	i_lock_cpu();					//Š„‚è‚İ•s‰Â
+	intnest--;						//Š„‚è‚İƒlƒXƒg”ƒfƒNƒŠƒƒ“ƒg
 
-	if (intnest == 0)				//å¤šé‡å‰²ã‚Šè¾¼ã¿ä¸­ã§ãªã„
+	if (intnest == 0)				//‘½dŠ„‚è‚İ’†‚Å‚È‚¢
 	{
-		if (reqflg !=0)				//ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å¿…è¦
+		if (reqflg !=0)				//ƒXƒPƒWƒ…[ƒ‹•K—v
 		{
 			reqflg = 0;
-			newtskipi = search_schedtsk();			//æ¬¡ã«ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒã•ã‚Œã‚‹ã‚¿ã‚¹ã‚¯ID
-			if ((last_ipri != 0xff) && (last_ipri != newtskipi))
-			{
-				//ã“ã“ã§ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã€æ­£ç¢ºã«ã¯ã€calleeã‚»ãƒ¼ãƒ–ãƒ¬ã‚¸ã‚¹ã‚¿ã®ä¿å­˜
-				saveCTX();
-				// RUNä¸­ã«é«˜å„ªå…ˆåº¦ã®ã‚¿ã‚¹ã‚¯ã«åˆ‡ã‚Šæ›¿ã‚ã‚‹å ´åˆ
-				if (setjmp(task_ctx[last_ipri]) == 0)
-				{
-					// é«˜å„ªå…ˆåº¦ã®ã‚¿ã‚¹ã‚¯ã«ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒ
-					dispatch(newtskipi);	//ã“ã‚Œã¯ãƒªã‚¿ãƒ¼ãƒ³ã—ãªã„
-				}
-				//ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã€€calleeã‚»ãƒ¼ãƒ–ãƒ¬ã‚¸ã‚¹ã‚¿å¾©å¸°
-				loadCTX();
-			}
+			run_task(search_schedtsk());
 		}
 	}
 }
+

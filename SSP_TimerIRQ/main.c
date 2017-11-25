@@ -20,6 +20,26 @@
 
 volatile int count = 0;
 
+volatile int tim_count = 0;
+volatile int tim_flag = 0;
+
+void isig_tim()
+{
+	if (tim_count++ > 500)
+	{
+		if (tim_flag == 0)
+		{
+			iact_tsk(TASK3_ID);
+			tim_flag = 1;
+		}
+		else
+		{
+			iact_tsk(TASK2_ID);
+			tim_flag = 0;
+		}
+		tim_count = 0;
+	}
+}
 
 int setup(void)
 {
@@ -50,8 +70,8 @@ int setup(void)
 //	*TIMER_LOAD = 4000000-1;
 //	*TIMER_RELOAD = 4000000-1;
 	// タイマー値設定(1msec)
-	*TIMER_LOAD = 10-1;
-	*TIMER_RELOAD = 10-1;
+	*TIMER_LOAD = 1000-1;
+	*TIMER_RELOAD = 1000-1;
 
 	// 割り込みフラグをクリア
 	*TIMER_IRQ_CLR = 0;
@@ -75,15 +95,14 @@ int setup(void)
 void main(intptr_t arg)
 {
 	printf("main here\n");
-	act_tsk(TASK3_ID);
-	act_tsk(TASK2_ID);
+//	act_tsk(TASK3_ID);
+//	act_tsk(TASK2_ID);
 	printf("main end\n");
 }
 void task2(intptr_t arg)
 {
-	int toggle= 0;
+	static	int toggle= 0;
 	printf("task2 RUNNING-----------------------------------------------------\n");
-	for(;;)
 	{
 		if ((toggle ^= 1) != 0)
 		{
@@ -95,16 +114,14 @@ void task2(intptr_t arg)
 			printf("TASK2 LED: OFF count= %d\n",count);
 			digitalWrite(LED_ACT_PIN, LOW);
 		}
-		dly_tsk(100000);
+		//dly_tsk(100000);
 	}
 }
 
 void task3(void)
 {
-	printf("task3-----------------\n");
-	for(;;)
 	{
-		dly_tsk(50000);
+		//dly_tsk(50000);
 		count++;
 		printf("task3-----------------\n");
 	}
