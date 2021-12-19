@@ -1,7 +1,7 @@
-Docker環境+VSCode+QEMU対応版です。
-1.Docker環境としてalvstakahashi/stm32toolchain:1　でビルド可能になります。
-また.devcontainerを追加していますので、VSCODEでのリモートコンテナ利用が可能です。
-2.QEMU対応を行いました。　利用するシステムタイマーを変更して対応しました。make runqで実行可能です。
+Docker環境+VSCode+QEMU対応版です。<br>
+1.Docker環境としてalvstakahashi/stm32toolchain:1　でビルド可能になります。<br>
+また.devcontainerを追加していますので、VSCODEでのリモートコンテナ利用が可能です。<br>
+2.QEMU対応を行いました。　利用するシステムタイマーを変更して対応しました。make runqで実行可能です。<br>
 2021.12.20
 
 
