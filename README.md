@@ -1,3 +1,10 @@
+Docker環境+VSCode+QEMU対応版です。
+1.Docker環境としてalvstakahashi/stm32toolchain:1　でビルド可能になります。
+また.devcontainerを追加していますので、VSCODEでのリモートコンテナ利用が可能です。
+2.QEMU対応を行いました。　利用するシステムタイマーを変更して対応しました。make runqで実行可能です。
+2021.12.20
+
+
 # RPI-SHRINK-SSP-FULL
 BareMetalで遊ぶRaspberryPi[達人出版」の環境にて、SSPのシュリンク版を移植したものです。
 
