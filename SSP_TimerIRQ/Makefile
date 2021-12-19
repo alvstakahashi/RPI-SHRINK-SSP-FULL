@@ -22,7 +22,7 @@ OBJS+= rpi_lib/bss/clearbss.o
 
 #ssp liblary
 OBJS+= ssp/kernel_cfg.o ssp/startup.o ssp/task.o ssp/task_manage.o
-OBJS += arch/RPI/vector.o 
+OBJS += arch/RPI/vector.o arch/RPI/qemu_timer.o
 
 #ssp include
 INCSSP = -I./ssp -I./include -I./arch/RPI -I./rpi_lib -I./rpi_lib/peripherals
