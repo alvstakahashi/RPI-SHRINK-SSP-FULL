@@ -19,7 +19,9 @@
 extern void *__bss_end;
 unsigned int heap_end=(unsigned int)&__bss_end;
 unsigned int prev_heap_end;
-
+#ifndef _PARAMS
+#define _PARAMS(paramlist)		paramlist
+#endif
 /* Forward prototypes.  */
 int     _system     _PARAMS ((const char *));
 int     _rename     _PARAMS ((const char *, const char *));

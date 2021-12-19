@@ -7,9 +7,10 @@ OBJDUMP= $(CROSS)objdump
 SIZE= $(CROSS)size
 READELF= $(CROSS)readelf
 
+QEMU  = qemu-system-arm
+
 STARTUP= startup.o
 OBJS= main.o io.o
-
 # systemcall
 OBJS += syscalls.o
 
@@ -61,3 +62,9 @@ clean::
 
 tags::
 	ctags *.[chS]
+
+runq:$(OBJFILE)
+		$(QEMU) -M raspi2 -display none -serial null -serial stdio -kernel kernel7.elf
+
+runx:$(OBJFILE)
+		$(QEMU) -M raspi2 -display none -serial null -serial stdio -kernel kernel7.elf -d in_asm
