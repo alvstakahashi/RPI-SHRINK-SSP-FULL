@@ -2,6 +2,13 @@ Docker環境+VSCode+QEMU対応版です。<br>
 1.Docker環境としてalvstakahashi/stm32toolchain:1　でビルド可能になります。<br>
 また.devcontainerを追加していますので、VSCODEでのリモートコンテナ利用が可能です。<br>
 2.QEMU対応を行いました。　利用するシステムタイマーを変更して対応しました。make runqで実行可能です。<br>
+
+使い方 <br>
+VSCode の　Folder in Container... から　SSP_TimerIRQ フォルダを指定してください。<br>
+プロジェクトエクスプローラーにソースが読み込まれます。<br>
+メニュー　ターミナル　から　ターミナルを開いて　make してください。ビルドができるはずです。<br>
+make runq で　qemuが実行されます。　CTL-Cで止めます。<br>
+以上<br>
 2021.12.20
 
 
