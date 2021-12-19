@@ -8,6 +8,9 @@ VSCode の　Folder in Container... から　SSP_TimerIRQ フォルダを指定�
 プロジェクトエクスプローラーにソースが読み込まれます。<br>
 メニュー　ターミナル　から　ターミナルを開いて　make してください。ビルドができるはずです。<br>
 make runq で　qemuが実行されます。　CTL-Cで止めます。<br>
+
+ForARM64 フォルダを追加しています。ARM64マシンの場合は、.devcontainerを入れ替えてください。<br>
+arm版Chromebookで動作確認しています。<br>
 以上<br>
 2021.12.20
 
