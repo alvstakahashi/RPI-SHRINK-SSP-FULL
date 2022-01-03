@@ -68,3 +68,10 @@ runq:$(OBJFILE)
 
 runx:$(OBJFILE)
 		$(QEMU) -M raspi2 -display none -serial null -serial stdio -kernel kernel7.elf -d in_asm
+
+
+runqd:$(OBJFILE)
+		$(QEMU)  -M raspi2 -serial null -serial mon:stdio -S -gdb tcp::1234 -nographic
+
+gdb:$(OBJFILE)
+		gdb-multiarch -ex="target remote :1234" -ex="monitor system_reset" -ex="load" kernel7.elf

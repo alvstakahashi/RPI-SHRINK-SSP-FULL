@@ -1,0 +1,20 @@
+{
+"version": "0.2.0",
+"configurations": [
+{
+        "name": "Attach to QEMU",
+        "type": "gdb",
+        "request": "attach",
+        "executable": "./kernel7.elf",
+        "target": "localhost:1234",
+        "remote": true,
+        "cwd": "${workspaceRoot}",
+        "autorun": [
+            "monitor system_reset",
+            "load",
+            "break setup"
+        ],
+        "gdbpath": "/usr/local/bin/arm-none-eabi-gdb"
+}
+]
+}

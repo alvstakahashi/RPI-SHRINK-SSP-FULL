@@ -1,3 +1,22 @@
+GDBソースレベルデバッグの対応を行いました。<br>
+ VScode にはあらかじめ拡張機能　「Native Debug」を<br>
+ 組み込んでおいてください。<br>
+ 
+ 手順、<br>
+ 1) ターミナルから　make でビルドする<br>
+ 2) ターミナルから　qemuでデーモンの起動する<br>
+ 　　# make runqd<br>
+ 3) メニュー　「実行」「デバッグの開始」<br>
+ 　　でソースレベルデバッグが開始されます。<br>
+ 　　main.c setup()の頭でまずブレークされます。<br>
+　この後は、F10（ステップオーバー）等で動作を<br>
+　確認できます。<br>
+　
+　終了は、ターミナル終了は　CTL+a X で終了できます。<br>
+@mitsu48(TOPPERSプロジェクト) 様　参考にさせていただきました。<br>
+ありがとうございます。<br>
+https://qiita.com/mitsu48/items/5c6fec6064af6c4a2c4e#launchjson　<br>
+
 Docker環境+VSCode+QEMU対応版です。<br>
 1.Docker環境としてalvstakahashi/stm32toolchain:1　でビルド可能になります。<br>
 また.devcontainerを追加していますので、VSCODEでのリモートコンテナ利用が可能です。<br>

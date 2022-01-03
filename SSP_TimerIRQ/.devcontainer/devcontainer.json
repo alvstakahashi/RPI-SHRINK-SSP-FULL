@@ -12,7 +12,9 @@
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-		"ms-vscode.cpptools"
+		"ms-vscode.cpptools",
+		"coolchyni.beyond-debug",
+		"webfreak.debug"
 	]
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
