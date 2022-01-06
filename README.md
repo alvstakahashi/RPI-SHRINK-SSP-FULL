@@ -17,6 +17,11 @@ GDBソースレベルデバッグの対応を行いました。<br>
 ありがとうございます。<br>
 https://qiita.com/mitsu48/items/5c6fec6064af6c4a2c4e#launchjson　<br>
 
+GDBソースレベルデバッグについても、ARM64対応しました。
+Dockerfile に
+FROM alvstakahashi/stmtoolchainforduet:1.2
+と変更してみてください。
+
 Docker環境+VSCode+QEMU対応版です。<br>
 1.Docker環境としてalvstakahashi/stm32toolchain:1　でビルド可能になります。<br>
 また.devcontainerを追加していますので、VSCODEでのリモートコンテナ利用が可能です。<br>
