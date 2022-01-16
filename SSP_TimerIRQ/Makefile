@@ -36,6 +36,9 @@ CFLAGS+= -ffreestanding
 CFLAGS += -O0 -g -gdwarf-2
 CFLAGS += -DRPI3 -DTOPPERS_USE_BCM2837
 
+ifeq ($(QEMU),QEMU_NO_USE)
+CFLAGS += -D$(QEMU)
+endif
 LDFLAGS = -Wl,-Map=kernel7.map
 
 ########################

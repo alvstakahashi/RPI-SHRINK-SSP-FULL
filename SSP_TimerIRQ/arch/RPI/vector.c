@@ -90,7 +90,9 @@ IRQ_handler(void)
 	interrpt_IN();			//割り込み入り口　IRQ --> SVC
 //	target_hrt_int_clear();
 
-// Basic IRQ pendingをチェック
+	// Basic IRQ pendingをチェック
+ #ifndef QEMU_NO_USE
+  //QEMU用
    if (read_core0timer_pending() & 0x08 ) {
         write_cntv_tval(cntfrq/1000);    // clear cntv interrupt and set next 1sec timer.
 		// タイマー割り込み
@@ -99,5 +101,16 @@ IRQ_handler(void)
 
 		_kernel_handler(isig_tim);
 	}
+#else
+	//実機用　　
+	if(*INTERRUPT_IRQ_BASIC_PENDING & 0x01 != 0)
+	{
+		// タイマー割り込み
+        // 割り込みフラグクリア
+        *TIMER_IRQ_CLR = 0;
+
+		_kernel_handler(isig_tim);
+	}
+#endif
 	interrpt_OUT();			//割り込み出口 SVC --> IRQ
 }
